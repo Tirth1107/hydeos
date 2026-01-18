@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C8J1H1QXC6');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyde Music Documentation — Hyde</title>
+    <link rel="icon" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#111111',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // === CORRECTED OS Detection and Content Injection Script ===
+        function getOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+
+            // 1. Check for most specific OSs first
+            if (userAgent.includes('win')) return 'Windows';
+            if (userAgent.includes('mac')) return 'macOS';
+            
+            // 2. Check for Android/iOS/iPhones/iPads before the generic 'Linux' check
+            if (userAgent.includes('android')) return 'Android';
+            if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('ipod')) return 'iOS';
+
+            // 3. Finally, check for generic Linux
+            if (userAgent.includes('linux')) return 'Linux';
+
+            return 'your OS';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userOS = getOS();
+            const osDownloadElement = document.getElementById('os-download-section');
+            const downloadLink = 'downloadHydeMusicWindows.html'; // Your specified Windows download page
+
+            let content = '';
+
+            if (userOS === 'Windows') {
+                // Windows User: Provide the direct download link
+                content = `
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Download Hyde Music for <a href="${downloadLink}" class="text-white font-semibold underline hover:text-red-400 transition-colors">Windows</a>
+                        to get started right away.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        It's a completely free, open-source music tool designed with privacy and user freedom in mind.
+                    </p>
+                `;
+            } else {
+                // Mac, Linux, Android, iOS, or Unknown User: Show the "working" message
+                content = `
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Our Engineers are working for <span class="font-semibold">${userOS}</span>!
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Music is a completely free, open-source music tool designed with privacy and user freedom in mind.
+                    </p>
+                `;
+            }
+
+            if (osDownloadElement) {
+                osDownloadElement.innerHTML = content;
+            }
+
+            // --- Existing JavaScript Logic ---
+
+            // Mobile menu toggle logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Navbar scroll class logic
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Scroll animation logic
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .button-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .button-hover:hover {
+            transform: scale(1.05) translateY(-2px);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        nav {
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <nav class="fixed top-0 w-full z-50 glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-red-500 hover:opacity-80 transition-opacity">Hyde</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                        <a href="aboutus.html" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                        <a href="index.html#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                        <a href="index.html#docs" class="text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
+                        <a href="donate.html" class="text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                <a href="aboutus.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                <a href="index.html#projects" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="index.html#docs" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
+                <a href="donate.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text text-red-500">
+                Hyde Music
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-8">
+                A clean, ad-free music tool for everyone
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#getting-started" class="button-hover px-8 py-3 bg-white text-black rounded-lg font-semibold">
+                    Get Started
+                </a>
+                </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="animate-on-scroll" id="getting-started">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Getting Started</h2>
+                <div class="glass rounded-2xl p-8 space-y-4" id="os-download-section">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Loading recommended download information...
+                    </p>
+                </div>
+            </div>
+
+            <div class="animate-on-scroll" id="getting-started">           
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">🎵 Ad-Free Experience</h3>
+                        <p class="text-gray-400">Enjoy music without any interruptions or advertisements.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">🔒 Privacy First</h3>
+                        <p class="text-gray-400">We don't collect or store any of your data. Your privacy is guaranteed.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">⚡ Lightweight</h3>
+                        <p class="text-gray-400">Fast and efficient, designed to use minimal system resources.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">🌐 Open Source</h3>
+                        <p class="text-gray-400">Completely free and open-source. View and modify the code freely.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Download</h2>
+                <div class="glass rounded-2xl p-8">
+                    <p class="text-lg text-gray-300 mb-6 text-center">
+                        Download Hyde Music for your operating system
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🪟</div>
+                            <h3 class="text-lg font-semibold mb-2">Windows</h3>
+                            <p class="text-sm text-gray-400 mb-4">Windows 10/11</p>
+                            <button onclick="window.location.href='downloadHydeMusicWindows.html'" class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Download Setup
+                            </button>
+                        </a>
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🍎</div>
+                            <h3 class="text-lg font-semibold mb-2">macOS</h3>
+                            <p class="text-sm text-gray-400 mb-4">macOS 11+</p>
+                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Coming Soon
+                            </button>
+                        </a>
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🐧</div>
+                            <h3 class="text-lg font-semibold mb-2">Linux</h3>
+                            <p class="text-sm text-gray-400 mb-4">AppImage / DEB / RPM</p>
+                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Coming Soon
+                            </button>
+                        </a>
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🤖</div>
+                            <h3 class="text-lg font-semibold mb-2">Android</h3>
+                            <p class="text-sm text-gray-400 mb-4">Android 5.0+</p>
+                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Planned
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Usage</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Music provides a simple and intuitive interface for managing and playing your music collection.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Simply Search for your favorite songs and start enjoying your collection without any limitations or restrictions.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        You can also add your own music to the library and play it offline.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        You can also create your own playlists and share them with your friends and family.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Issues & Feature Requests</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        If you have any issues or feature requests, please raise them on <a href="Issues&FeatureRequestsforhydemusic.html">This Page.</a>
+                    </p><br>
+                    <a href="Issues&FeatureRequestsforhydemusic.html" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                        <button class="button-hover px-6 py-2 bg-white text-black rounded-md font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                            Raise Issue Or Feature Requests
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contributing</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Music is open-source and welcomes contributions from the community.
+                    </p><br>
+                    <a href="mailto:joshitirth1107@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                        <button class="button-hover px-6 py-2 bg-white text-black rounded-md font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                            Contact Admin
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-4 border-t border-white/10 mt-20">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400 mb-4">
+                Hyde — Free & Open-Source. Made with ❤️ by Tirth.
+            </p>
+            <div class="flex justify-center gap-6">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                    GitHub
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm mt-6">
+                No analytics, no cookies, no tracking.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

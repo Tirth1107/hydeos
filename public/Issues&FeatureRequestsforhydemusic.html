@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit an Issue or Feature Request — Hyde Music</title>
+    <link rel="icon" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#111111', /* Slightly lighter background for inputs */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            /* Use the same background gradient as the main page */
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Button hover animation for a subtle lift */
+        .button-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .button-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); /* Subtle red glow on hover */
+        }
+        /* Custom styling for the select dropdown arrow */
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23a0aec0'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem !important;
+        }
+    </style>
+</head>
+<body class="text-gray-100 p-4">
+
+    <div class="w-full max-w-xl mx-auto my-10">
+
+        <h1 class="text-4xl font-bold text-center mb-8 text-red-500">
+            Hyde Music Support - By Tirth
+        </h1>
+        <p class="text-center text-sm text-gray-500 mt-6">
+            <a href="music-docs.html" class="text-gray-400 hover:text-red-500 transition-colors duration-200">&leftarrow; Back to Documentation</a>
+        </p>
+        <form action="https://formspree.io/f/xwpgbdkb" method="POST" class="glass rounded-2xl p-8 space-y-6 shadow-2xl">
+            <h2 class="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-3">Submit a Request</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name (Optional)</label>
+                    <input type="text" name="name" id="name" placeholder="Tirth Joshi" class="w-full px-4 py-2 bg-dark-secondary border border-white/10 rounded-lg focus:outline-none focus:border-red-500 text-gray-100 placeholder-gray-500 transition-colors duration-200">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Your Email(To Contact You)</label>
+                    <input type="email" name="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-2 bg-dark-secondary border border-white/10 rounded-lg focus:outline-none focus:border-red-500 text-gray-100 placeholder-gray-500 transition-colors duration-200">
+                </div>
+            </div>
+
+            <div>
+                <label for="type" class="block text-sm font-medium text-gray-300 mb-1">Request Type</label>
+                <select name="type" id="type" required class="w-full px-4 py-2 bg-dark-secondary border border-white/10 rounded-lg focus:outline-none focus:border-red-500 text-gray-100 transition-colors duration-200">
+                    <option value="" disabled selected class="text-gray-500">Select Issue or Feature</option>
+                    <option value="Issue">Bug/Technical Issue 🛠️</option>
+                    <option value="Feature Request">New Feature Request ✨</option>
+                    <option value="General Query">General Question ❓</option>
+                    <option value="Other">Feedback</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Detailed Description</label>
+                <textarea name="message" id="message" rows="5" required placeholder="Describe the issue or the feature you'd like to see..." class="w-full px-4 py-2 bg-dark-secondary border border-white/10 rounded-lg focus:outline-none focus:border-red-500 text-gray-100 placeholder-gray-500 transition-colors duration-200"></textarea>
+            </div>
+
+            <button type="submit" class="button-hover w-full px-4 py-3 bg-red-600 text-white rounded-lg font-bold tracking-wide hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-dark transition-all duration-300">
+                Send
+            </button>
+            
+            <p class="text-xs text-gray-500 text-center pt-2">
+                This form is secured Hyde - By Tirth.
+            </p>
+        </form>
+
+
+    </div>
+
+</body>
+</html>

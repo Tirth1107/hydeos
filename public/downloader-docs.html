@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C8J1H1QXC6');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyde Downloader Documentation — Hyde</title>
+    <link rel="icon" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#111111',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .button-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .button-hover:hover {
+            transform: scale(1.05) translateY(-2px);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        nav {
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold text-red-500 hover:opacity-80 transition-opacity">Hyde</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                        <a href="aboutus.html" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                        <a href="index.html#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                        <a href="index.html#docs" class="text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
+                        <a href="donate.html" class="text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                <a href="aboutus.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                <a href="index.html#projects" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="index.html#docs" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
+                <a href="donate.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text text-red-500">
+                Hyde Downloader
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-8">
+                Fast video & audio downloader)
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#getting-started" class="button-hover px-8 py-3 bg-white text-black rounded-lg font-semibold">
+                    Comming Soon
+                </a>
+                <!-- <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="button-hover px-8 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10">
+                    View on GitHub
+                </a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <!-- Getting Started -->
+            <div id="getting-started" class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Getting Started</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Downloader is a powerful, privacy-focused tool for downloading videos and audio from various platforms.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Completely free, open-source, and designed with your privacy in mind. No data collection, no tracking.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Comming Soon...
+                    </p>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">⚡ Fast Downloads</h3>
+                        <p class="text-gray-400">Download videos and audio files quickly and efficiently.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">🎬 Multiple Formats</h3>
+                        <p class="text-gray-400">Support for various video and audio formats and quality options.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">🔒 Privacy Protected</h3>
+                        <p class="text-gray-400">No tracking, no data collection. Your downloads remain private.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">🆓 Free & Open Source</h3>
+                        <p class="text-gray-400">Completely free to use. Open-source code available for everyone.</p>
+                    </div>
+                    <div class="card-hover glass rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3">Supports Multiple Platforms</h3>
+                        <p class="text-gray-400">Supports multiple platforms for downloading videos and audio.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Features --> <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Supported Operating Systems</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Downloader supports multiple operating systems for downloading videos and audio.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        - Windows(In Progress)
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        - macOS(In Progress)
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        - Linux(In Progress)
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        - Android(Planned)
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        - iOS(Planned)
+                    </p>
+                </div>
+            </div>
+            <!-- Download -->
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Download</h2>
+                <div class="glass rounded-2xl p-8">
+                    <p class="text-lg text-gray-300 mb-6 text-center">
+                        Download Hyde Downloader for your operating system
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🪟</div>
+                            <h3 class="text-lg font-semibold mb-2">Windows</h3>
+                            <p class="text-sm text-gray-400 mb-4">Windows 10/11</p>
+                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Download
+                            </button>
+                        </a>
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🍎</div>
+                            <h3 class="text-lg font-semibold mb-2">macOS</h3>
+                            <p class="text-sm text-gray-400 mb-4">macOS 11+</p>
+                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Download
+                            </button>
+                        </a>
+                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
+                            <div class="text-4xl mb-3">🐧</div>
+                            <h3 class="text-lg font-semibold mb-2">Linux</h3>
+                            <p class="text-sm text-gray-400 mb-4">AppImage / DEB / RPM</p>
+                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
+                                Download
+                            </button>
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-500 text-center mt-6">
+                        Coming Soon
+                    </p>
+                </div>
+            </div> 
+
+            <!-- Usage -->
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Usage</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Using Hyde Downloader is simple. Just paste the URL of the video or audio you want to download, select your preferred format and quality, and click download.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        The tool supports multiple platforms and provides options for different quality settings to suit your needs.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contributing -->
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contributing</h2>
+                <div class="glass rounded-2xl p-8 space-y-4">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Downloader is open-source and welcomes contributions from the community.
+                    </p>
+                    <!-- <p class="text-lg text-gray-300 leading-relaxed">
+                        Help us improve by submitting issues, feature requests, or pull requests on our GitHub repository.
+                    </p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-white/10 mt-20">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400 mb-4">
+                Hyde — Free & Open-Source. Made with ❤️ by Tirth.
+            </p>
+            <div class="flex justify-center gap-6">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                    GitHub
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm mt-6">
+                No analytics, no cookies, no tracking.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

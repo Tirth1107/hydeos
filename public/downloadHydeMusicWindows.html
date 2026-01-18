@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C8J1H1QXC6');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Downloading Hyde Music</title>
+    
+    <link rel="icon" href="logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-500 display-flex justify-center items-center h-screen">
+    <h1 class="text-2xl font-bold text-center text-white font-bold font-sans vertical-align-middle">Thanks for Downloading Hyde Music</h1>
+    <p class="text-center text-white font-bold font-sans vertical-align-middle">Download Will Automatically Start If Not Clicked Automatically, <a href="https://github.com/Tirth1107/hyde-music-setup/releases/download/Music-Player/HydeMusicSetup.exe" class="text-blue-500">Click Here to Download.</a></p>
+
+    <p class="text-center text-white font-bold font-sans vertical-align-middle">Back to <a href="music-docs.html" class="text-blue-500">Hyde Music</a></p>
+    <p class="text-center text-white font-bold font-sans vertical-align-middle">Back to <a href="index.html" class="text-blue-500">Home</a></p>
+    <p class="text-center text-white font-bold font-sans vertical-align-middle">Back to <a href="aboutus.html" class="text-blue-500">About Us</a></p>
+    <p class="text-center text-white font-bold font-sans vertical-align-middle">Back to <a href="donate.html" class="text-blue-500">Donate</a></p>
+    <p class="text-center text-white font-bold font-sans vertical-align-middle">Back to <a href="contact.html" class="text-blue-500">Contact</a></p>
+    
+    
+    <script>
+    async function updateCounter() {
+      try {
+        const res = await fetch("https://api.counterapi.dev/v1/hyde/hyde-music-down/up");
+        const data = await res.json();
+        document.getElementById("counter").innerText = data.count;
+      } catch (err) {
+        console.error("Counter Error:", err);
+        document.getElementById("counter").innerText = "Error";
+      }
+    }
+    
+    updateCounter();
+    </script>
+    
+    
+    <script>
+      window.onload = function() {
+        window.location.href = "https://github.com/Tirth1107/hyde-music-setup/releases/download/Music-Player/HydeMusicSetup.exe";
+      }
+      
+    </script>
+    <script>
+      // Increase the page visit count
+      fetch("https://api.countapi.xyz/hit/hyde/hyde_music_visits");
+    </script>      
+  </body>
+
+  
+</html>
