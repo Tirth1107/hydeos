@@ -34,14 +34,14 @@
     <url>
         <loc>https://hydeos.qzz.io/documents.html</loc>
         <lastmod>2026-01-22</lastmod>
-        <changefreq>bi-weekly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://hydeos.qzz.io/music-docs.html</loc>
         <lastmod>2026-01-22</lastmod>
-        <changefreq>bi-weekly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
@@ -55,7 +55,7 @@
     <url>
         <loc>https://hydeos.qzz.io/downloader-docs.html</loc>
         <lastmod>2026-01-22</lastmod>
-        <changefreq>bi-weekly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
