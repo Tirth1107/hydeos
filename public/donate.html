@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C8J1H1QXC6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C8J1H1QXC6');
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate — Hyde</title>
+    <meta name="description" content="Support Hyde Development - Help Tirth build free, privacy-focused software. Fuel the privacy revolution, keep tools independent.">
+    <meta name="keywords" content="Donate, Support, Privacy, Free Software, Funding, Independent, Privacy First, Ad-Free">
+    <meta name="author" content="Tirth">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <title>Donate to Hyde - Support Free Privacy Tools | Help Tirth Continue Innovation</title>
     <link rel="icon" href="logo.png">
+    <link rel="canonical" href="https://hydeos.qzz.io/donate.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hydeos.qzz.io/donate.html">
+    <meta property="og:title" content="Donate to Hyde - Support Free Privacy Tools">
+    <meta property="og:description" content="Help Tirth keep Hyde independent and free. Support the privacy revolution with a donation.">
+    <meta property="og:image" content="https://hydeos.qzz.io/logo.png">
+    <meta property="og:site_name" content="Hyde">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hydeos.qzz.io/donate.html">
+    <meta name="twitter:title" content="Donate to Hyde - Support Privacy Freedom">
+    <meta name="twitter:description" content="Support the development of free, privacy-first software. Donate to keep Hyde independent.">
+    <meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NonprofitType",
+      "name": "Hyde",
+      "url": "https://hydeos.qzz.io/donate.html",
+      "description": "Support the development of free, privacy-focused software",
+      "founder": {
+        "@type": "Person",
+        "name": "Tirth"
+      }
+    }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,266 +58,289 @@
                     colors: {
                         dark: '#0a0a0a',
                         'dark-secondary': '#111111',
+                        'hyde-red': '#ef4444',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
+
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #050505 0%, #121212 100%);
             overflow-x: hidden;
+            color: #e5e5e5;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
+
+        /* Glassmorphism */
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
+
+        /* Interactive Elements */
         .card-hover {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
         }
+
         .button-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .button-hover:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        nav {
             transition: all 0.3s ease;
         }
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
+        .button-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         .gradient-text {
             background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .gradient-text-red {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-        .donate-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .donate-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        
+        .upi-box {
+            background: linear-gradient(90deg, rgba(239,68,68,0.1) 0%, rgba(0,0,0,0) 100%);
+            border-left: 4px solid #ef4444;
         }
     </style>
 </head>
-<body class="text-gray-100">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass" id="navbar">
+<body class="selection:bg-red-500 selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="text-xl font-bold text-red-500 hover:opacity-80 transition-opacity">Hyde</a>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
+                    <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
+                        by Tirth
+                    </span>
                 </div>
+
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                        <a href="aboutus.html" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                        <a href="index.html#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                        <a href="index.html#docs" class="text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
-                        <a href="donate.html" class="text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+                        <a href="index.html#home" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                        <a href="index.html#projects" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="docs.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Docs</a>
+                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
                     </div>
                 </div>
+
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                <a href="aboutus.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                <a href="index.html#projects" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                <a href="index.html#docs" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
-                <a href="donate.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
+                <a href="index.html#home" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                <a href="index.html#projects" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="docs.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Docs</a>
+                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4">
-        <div class="max-w-4xl mx-auto text-center fade-in">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text text-red-500">
-                Support Hyde
+    <section class="pt-32 pb-20 px-4 relative">
+        <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+        
+        <div class="max-w-4xl mx-auto text-center fade-in z-10">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6">
+                <span class="gradient-text-red">Fuel the</span> <span class="gradient-text">Revolution</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-8">
-                Help us build free, open-source tools for everyone
+            <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                Hyde is built by Tirth for the people. Your support keeps the servers running and the code free.
             </p>
-            <button onclick="window.location.href='mailto:joshitirth1107@gmail.com'" class="button-hover px-6 py-2 bg-white text-black rounded-md font-semibold text-sm w-full group-hover:scale-105 transition-transform">
-                Donate Now(Contact Admin)
-            </button>
+            
+            <div class="max-w-md mx-auto mb-8 glass rounded-2xl p-1 upi-box text-left relative overflow-hidden group">
+                <div class="bg-black/40 p-6 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <p class="text-xs text-red-400 uppercase tracking-widest font-bold mb-1">Direct Support (UPI)</p>
+                        <p class="text-2xl font-mono text-white tracking-wide" id="upi-id">7016565502@fam</p>
+                    </div>
+                    <button onclick="copyUPI()" class="button-hover px-5 py-2 bg-white text-black font-bold rounded-lg text-sm flex items-center gap-2 group-hover:bg-red-500 group-hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span id="copy-btn-text">Copy ID</span>
+                    </button>
+                </div>
+            </div>
+
+            <p class="text-sm text-gray-500">
+                Or <a href="mailto:joshitirth1107@gmail.com" class="text-red-400 hover:text-white underline transition-colors">Contact via Email</a> for other methods.
+            </p>
         </div>
     </section>
 
-    <!-- Content Section -->
     <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto space-y-12">
-            <!-- Why Donate -->
+        <div class="max-w-5xl mx-auto space-y-16">
+            
             <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Why Support Hyde?</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde is committed to creating completely free, open-source software that respects your privacy and freedom.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Your support helps us continue developing tools that are free from ads, trackers, and data collection. Every contribution, no matter how small, makes a difference.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        We believe software should be free, open, and respect user privacy. Your donations help us maintain this vision.
+                <div class="glass rounded-3xl p-8 md:p-12 text-center border-t border-white/10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Why Support Hyde?</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                        We don't run ads. We don't sell user data. We don't have paywalls.
+                        <br><br>
+                        Hyde is a labor of love committed to restoring privacy and freedom on the internet. 
+                        Being independent means we answer to <strong>you</strong>, not shareholders.
                     </p>
                 </div>
             </div>
 
-            <!-- Donation Options -->
-            <!-- <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Ways to Support</h2>
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">Where Funds Go</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="donate-card glass rounded-xl p-8 text-center">
-                        <div class="text-4xl mb-4">💳</div>
-                        <h3 class="text-xl font-semibold mb-3">One-Time Donation</h3>
-                        <p class="text-gray-400 mb-6">Make a one-time contribution to support Hyde's development.</p>
-                        <button class="button-hover px-6 py-3 bg-white text-black rounded-lg font-semibold w-full">
-                            Donate Now
-                        </button>
+                    <div class="card-hover glass p-8 rounded-2xl flex items-start space-x-4">
+                        <div class="text-3xl bg-red-500/10 p-3 rounded-lg">🚀</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Infrastructure</h3>
+                            <p class="text-gray-400">Server costs, domain renewals, and the backend services that power Hyde Music and Chat.</p>
+                        </div>
                     </div>
-                    <div class="donate-card glass rounded-xl p-8 text-center">
-                        <div class="text-4xl mb-4">🔄</div>
-                        <h3 class="text-xl font-semibold mb-3">Monthly Support</h3>
-                        <p class="text-gray-400 mb-6">Become a monthly supporter and help sustain Hyde's mission.</p>
-                        <button class="button-hover px-6 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10 w-full">
-                            Subscribe
-                        </button>
+
+                    <div class="card-hover glass p-8 rounded-2xl flex items-start space-x-4">
+                        <div class="text-3xl bg-blue-500/10 p-3 rounded-lg">💻</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Development</h3>
+                            <p class="text-gray-400">Time spent coding, debugging, and building new features like the upcoming Browser and AI.</p>
+                        </div>
                     </div>
-                    <div class="donate-card glass rounded-xl p-8 text-center">
-                        <div class="text-4xl mb-4">💻</div>
-                        <h3 class="text-xl font-semibold mb-3">Contribute Code</h3>
-                        <p class="text-gray-400 mb-6">Help us build by contributing code, reporting bugs, or suggesting features.</p>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="button-hover inline-block px-6 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10 w-full">
-                            View GitHub
+
+                    <div class="card-hover glass p-8 rounded-2xl flex items-start space-x-4">
+                        <div class="text-3xl bg-green-500/10 p-3 rounded-lg">🔒</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Security</h3>
+                            <p class="text-gray-400">Audits and tools to ensure the highest standard of privacy for all Hyde users.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover glass p-8 rounded-2xl flex items-start space-x-4">
+                        <div class="text-3xl bg-purple-500/10 p-3 rounded-lg">🛡️</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Independence</h3>
+                            <p class="text-gray-400">Keeping Hyde 100% independent from big tech influence and corporate funding.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="animate-on-scroll">
+                <div class="glass rounded-3xl p-8 text-center bg-black/40">
+                    <h2 class="text-2xl font-bold mb-4">Can't Donate?</h2>
+                    <p class="text-gray-400 mb-8">You can still help the revolution.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="https://github.com" target="_blank" class="button-hover px-6 py-3 glass rounded-lg border border-white/20 font-semibold">
+                            Star on GitHub
                         </a>
-                    </div>
-                    <div class="donate-card glass rounded-xl p-8 text-center">
-                        <div class="text-4xl mb-4">📢</div>
-                        <h3 class="text-xl font-semibold mb-3">Spread the Word</h3>
-                        <p class="text-gray-400 mb-6">Share Hyde with others who value free, open-source software.</p>
-                        <button class="button-hover px-6 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10 w-full">
-                            Share Hyde
+                        <button onclick="navigator.share({title: 'Hyde', text: 'Check out Hyde - Free & Private tools.', url: window.location.href})" class="button-hover px-6 py-3 glass rounded-lg border border-white/20 font-semibold">
+                            Share with Friends
                         </button>
                     </div>
                 </div>
-            </div> -->
-
-            <!-- What Your Support Does -->
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">What Your Support Does</h2>
-                <div class="glass rounded-2xl p-8">
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="text-2xl">🚀</div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2">Development & Maintenance</h3>
-                                <p class="text-gray-400">Funds go directly to developing new features and maintaining existing tools.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="text-2xl">🔒</div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2">Privacy & Security</h3>
-                                <p class="text-gray-400">Ensuring all Hyde tools remain secure and privacy-focused.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="text-2xl">📚</div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2">Documentation & Support</h3>
-                                <p class="text-gray-400">Creating comprehensive documentation and providing user support.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="text-2xl">🌐</div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2">Infrastructure</h3>
-                                <p class="text-gray-400">Maintaining servers and infrastructure needed to host and distribute Hyde tools.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Transparency -->
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Transparency</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde is committed to complete transparency. All donations go directly to supporting the development and maintenance of Hyde tools.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        We maintain our commitment to free, open-source software. Your support helps us stay independent and free from corporate influence.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Thank you for believing in free software and user freedom. Your support makes a real difference.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-white/10 mt-20">
+    <footer class="py-12 px-4 border-t border-white/10 bg-black/40">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-gray-400 mb-4">
-                Hyde — Free & Open-Source. Made with ❤️ by Tirth.
+            <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed & Developed by Tirth</p>
+            
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">
+                Building a freer, more private internet for everyone.
             </p>
-            <div class="flex justify-center gap-6">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-                    GitHub
-                </a>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                <a href="mailto:contact@hyde.com" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
             </div>
-            <p class="text-gray-500 text-sm mt-6">
-                No analytics, no cookies, no tracking.
+            <p class="text-gray-600 text-xs">
+                &copy; 2026 Hyde Organization. Made with ❤️ by Tirth.
             </p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Copy UPI Logic
+        function copyUPI() {
+            const upiId = "7016565502@fam";
+            navigator.clipboard.writeText(upiId).then(() => {
+                const btnText = document.getElementById("copy-btn-text");
+                const originalText = btnText.innerText;
+                
+                btnText.innerText = "Copied!";
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('bg-black/50');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('bg-black/50');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
-

@@ -1,18 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C8J1H1QXC6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C8J1H1QXC6');
     </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hyde — Free & Open-Source Tools</title>
+    <meta name="description" content="Hyde - Free, Private, Ad-Free Tools by Tirth. Privacy-first ecosystem: Music, Browser, Chat, Downloader. No tracking, no ads, completely free.">
+    <meta name="keywords" content="Privacy, Free Tools, Ad-Free Software, Windows App, Privacy-First, Open Source, Anonymous, No Tracking">
+    <meta name="author" content="Tirth">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <title>Hyde - Free Privacy-First Tools | Music, Browser, Chat & More by Tirth</title>
     <link rel="icon" href="logo.png">
+    <link rel="canonical" href="https://hydeos.qzz.io/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hydeos.qzz.io/">
+    <meta property="og:title" content="Hyde - Free Privacy-First Tools | Created by Tirth">
+    <meta property="og:description" content="Ad-free, privacy-focused ecosystem: Hyde Music, Browser, Chat & Downloader. Built by Tirth for maximum privacy.">
+    <meta property="og:image" content="https://hydeos.qzz.io/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Hyde">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hydeos.qzz.io/">
+    <meta name="twitter:title" content="Hyde - Free Privacy-First Tools by Tirth">
+    <meta name="twitter:description" content="Experience ad-free privacy. Hyde Music, Browser, Chat & Downloader - all completely free.">
+    <meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Hyde",
+      "url": "https://hydeos.qzz.io",
+      "logo": "https://hydeos.qzz.io/logo.png",
+      "description": "Free, privacy-first software ecosystem. Ad-free tools built by Tirth.",
+      "founder": {
+        "@type": "Person",
+        "name": "Tirth"
+      },
+      "sameAs": [
+        "https://github.com/Tirth1107/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Support",
+        "email": "joshitirth1107@gmail.com"
+      }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,298 +69,300 @@
                     colors: {
                         dark: '#0a0a0a',
                         'dark-secondary': '#111111',
+                        'hyde-red': '#ef4444',
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.6.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.6.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <style>
-      html {
-          scroll-behavior: smooth;
-      }
-      body {
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-          overflow-x: hidden;
-      }
-      .glass {
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .card-hover {
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .card-hover:hover {
-          transform: translateY(-12px) scale(1.02);
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-          border-color: rgba(255, 255, 255, 0.2);
-      }
-      .button-hover {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .button-hover:hover {
-          transform: scale(1.05) translateY(-2px);
-          box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-      }
-      .fade-in {
-          animation: fadeIn 0.8s ease-out;
-      }
-      @keyframes fadeIn {
-          from {
-              opacity: 0;
-              transform: translateY(30px);
-          }
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
-      }
-      @keyframes slideInLeft {
-          from {
-              opacity: 0;
-              transform: translateX(-50px);
-          }
-          to {
-              opacity: 1;
-              transform: translateX(0);
-          }
-      }
-      @keyframes slideInRight {
-          from {
-              opacity: 0;
-              transform: translateX(50px);
-          }
-          to {
-              opacity: 1;
-              transform: translateX(0);
-          }
-      }
-      @keyframes scaleIn {
-          from {
-              opacity: 0;
-              transform: scale(0.9);
-          }
-          to {
-              opacity: 1;
-              transform: scale(1);
-          }
-      }
-      .animate-on-scroll {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .animate-on-scroll.animated {
-          opacity: 1;
-          transform: translateY(0);
-      }
-      .gradient-text {
-          background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-      }
-      nav {
-          transition: all 0.3s ease;
-      }
-      nav.scrolled {
-          background: rgba(10, 10, 10, 0.8);
-          backdrop-filter: blur(20px);
-      }
-      .project-card {
-          animation-delay: calc(var(--delay) * 0.1s);
-      }
-  </style>
-  </head>
-  <body class="text-gray-100">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass">
+        body {
+            background: linear-gradient(135deg, #050505 0%, #121212 100%);
+            overflow-x: hidden;
+            color: #e5e5e5;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Interactive Cards */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.1); /* Red tint shadow */
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        /* Button Effects */
+        .button-hover {
+            transition: all 0.3s ease;
+        }
+        .button-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text-red {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="selection:bg-red-500 selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="#home" class="text-4xl font-bold text-red-500 hover:opacity-80 transition-opacity">Hyde</a>
-                    <p class="text-xxs md:text-xs text-gray-500 mb-2">By Tirth</p>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
+                    <a href="#home" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
+                        by Tirth
+                    </span>
                 </div>
+
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                        <a href="aboutus.html" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                        <a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                        <a href="#docs" class="text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
-                        <a href="donate.html" class="text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+                        <a href="#home" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
+                        <a href="#projects" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="#docs" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Docs</a>
+                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
                     </div>
                 </div>
+
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                <a href="aboutus.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                <a href="#docs" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
-                <a href="donate.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
+                <a href="#home" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
+                <a href="#projects" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="#docs" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Docs</a>
+                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
             </div>
         </div>
     </nav>
 
-    <!-- Landing Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-16">
-        <div class="max-w-4xl mx-auto text-center fade-in">
-            <h1 class="text-6xl md:text-8xl font-bold mb-6 gradient-text animate-on-scroll text-red-500">
-                Hyde
-            </h1>
-            <p class="text-sm md:text-base text-gray-500 mb-2">By Tirth</p>
-            <p class="text-xl md:text-2xl text-gray-400 mb-4">Free & Open-Source Tools</p>
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center px-4 relative">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl -z-10 animate-pulse-slow" style="animation-delay: 1s"></div>
+
+        <div class="max-w-5xl mx-auto text-center fade-in z-10">
             
-            <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-                Hyde builds free software for everyone.
+            <div class="inline-block px-4 py-1.5 mb-8 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm animate-on-scroll">
+                <span class="text-sm text-gray-400">Architected by <span class="text-white font-semibold">Tirth</span></span>
+            </div>
+
+            <h1 class="text-7xl md:text-9xl font-extrabold mb-6 tracking-tight">
+                <span class="gradient-text-red">Hyde</span>
+            </h1>
+            <p class="text-xl md:text-3xl text-gray-400 mb-8 font-light">
+                Privacy is a right. Code is the weapon.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#projects" class="button-hover px-8 py-3 bg-white text-black rounded-lg font-semibold shadow-lg hover:shadow-xl">
+            
+            <p class="text-base md:text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
+                A suite of free, open-source tools designed to respect your data and restore your digital freedom.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="#projects" class="button-hover px-8 py-4 bg-white text-black rounded-xl font-bold text-lg shadow-xl shadow-white/5">
                     Explore Projects
                 </a>
-                <a href="#docs" class="button-hover px-8 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10">
-                    View Docs
+                <a href="#docs" class="button-hover px-8 py-4 glass rounded-xl font-bold text-lg border border-white/10 hover:bg-white/5 text-gray-200">
+                    Read Documentation
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="button-hover px-8 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10">
+                <a href="https://github.com/Tirth1107/" target="_blank" rel="noopener noreferrer" class="button-hover px-8 py-4 glass rounded-xl font-bold text-lg border border-white/10 hover:bg-white/5 text-gray-200">
                     GitHub
                 </a>
             </div>
         </div>
+
+        <div class="absolute bottom-10 animate-bounce-slow opacity-50">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">About Hyde</h2>
-            <div class="glass rounded-2xl p-8 md:p-12 space-y-6">
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    Hyde creates completely free, open-source tools.
-                </p>
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    No ads, no trackers, no data selling.
-                </p>
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    Privacy is respected — we do NOT collect or store ANY data.
-                </p>
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    We promote free software and user freedom.
-                </p>
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    Hyde tools are made to help everyone without limitations.
-                </p>
+    <section id="about" class="py-24 px-4 bg-black/20">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold mb-16 text-center gradient-text">Why Hyde?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-2xl animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-red-500 mb-4">🚫 Zero Ads</h3>
+                    <p class="text-gray-400 text-lg">We believe software should serve the user, not the advertiser. Enjoy a completely distraction-free experience across all our tools.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl animate-on-scroll" style="transition-delay: 100ms">
+                    <h3 class="text-2xl font-bold text-blue-500 mb-4">🔒 Privacy First</h3>
+                    <p class="text-gray-400 text-lg">We do not track you. We do not sell your data. What happens on your device stays on your device.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl animate-on-scroll" style="transition-delay: 200ms">
+                    <h3 class="text-2xl font-bold text-green-500 mb-4">💸 Always Free</h3>
+                    <p class="text-gray-400 text-lg">Hyde tools are free to use. No premium subscriptions, no hidden paywalls.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl animate-on-scroll" style="transition-delay: 300ms">
+                    <h3 class="text-2xl font-bold text-purple-500 mb-4">🤝 Open Source</h3>
+                    <p class="text-gray-400 text-lg">Transparency builds trust. Our code is available for audit (where applicable) and community contribution.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">Projects</h2>
+    <section id="projects" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4">Our Ecosystem</h2>
+                <p class="text-gray-400">Tools built for the modern, privacy-conscious web.</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Hyde Music -->
-                <div class="card-hover glass rounded-2xl p-8 project-card animate-on-scroll" style="--delay: 0">
-                    <h3 class="text-2xl font-bold mb-4">Hyde Music</h3>
-                    <p class="text-gray-400 mb-6">A clean, ad-free music tool.</p>
-                    <a href="music-docs.html" class="button-hover inline-block px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm">
-                        Learn More
-                    </a>
+                <div class="card-hover glass rounded-3xl p-8 flex flex-col animate-on-scroll">
+                    <div class="h-12 w-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl">🎵</div>
+                    <h3 class="text-3xl font-bold mb-4">Hyde Music</h3>
+                    <p class="text-gray-400 mb-8 flex-grow">A sleek, ad-free music streaming aggregator. Listen to your favorite tracks without interruptions.</p>
+                    <div class="flex gap-4">
+                        <a href="music-docs.html" class="flex-1 text-center py-3 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm font-semibold">Docs</a>
+                        <a href="https://music.hydeos.qzz.io" target="_blank" class="flex-1 text-center py-3 rounded-lg bg-red-600 hover:bg-red-700 transition text-sm font-semibold text-white">Launch</a>
+                    </div>
                 </div>
-                <!-- Hyde Downloader -->
-                <div class="card-hover glass rounded-2xl p-8 project-card animate-on-scroll" style="--delay: 1">
-                    <h3 class="text-2xl font-bold mb-4">Hyde Downloader</h3>
-                    <p class="text-gray-400 mb-6">Fast video & audio downloader.</p>
-                    <a href="downloader-docs.html" class="button-hover inline-block px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm">
-                        Comming Soon
-                    </a>
+
+                <div class="card-hover glass rounded-3xl p-8 flex flex-col animate-on-scroll" style="transition-delay: 100ms">
+                    <div class="h-12 w-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl">⬇️</div>
+                    <h3 class="text-3xl font-bold mb-4">Hyde Downloader</h3>
+                    <p class="text-gray-400 mb-8 flex-grow">Powerful Windows utility to download video and audio from virtually any website.</p>
+                    <div class="flex gap-4">
+                        <a href="downloader-docs.html" class="flex-1 text-center py-3 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm font-semibold">Docs</a>
+                        <span class="flex-1 text-center py-3 rounded-lg border border-white/10 text-gray-500 text-sm font-semibold cursor-not-allowed">Beta Only</span>
+                    </div>
                 </div>
-                <!-- Hyde Browser -->
-                <div class="card-hover glass rounded-2xl p-8 project-card animate-on-scroll" style="--delay: 2">
-                    <h3 class="text-2xl font-bold mb-4">Hyde Browser</h3>
-                    <p class="text-gray-400 mb-6">A lightweight privacy-friendly browser.</p>
-                    <a href="browser-docs.html" class="button-hover inline-block px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm">
-                        Comming Soon
-                    </a>
+
+                <div class="card-hover glass rounded-3xl p-8 flex flex-col animate-on-scroll" style="transition-delay: 200ms">
+                    <div class="h-12 w-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 text-2xl">🌐</div>
+                    <h3 class="text-3xl font-bold mb-4">Hyde Browser</h3>
+                    <p class="text-gray-400 mb-8 flex-grow">A hardened, privacy-focused browser designed to stop fingerprinting and tracking.</p>
+                    <div class="flex gap-4">
+                        <a href="browser-docs.html" class="flex-1 text-center py-3 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm font-semibold">Docs</a>
+                        <span class="flex-1 text-center py-3 rounded-lg border border-white/10 text-gray-500 text-sm font-semibold cursor-not-allowed">Coming Soon</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Documentation Section -->
-    <section id="docs" class="py-20 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">Documentation</h2>
-            <div class="space-y-4">
-                <a href="music-docs.html" class="card-hover glass rounded-xl p-6 block animate-on-scroll">
-                    <h3 class="text-xl font-semibold mb-2">Hyde Music Docs</h3>
-                    <p class="text-gray-400 text-sm">Complete documentation for Hyde Music</p>
+    <section id="docs" class="py-24 px-4 bg-black/20">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center">Documentation Hub</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="documents.html" class="card-hover glass rounded-xl p-8 flex items-center gap-6 animate-on-scroll">
+                    <div class="text-4xl">📚</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">Central Docs</h3>
+                        <p class="text-gray-400 text-sm">The master guide for the entire ecosystem.</p>
+                    </div>
                 </a>
-                <a href="downloader-docs.html" class="card-hover glass rounded-xl p-6 block animate-on-scroll" style="animation-delay: 0.1s">
-                    <h3 class="text-xl font-semibold mb-2">Hyde Downloader Docs</h3>
-                    <p class="text-gray-400 text-sm">Complete documentation for Hyde Downloader</p>
+
+                <a href="music-docs.html" class="card-hover glass rounded-xl p-8 flex items-center gap-6 animate-on-scroll">
+                    <div class="text-4xl">🎧</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">Music Guide</h3>
+                        <p class="text-gray-400 text-sm">Setup, troubleshooting, and features.</p>
+                    </div>
                 </a>
-                <a href="browser-docs.html" class="card-hover glass rounded-xl p-6 block animate-on-scroll" style="animation-delay: 0.2s">
-                    <h3 class="text-xl font-semibold mb-2">Hyde Browser Docs</h3>
-                    <p class="text-gray-400 text-sm">Complete documentation for Hyde Browser</p>
+
+                <a href="downloader-docs.html" class="card-hover glass rounded-xl p-8 flex items-center gap-6 animate-on-scroll">
+                    <div class="text-4xl">💾</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">Downloader Guide</h3>
+                        <p class="text-gray-400 text-sm">Supported sites and installation.</p>
+                    </div>
+                </a>
+
+                <a href="browser-docs.html" class="card-hover glass rounded-xl p-8 flex items-center gap-6 animate-on-scroll">
+                    <div class="text-4xl">🛡️</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">Browser Specs</h3>
+                        <p class="text-gray-400 text-sm">Privacy architecture and roadmap.</p>
+                    </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-white/10">
+    <footer class="py-12 px-4 border-t border-white/10 bg-black/40">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-gray-400 mb-4">
-                Hyde — Free & Open-Source. Made with ❤️ by Tirth.
+            <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed & Developed by Tirth</p>
+            
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">
+                Building a freer, more private internet for everyone.
             </p>
-            <div class="flex justify-center gap-6">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-                    GitHub
-                </a>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="https://github.com/Tirth1107/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                <a href="mailto:joshitirth1107@gmail.com" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                <a href="donate.html" class="text-gray-400 hover:text-white transition-colors">Donate</a>
             </div>
-            <p class="text-gray-500 text-sm mt-6">
+            <p class="text-gray-600 text-xs">
+                &copy; 2026 Hyde Organization. Made with ❤️ by Tirth. <br>
                 No analytics, no cookies, no tracking.
             </p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-
     <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+
       const firebaseConfig = {
         apiKey: "AIzaSyDDWpLKsTC4vfWee4GaVlHwEKjSsyspzH0",
         authDomain: "hydebytirth.firebaseapp.com",
@@ -323,52 +372,53 @@
         appId: "1:233304164142:web:07c7d5489d0e34822c1cbf",
         measurementId: "G-C8J1H1QXC6"
       };
-    
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+      console.log("Hyde Analytics Initialized");
     </script>
+
     <script>
+        // 1. Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('bg-black/50'); 
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('bg-black/50');
+            }
+        });
 
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // 2. Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+        // 3. Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
     </script>
-    <!-- Google tag (gtag.js) -->
 
-
-  </body>
+</body>
 </html>

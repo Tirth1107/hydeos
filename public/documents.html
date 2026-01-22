@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C8J1H1QXC6');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hyde Central Documentation - Technical manuals for Hyde Music, Chat, Browser, Downloader. Complete guides, legal documents, and support.">
+    <meta name="keywords" content="Hyde Music, Hyde Chat, Hyde Browser, Downloader, Privacy, Windows App, Android, Documentation, Legal, Terms, TOS, Privacy Policy">
+    <meta name="author" content="Tirth">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <title>Hyde Central Documentation - Complete Guides & Legal Info by Tirth</title>
+    <link rel="icon" href="logo.png">
+    <link rel="canonical" href="https://hydeos.qzz.io/documents.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hydeos.qzz.io/documents.html">
+    <meta property="og:title" content="Hyde Central Documentation Hub">
+    <meta property="og:description" content="Complete technical guides, legal documents, and support for the entire Hyde ecosystem.">
+    <meta property="og:image" content="https://hydeos.qzz.io/logo.png">
+    <meta property="og:site_name" content="Hyde">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hydeos.qzz.io/documents.html">
+    <meta name="twitter:title" content="Hyde Documentation Hub - Complete Guides">
+    <meta name="twitter:description" content="All technical guides, legal documents, and support information for Hyde tools.">
+    <meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Hyde Central Documentation",
+      "url": "https://hydeos.qzz.io/documents.html",
+      "description": "Documentation hub for all Hyde applications"
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#111111',
+                        'hyde-red': '#ef4444',
+                    },
+                    fontFamily: {
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-padding-top: 100px;
+        }
+        body {
+            background: linear-gradient(135deg, #050505 0%, #121212 100%);
+            overflow-x: hidden;
+            color: #d1d5db; /* Gray-300 for better readability */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8; /* Increased line height for readability */
+            font-size: 1.125rem; /* Medium font size (18px) */
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typography */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-red {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #e5e5e5;
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+        }
+        h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ef4444;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        p { margin-bottom: 1.5rem; }
+        
+        /* Layout */
+        .docs-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        @media (min-width: 1024px) {
+            .docs-layout {
+                grid-template-columns: 280px 1fr;
+            }
+        }
+
+        /* Sidebar */
+        .docs-sidebar {
+            position: sticky;
+            top: 7rem;
+            height: calc(100vh - 8rem);
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+        .docs-sidebar::-webkit-scrollbar { width: 4px; }
+        .docs-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        
+        .toc-header {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: #9ca3af;
+            font-size: 0.95rem;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .toc-link:hover, .toc-link.active {
+            color: #f3f4f6;
+            background: rgba(255,255,255,0.03);
+            border-left-color: #ef4444;
+        }
+
+        /* Elements */
+        .callout {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            background: rgba(255,255,255,0.02);
+            border-left: 4px solid #ef4444;
+        }
+        
+        .code-block {
+            background: #09090b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #a7f3d0;
+            line-height: 1.5;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #ef4444;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.1);
+        }
+        
+        .btn-doc {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #ef4444;
+            color: white;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .btn-doc:hover { background: #dc2626; }
+        
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body class="selection:bg-red-500 selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
+                    <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
+                        by Tirth
+                    </span>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#home" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
+                        <a href="index.html#projects" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="docs.html" class="text-white bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs</a>
+                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
+                    </div>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
+                <a href="index.html#home" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
+                <a href="index.html#projects" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="docs.html" class="block px-3 py-3 text-lg text-white bg-white/10 rounded-lg">Docs</a>
+                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-16 px-4 relative">
+        <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
+        <div class="max-w-5xl mx-auto text-center fade-in z-10">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6">
+                <span class="gradient-text">Documentation</span> <span class="gradient-text-red">Hub</span>
+            </h1>
+            <p class="text-xl md:text-3xl text-gray-400 max-w-3xl mx-auto">
+                The comprehensive technical manual for the Hyde Ecosystem.
+            </p>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 docs-layout">
+        
+        <aside class="hidden lg:block">
+            <nav class="docs-sidebar glass rounded-xl p-6 animate-on-scroll">
+                <div class="toc-header">General</div>
+                <a href="#intro" class="toc-link">1. Introduction & Philosophy</a>
+                <a href="#ecosystem" class="toc-link">2. Ecosystem Overview</a>
+                <a href="#proprietary" class="toc-link">3. Licensing Notice</a>
+
+                <div class="toc-header">Hyde Music</div>
+                <a href="#music-guide" class="toc-link">4. User Guide</a>
+                <a href="#music-arch" class="toc-link">5. Architecture</a>
+                <a href="#music-install" class="toc-link">6. Installation</a>
+                <a href="#music-troubleshoot" class="toc-link">7. Troubleshooting</a>
+
+                <div class="toc-header">Hyde Chat</div>
+                <a href="#chat-guide" class="toc-link">8. Security Manual</a>
+                <a href="#chat-threat" class="toc-link">9. Threat Model</a>
+
+                <div class="toc-header">Hyde Downloader</div>
+                <a href="#downloader-guide" class="toc-link">10. Capabilities</a>
+                <a href="#downloader-sites" class="toc-link">11. Supported Sites</a>
+
+                <div class="toc-header">Future Tech</div>
+                <a href="#hyde-browser" class="toc-link">12. Hyde Browser</a>
+                <a href="#hyde-human" class="toc-link">13. Hyde Human (AI)</a>
+
+                <div class="toc-header">Legal & Compliance</div>
+                <a href="#tos" class="toc-link">14. Terms of Service</a>
+                <a href="#privacy" class="toc-link">15. Privacy Policy</a>
+            </nav>
+        </aside>
+
+        <main class="docs-content animate-on-scroll">
+            
+            <section id="portal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    <div class="product-card">
+                        <div class="text-4xl mb-4">🎵</div>
+                        <h4 class="!mt-0 text-white text-xl">Hyde Music Docs</h4>
+                        <p class="text-base text-gray-400">Deep dive into audio normalization, shortcuts, and setup.</p>
+                        <a href="music-docs.html" class="btn-doc">Read Manual</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="text-4xl mb-4">🌐</div>
+                        <h4 class="!mt-0 text-white text-xl">Browser Specs</h4>
+                        <p class="text-base text-gray-400">Technical roadmap for our Rust-based privacy engine.</p>
+                        <a href="browser-docs.html" class="btn-doc">Read Manual</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="text-4xl mb-4">⬇️</div>
+                        <h4 class="!mt-0 text-white text-xl">Downloader Docs</h4>
+                        <p class="text-base text-gray-400">Configuration guides and format conversion details.</p>
+                        <a href="downloader-docs.html" class="btn-doc">Read Manual</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="intro">
+                <h2 class="!mt-0">1. Introduction & Philosophy</h2>
+                <p>
+                    Welcome to the official technical documentation for the Hyde Ecosystem. Hyde is a collection of privacy-first, ad-free digital tools designed to restore user sovereignty in the digital age. In a web ecosystem dominated by data harvesting, intrusive advertising, and algorithmic manipulation, Hyde stands as a counter-movement focused on utility, speed, and anonymity.
+                </p>
+                <p>
+                    Our mission is simple: <strong>To build the utility layer of the internet without the surveillance.</strong> We believe that software should serve the user, not the advertiser.
+                </p>
+                <h3>Core Principles</h3>
+                <ul>
+                    <li><strong>Zero Knowledge:</strong> We architect our systems so that we cannot know who you are or what you do, even if compelled.</li>
+                    <li><strong>Ad-Free Forever:</strong> We do not accept advertising revenue. Our products are funded by donations and passion.</li>
+                    <li><strong>User Control:</strong> You own your data. Our tools operate locally whenever possible.</li>
+                </ul>
+            </section>
+
+            <section id="ecosystem">
+                <h2>2. Ecosystem Overview</h2>
+                <p>
+                    Hyde is a monolithic project composed of several distinct but philosophically aligned applications. Below is the current operational status of the entire suite as of <strong>January 2026</strong>.
+                </p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse border border-white/10 mt-6 text-base">
+                        <thead>
+                            <tr class="bg-white/5 text-white">
+                                <th class="p-4 border border-white/10">Project</th>
+                                <th class="p-4 border border-white/10">Status</th>
+                                <th class="p-4 border border-white/10">Primary Platform</th>
+                                <th class="p-4 border border-white/10">Access Tier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-4 border border-white/10 font-bold">Hyde Music</td>
+                                <td class="p-4 border border-white/10 text-green-400">Live & Stable</td>
+                                <td class="p-4 border border-white/10">Windows, Web</td>
+                                <td class="p-4 border border-white/10">Public</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 border border-white/10 font-bold">Hyde Chat</td>
+                                <td class="p-4 border border-white/10 text-green-400">Live</td>
+                                <td class="p-4 border border-white/10">Web</td>
+                                <td class="p-4 border border-white/10">Public</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 border border-white/10 font-bold">Hyde Downloader</td>
+                                <td class="p-4 border border-white/10 text-yellow-400">Active Beta</td>
+                                <td class="p-4 border border-white/10">Windows Only</td>
+                                <td class="p-4 border border-white/10">Closed Beta</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 border border-white/10 font-bold">Hyde Browser</td>
+                                <td class="p-4 border border-white/10 text-blue-400">Development</td>
+                                <td class="p-4 border border-white/10">Windows</td>
+                                <td class="p-4 border border-white/10">Waitlist</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 border border-white/10 font-bold">Hyde Human</td>
+                                <td class="p-4 border border-white/10 text-purple-400">R&D</td>
+                                <td class="p-4 border border-white/10">AI / Cloud</td>
+                                <td class="p-4 border border-white/10">Internal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="proprietary">
+                <h2>3. Licensing & Distribution</h2>
+                <div class="callout">
+                    <h3 class="!mt-0 !text-red-500">⚠️ Critical Notice: Closed Source Status</h3>
+                    <p class="!mb-0 text-white">
+                        The entire Hyde ecosystem (Music, Browser, Human, Chat, Downloader) is currently <strong>Closed Source / Proprietary Software</strong>.
+                        <br><br>
+                        While we are strong advocates for open-source philosophy, the current codebase contains proprietary algorithms and security implementations that are not yet ready for public audit.
+                        <br><br>
+                        <strong>Restrictions:</strong>
+                        <ul class="list-disc pl-5 mt-4">
+                            <li>You may NOT decompile, disassemble, or reverse engineer any Hyde binary.</li>
+                            <li>You may NOT redistribute modified versions of our software.</li>
+                            <li>You may NOT host Hyde services on your own servers for commercial gain.</li>
+                        </ul>
+                        We reserve the right to open-source specific modules in the future.
+                    </p>
+                </div>
+            </section>
+
+            <section id="music-guide">
+                <h2>4. Hyde Music: User Guide</h2>
+                <p>
+                    Hyde Music is an aggregation client that indexes audio streams from multiple public APIs (YouTube Music, SoundCloud, Jamendo) and presents them in a unified, ad-free interface.
+                </p>
+                
+                <h3>Getting Started</h3>
+                <p>
+                    <strong>Web Version:</strong> The easiest way to start is via our web player. It requires no installation and works on any modern browser (Chrome, Firefox, Edge, Safari).
+                </p>
+                <div class="code-block">
+                    Official URL: https://music.hydeos.qzz.io
+                </div>
+
+                <h3>Platform Support Matrix</h3>
+                <ul class="space-y-2">
+                    <li><strong>Windows 10/11:</strong> <span class="text-green-400">Supported (Native App).</span> Offers media key support and background performance optimization.</li>
+                    <li><strong>Android:</strong> <span class="text-yellow-400">Coming Soon (Q1 2026).</span> Native APK in final testing stages.</li>
+                    <li><strong>macOS / Linux:</strong> <span class="text-red-500">Canceled.</span> Please use the Web Player PWA (Progressive Web App).</li>
+                    <li><strong>iOS:</strong> <span class="text-blue-400">Web Only.</span> Use Safari -> Share -> Add to Home Screen.</li>
+                </ul>
+            </section>
+
+            <section id="music-arch">
+                <h2>5. Music Architecture</h2>
+                <p>
+                    Understanding how Hyde Music works helps users troubleshoot issues and understand the privacy benefits.
+                </p>
+                <h3>Audio Normalization Engine</h3>
+                <p>
+                    Hyde uses the Web Audio API to analyze the audio buffer in real-time. It calculates the RMS (Root Mean Square) amplitude and dynamically adjusts the gain node to ensure consistent volume levels across different tracks.
+                </p>
+                <h3>Caching Strategy (IndexedDB)</h3>
+                <p>
+                    To save bandwidth, Hyde implements a local caching layer. When a track is fully buffered, it is stored in your browser's IndexedDB. Subsequent plays load directly from your disk, offering offline-like speeds and reducing network requests.
+                </p>
+            </section>
+
+            <section id="music-install">
+                <h2>6. Installation Guide (Windows)</h2>
+                <p>
+                    Follow these steps to install the native Windows client.
+                </p>
+                <ol class="list-decimal pl-6 space-y-4 text-white">
+                    <li>Download the latest installer (<code>HydeMusic-Setup.exe</code>) from our download page.</li>
+                    <li>Run the installer. You may see a <strong>"Windows Protected Your PC"</strong> popup.</li>
+                    <li>This appears because we are an independent developer and do not buy expensive signing certificates from Microsoft.</li>
+                    <li>Click <strong>"More Info"</strong> and then <strong>"Run Anyway"</strong>. The app is 100% safe and virus-free.</li>
+                    <li>The app will install to <code>AppData/Local/Programs/HydeMusic</code> and launch automatically.</li>
+                </ol>
+            </section>
+
+            <section id="music-troubleshoot">
+                <h2>7. Troubleshooting</h2>
+                <div class="space-y-8">
+                    <div class="glass p-6 rounded-xl">
+                        <h4 class="!mt-0">Issue: Playback stops when tab is backgrounded (Mobile)</h4>
+                        <p><strong>Cause:</strong> Mobile operating systems (iOS/Android) aggressively kill background JavaScript to save battery.</p>
+                        <p><strong>Fix:</strong> Use the Native App (Windows/Android) or ensure you have installed the Web Version as a PWA (Add to Home Screen).</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl">
+                        <h4 class="!mt-0">Issue: "Stream Unavailable" Error</h4>
+                        <p><strong>Cause:</strong> The source provider (YouTube/SoundCloud) may have geo-blocked the content in your region.</p>
+                        <p><strong>Fix:</strong> Try searching for a "Lyric Video" version of the song, or use a VPN. Hyde does not control source availability.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="chat-guide">
+                <h2>8. Hyde Chat: Security Manual</h2>
+                <p>
+                    Hyde Chat is an ephemeral, encrypted communication tool. It is built for situations where data retention is a liability.
+                </p>
+                <div class="code-block">
+                    Access Portal: https://hydechat.rf.gd/
+                </div>
+                <h3>Key Security Features</h3>
+                <ul>
+                    <li><strong>No Database:</strong> Messages are relayed via RAM. Once delivered, they are wiped from the server.</li>
+                    <li><strong>No Accounts:</strong> You do not sign up. You do not provide an email. You do not provide a phone number.</li>
+                    <li><strong>Room Isolation:</strong> Each chat room generates a unique cryptographic salt. Interception of one room does not compromise others.</li>
+                </ul>
+            </section>
+
+            <section id="chat-threat">
+                <h2>9. Chat Threat Model</h2>
+                <p>
+                    <strong>What we protect against:</strong>
+                    <br>- Passive network surveillance (ISP snooping).
+                    <br>- Server seizure (data is in RAM, not disk).
+                    <br>- Database leaks (there is no database).
+                </p>
+                <p>
+                    <strong>What we do NOT protect against:</strong>
+                    <br>- Compromised user devices (Keyloggers on your PC).
+                    <br>- Someone looking over your shoulder.
+                </p>
+            </section>
+
+            <section id="downloader-guide">
+                <h2>10. Hyde Downloader Capabilities</h2>
+                <p>
+                    The Hyde Downloader is a GUI wrapper for advanced media extraction tools. It runs locally on Windows.
+                </p>
+                <h3>Feature Set</h3>
+                <ul>
+                    <li><strong>8K Video Support:</strong> Downloads the highest quality video stream available.</li>
+                    <li><strong>Format Conversion:</strong> Automatically merges video and audio streams into MP4/MKV.</li>
+                    <li><strong>Audio Extraction:</strong> Can rip audio tracks to MP3 (320kbps) or WAV (Lossless).</li>
+                    <li><strong>Playlist Support:</strong> Can process entire playlists in batch mode.</li>
+                </ul>
+            </section>
+
+            <section id="downloader-sites">
+                <h2>11. Supported Sites</h2>
+                <p>
+                    Hyde Downloader supports over 1,000 domains. Major supported platforms include:
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="glass p-3 rounded">YouTube</div>
+                    <div class="glass p-3 rounded">Twitter (X)</div>
+                    <div class="glass p-3 rounded">Instagram</div>
+                    <div class="glass p-3 rounded">TikTok</div>
+                    <div class="glass p-3 rounded">Twitch</div>
+                    <div class="glass p-3 rounded">SoundCloud</div>
+                    <div class="glass p-3 rounded">Vimeo</div>
+                    <div class="glass p-3 rounded">Dailymotion</div>
+                </div>
+            </section>
+
+            <section id="hyde-browser">
+                <h2>12. Hyde Browser (Future Tech)</h2>
+                <p>
+                    Currently in the planning phase, the Hyde Browser aims to be the most secure entry point to the web.
+                </p>
+                <h3>The "Fingerprinting" Problem</h3>
+                <p>
+                    Most privacy browsers block cookies, but they fail to block "Fingerprinting". Websites track you based on your screen resolution, installed fonts, and hardware canvas rendering.
+                </p>
+                <h3>Our Solution</h3>
+                <p>
+                    Hyde Browser will implement <strong>Canvas Randomization</strong>. Every time you restart the browser, it will slightly alter the way it reports your hardware to websites, making you appear as a completely different user every session.
+                </p>
+            </section>
+
+            <section id="hyde-human">
+                <h2>13. Hyde Human (AI Research)</h2>
+                <p>
+                    Hyde Human is an experimental project exploring "Affective Computing".
+                </p>
+                <p>
+                    Current AI assistants (ChatGPT, Gemini) are helpful but robotic. Hyde Human aims to simulate <strong>emotional permanence</strong>. It will have "moods" based on interaction history, creating a more realistic and grounded conversational partner.
+                </p>
+            </section>
+
+            <section id="tos">
+                <h2>14. Terms of Service</h2>
+                <p class="text-sm text-gray-500 mb-6">Last Updated: January 2026</p>
+                
+                <h3>Article 1: Acceptance</h3>
+                <p>By accessing the Hyde Ecosystem, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not use our services.</p>
+
+                <h3>Article 2: Usage License</h3>
+                <p>Permission is granted to use the software for personal, non-commercial use. This is the grant of a license, not a transfer of title. You may not modify, decompile, or use the materials for any commercial purpose without explicit written consent from the developer (Tirth).</p>
+
+                <h3>Article 3: Content Liability</h3>
+                <p>Hyde Downloader is a tool provided for personal archiving. The Hyde Organization does not host, distribute, or index any copyrighted material. The user bears full legal responsibility for how they use the tool. We do not condone piracy.</p>
+
+                <h3>Article 4: Disclaimer</h3>
+                <p>The software is provided "as is". Hyde makes no warranties, expressed or implied, regarding stability, uptime, or data persistence. Use at your own risk.</p>
+            </section>
+
+            <section id="privacy">
+                <h2>15. Privacy Policy</h2>
+                <p class="text-sm text-gray-500 mb-6">Effective Date: January 2026</p>
+
+                <h3>Article 1: Data Collection</h3>
+                <p>We practice <strong>Data Minimization</strong>. We do not collect names, emails, phone numbers, or physical addresses. We do not log IP addresses on our core application servers.</p>
+
+                <h3>Article 2: Local Storage</h3>
+                <p>Hyde Music stores your preferences (volume, theme, playlists) locally on your device using <code>localStorage</code> and <code>IndexedDB</code>. This data never leaves your device.</p>
+
+                <h3>Article 3: Third-Party APIs</h3>
+                <p>Hyde Music acts as a proxy. When you search for a song, your query is sent to our anonymous relay server, which then fetches data from YouTube/SoundCloud. This prevents the big tech companies from seeing your original IP address.</p>
+
+                <h3>Article 4: Cookies</h3>
+                <p>We do not use tracking cookies. We do not use pixel tags. Any cookies present are strictly necessary for session management (e.g., maintaining a WebSocket connection in Hyde Chat).</p>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="py-12 px-4 border-t border-white/10 bg-black/40">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed & Developed by Tirth</p>
+            
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">
+                Building a freer, more private internet for everyone.
+            </p>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">GitHub (Private)</a>
+                <a href="https://hydechat.rf.gd/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Secure Chat</a>
+                <a href="mailto:contact@hyde.com" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <p class="text-gray-600 text-sm">
+                &copy; 2026 Hyde Organization. All rights reserved.<br>
+                <span class="text-xs opacity-50">Unauthorized redistribution of Hyde binaries is prohibited.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass', 'shadow-lg');
+            } else {
+                navbar.classList.remove('glass', 'shadow-lg');
+            }
+        });
+
+        // Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // TOC Active Link Highlighting
+        const tocObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const link = document.querySelector(`.toc-link[href="#${id}"]`);
+                if (entry.isIntersecting && link) {
+                    document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-100px 0px -60% 0px' });
+        document.querySelectorAll('section[id]').forEach(section => tocObserver.observe(section));
+    </script>
+</body>
+</html>

@@ -1,4 +1,25 @@
+# Hyde Ecosystem - robots.txt
+# All crawlers are welcomed to index the entire site
+
+# Allow all bots
 User-agent: *
 Allow: /
 
-Sitemap: https://hydebytirth.web.app/sitemap.xml
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap location for search engines
+Sitemap: https://hydeos.qzz.io/sitemap.xml
+
+# Crawl delay (optional, for better server performance)
+Crawl-delay: 1

@@ -3,16 +3,58 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C8J1H1QXC6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C8J1H1QXC6');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyde Browser Documentation — Hyde</title>
+    <meta name="description" content="Hyde Browser - Hardened, Privacy-Focused Browser by Tirth. Anti-fingerprinting, zero telemetry, complete anonymity. Coming 2026.">
+    <meta name="keywords" content="Privacy Browser, Anti-Fingerprinting, Anonymous Browser, No Tracking, Hardened Browser, Windows Browser, Privacy-First">
+    <meta name="author" content="Tirth">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <title>Hyde Browser - Hardened Privacy Browser | Anonymous & Fast by Tirth</title>
     <link rel="icon" href="logo.png">
+    <link rel="canonical" href="https://hydeos.qzz.io/browser-docs.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hydeos.qzz.io/browser-docs.html">
+    <meta property="og:title" content="Hyde Browser - Hardened Privacy Browser">
+    <meta property="og:description" content="The most anticipated privacy project. Anti-fingerprinting, zero telemetry, complete anonymity. Waitlist open.">
+    <meta property="og:image" content="https://hydeos.qzz.io/logo.png">
+    <meta property="og:site_name" content="Hyde">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hydeos.qzz.io/browser-docs.html">
+    <meta name="twitter:title" content="Hyde Browser - Hardened Privacy Browser Coming 2026">
+    <meta name="twitter:description" content="Revolutionary privacy browser with anti-fingerprinting and zero telemetry. Join the waitlist.">
+    <meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Hyde Browser",
+      "applicationCategory": "WebBrowser",
+      "description": "Hardened, privacy-focused web browser with anti-fingerprinting and zero telemetry",
+      "url": "https://hydeos.qzz.io/browser-docs.html",
+      "creator": {
+        "@type": "Person",
+        "name": "Tirth"
+      },
+      "operatingSystem": "Windows",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,269 +64,256 @@
                     colors: {
                         dark: '#0a0a0a',
                         'dark-secondary': '#111111',
+                        'hyde-blue': '#3b82f6',
+                        'hyde-cyan': '#06b6d4',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
+
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #050505 0%, #0f172a 100%); /* Dark Blue tint */
             overflow-x: hidden;
+            color: #e5e5e5;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
+
+        /* Glassmorphism */
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
+
+        /* Interactive Elements */
         .card-hover {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15); /* Cyan glow */
+            border-color: rgba(6, 182, 212, 0.3);
         }
+
         .button-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .button-hover:hover {
-            transform: scale(1.05) translateY(-2px);
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        nav {
             transition: all 0.3s ease;
         }
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
+        .button-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .fade-in {
-            animation: fadeIn 0.8s ease-out;
+        .text-glow-blue {
+            color: #38bdf8;
+            text-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
         }
     </style>
 </head>
-<body class="text-gray-100">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass" id="navbar">
+<body class="text-gray-100 selection:bg-cyan-500 selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="text-xl font-bold text-red-500 hover:opacity-80 transition-opacity">Hyde</a>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
+                    <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
+                        by Tirth
+                    </span>
                 </div>
+
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html#home" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                        <a href="aboutus.html" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                        <a href="index.html#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                        <a href="index.html#docs" class="text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
-                        <a href="donate.html" class="text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+                        <a href="index.html#home" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                        <a href="index.html#projects" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="docs.html" class="text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
                     </div>
                 </div>
+
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                <a href="aboutus.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">About</a>
-                <a href="index.html#projects" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
-                <a href="index.html#docs" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Docs</a>
-                <a href="donate.html" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-300">Donate</a>
+
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
+                <a href="index.html#home" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                <a href="index.html#projects" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="docs.html" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4">
-        <div class="max-w-4xl mx-auto text-center fade-in">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text text-red-500">
-                Hyde Browser
+    <section class="pt-32 pb-24 px-4 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -z-10 animate-pulse-slow"></div>
+
+        <div class="max-w-5xl mx-auto text-center fade-in">
+            <div class="inline-block px-4 py-1 mb-6 border border-cyan-500/30 rounded-full bg-cyan-900/10">
+                <span class="text-cyan-400 text-sm font-semibold tracking-wider uppercase">Project: Revive</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter">
+                Hyde <span class="text-glow-blue">Browser</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-8">
-                A lightweight privacy-friendly browser
+            <p class="text-xl md:text-3xl text-gray-300 mb-10 font-light max-w-3xl mx-auto">
+                The most anticipated release in our history. <br>
+                <span class="text-white font-normal">Rebuilding the internet's gateway from the ground up.</span>
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#getting-started" class="button-hover px-8 py-3 bg-white text-black rounded-lg font-semibold">
-                    Get Started
-                </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="button-hover px-8 py-3 glass rounded-lg font-semibold border border-white/20 hover:bg-white/10">
-                    View on GitHub
+            
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <button class="px-8 py-4 bg-white text-black rounded-lg font-bold opacity-50 cursor-not-allowed" title="Coming 2026">
+                    Download Alpha (Locked)
+                </button>
+                <a href="mailto:joshitirth1107@gmail.com?subject=Hyde Browser Waitlist" class="button-hover px-8 py-4 glass rounded-lg font-bold border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10">
+                    Join the Waitlist
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Content Section -->
     <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto space-y-12">
-            <!-- Getting Started -->
-            <div id="getting-started" class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Getting Started</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde Browser is a lightweight, privacy-focused web browser built for users who value their online privacy and freedom.
+        <div class="max-w-4xl mx-auto space-y-16">
+            
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl font-bold mb-8 text-center text-white">Why the Hype?</h2>
+                <div class="glass rounded-3xl p-10 border-t border-cyan-500/20 bg-gradient-to-b from-white/5 to-transparent">
+                    <p class="text-xl text-gray-200 leading-relaxed mb-6">
+                        Modern browsers have become surveillance tools. They track your clicks, your location, and your identity to build a profile for advertisers.
                     </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        No tracking, no data collection, no telemetry. Just a fast, secure browsing experience.
+                    <p class="text-xl text-gray-200 leading-relaxed">
+                        <strong>Hyde Browser is the answer.</strong> We are not just forking Chromium and changing the logo. We are rewriting the networking stack to ensure that when you go Incognito, you actually disappear.
                     </p>
                 </div>
             </div>
 
-            <!-- Features -->
             <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Features</h2>
+                <h2 class="text-3xl font-bold mb-10 text-center text-white">Security Architecture</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-semibold mb-3">🔒 Privacy First</h3>
-                        <p class="text-gray-400">Built-in privacy protections. No tracking, no data collection, no telemetry.</p>
+                    <div class="card-hover glass p-8 rounded-2xl">
+                        <div class="text-4xl mb-4">🧬</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Anti-Fingerprinting</h3>
+                        <p class="text-gray-400">Websites track you by your hardware. Hyde randomizes your Canvas, AudioContext, and WebGL readouts on every launch.</p>
                     </div>
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-semibold mb-3">⚡ Lightweight</h3>
-                        <p class="text-gray-400">Minimal resource usage. Fast and efficient browsing experience.</p>
+                    <div class="card-hover glass p-8 rounded-2xl">
+                        <div class="text-4xl mb-4">🦀</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Rust Core</h3>
+                        <p class="text-gray-400">We are replacing critical C++ components with Rust to eliminate memory-safety vulnerabilities found in other browsers.</p>
                     </div>
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-semibold mb-3">🛡️ Security</h3>
-                        <p class="text-gray-400">Built with security in mind. Regular updates and security patches.</p>
+                    <div class="card-hover glass p-8 rounded-2xl">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Zero Telemetry</h3>
+                        <p class="text-gray-400">No "Usage Statistics". No "Crash Reports" sent to Google. Your browser talks only to the websites you visit.</p>
                     </div>
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-semibold mb-3">🆓 Free & Open Source</h3>
-                        <p class="text-gray-400">Completely free and open-source. Full transparency and user control.</p>
+                    <div class="card-hover glass p-8 rounded-2xl">
+                        <div class="text-4xl mb-4">🧱</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Container Tabs</h3>
+                        <p class="text-gray-400">Isolate your sessions. Log into multiple accounts on the same site simultaneously without data leaking between tabs.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Download -->
             <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Download</h2>
-                <div class="glass rounded-2xl p-8">
-                    <p class="text-lg text-gray-300 mb-6 text-center">
-                        Download Hyde Browser for your operating system
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
-                            <div class="text-4xl mb-3">🪟</div>
-                            <h3 class="text-lg font-semibold mb-2">Windows</h3>
-                            <p class="text-sm text-gray-400 mb-4">Windows 10/11</p>
-                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
-                                Download
-                            </button>
-                        </a>
-                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
-                            <div class="text-4xl mb-3">🍎</div>
-                            <h3 class="text-lg font-semibold mb-2">macOS</h3>
-                            <p class="text-sm text-gray-400 mb-4">macOS 11+</p>
-                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
-                                Download
-                            </button>
-                        </a>
-                        <a href="#" class="card-hover glass rounded-xl p-6 text-center group">
-                            <div class="text-4xl mb-3">🐧</div>
-                            <h3 class="text-lg font-semibold mb-2">Linux</h3>
-                            <p class="text-sm text-gray-400 mb-4">AppImage / DEB / RPM</p>
-                            <button class="button-hover px-6 py-2 bg-white text-black rounded-lg font-semibold text-sm w-full group-hover:scale-105 transition-transform">
-                                Download
-                            </button>
-                        </a>
+                <h2 class="text-3xl font-bold mb-8 text-center text-white">Release Timeline</h2>
+                <div class="glass rounded-2xl p-8 relative overflow-hidden">
+                    <div class="absolute left-8 top-8 bottom-8 w-1 bg-white/10 rounded-full"></div>
+                    
+                    <div class="space-y-12 pl-12 relative">
+                        <div class="relative">
+                            <div class="absolute -left-[3.25rem] top-1 w-6 h-6 bg-green-500 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.5)]"></div>
+                            <h3 class="text-xl font-bold text-white">Phase 1: Core Engine</h3>
+                            <p class="text-gray-400">Stripping Google services from Chromium base. (Completed)</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[3.25rem] top-1 w-6 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.5)] animate-pulse"></div>
+                            <h3 class="text-xl font-bold text-white">Phase 2: Windows Alpha</h3>
+                            <p class="text-cyan-400 font-bold">Currently in Development.</p>
+                            <p class="text-gray-400">Integrating Rust networking stack and UI optimization.</p>
+                        </div>
+                        <div class="relative opacity-50">
+                            <div class="absolute -left-[3.25rem] top-1 w-6 h-6 bg-gray-600 rounded-full border border-gray-500"></div>
+                            <h3 class="text-xl font-bold text-white">Phase 3: Public Beta</h3>
+                            <p class="text-gray-400">Planned Q4 2026. First public release for Windows.</p>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-500 text-center mt-6">
-                        Coming Soon
-                    </p>
                 </div>
             </div>
 
-            <!-- Usage -->
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Usage</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde Browser provides a clean, intuitive interface for browsing the web while maintaining your privacy.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        All privacy features are enabled by default, ensuring you're protected from the moment you start browsing.
-                    </p>
-                </div>
+            <div class="animate-on-scroll text-center py-10">
+                <h2 class="text-4xl font-bold mb-6 text-white">Be The First</h2>
+                <p class="text-gray-400 mb-8">
+                    Access will be granted in waves. Secure your spot in the future of browsing.
+                </p>
+                <form action="mailto:joshitirth1107@gmail.com" method="post" enctype="text/plain" class="max-w-md mx-auto flex gap-2">
+                    <input type="email" placeholder="Enter your email..." class="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" required>
+                    <button type="submit" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-6 py-3 rounded-lg transition-colors shadow-lg shadow-cyan-900/20">
+                        Join
+                    </button>
+                </form>
             </div>
 
-            <!-- Privacy -->
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Privacy & Security</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde Browser is designed with privacy as a core principle. We do not collect any browsing data, search history, or personal information.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        All browsing happens locally on your device. No data is sent to external servers for tracking or analytics purposes.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Contributing -->
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contributing</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde Browser is open-source and welcomes contributions from the community.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Help us build a better, more private web by submitting issues, feature requests, or pull requests on our GitHub repository.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-white/10 mt-20">
+    <footer class="py-12 px-4 border-t border-white/10 mt-20 bg-black/40">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-gray-400 mb-4">
-                Hyde — Free & Open-Source. Made with ❤️ by Tirth.
-            </p>
-            <div class="flex justify-center gap-6">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-                    GitHub
-                </a>
-            </div>
-            <p class="text-gray-500 text-sm mt-6">
-                No analytics, no cookies, no tracking.
+            <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed & Developed by Tirth</p>
+            <p class="text-gray-600 text-sm">
+                &copy; 2026 Hyde Organization. All rights reserved.
             </p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg', 'bg-black/50');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-black/50');
+            }
+        });
+
+        // Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
-
