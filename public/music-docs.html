@@ -16,22 +16,85 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <title>Hyde Music - Free Ad-Free Streaming | Setup Guide & Documentation by Tirth</title>
     <link rel="icon" href="logo.png">
-    <link rel="canonical" href="https://hydeos.qzz.io/music-docs.html">
+    <link rel="canonical" href="https://hydeos.tech/music-docs.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#111111',
+                        'hyde-red': '#ef4444',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #050505 0%, #1a0f0f 100%); /* Dark Red tint */
+            overflow-x: hidden;
+            color: #e5e5e5;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Interactive Elements */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15); /* Red glow */
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .button-hover {
+            transition: all 0.3s ease;
+        }
+        .button-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .text-shadow-glow {
+            text-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+        }
+    </style>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hydeos.qzz.io/music-docs.html">
+    <meta property="og:url" content="https://hydeos.tech/music-docs.html">
     <meta property="og:title" content="Hyde Music - Free, Ad-Free Music Streaming">
     <meta property="og:description" content="Stream music ad-free on Windows, Web, and Android. Complete setup guide and documentation.">
-    <meta property="og:image" content="https://hydeos.qzz.io/logo.png">
+    <meta property="og:image" content="https://hydeos.tech/logo.png">
     <meta property="og:site_name" content="Hyde">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://hydeos.qzz.io/music-docs.html">
+    <meta name="twitter:url" content="https://hydeos.tech/music-docs.html">
     <meta name="twitter:title" content="Hyde Music - Free Ad-Free Streaming">
     <meta name="twitter:description" content="Documentation and setup guides for Hyde Music - completely free, ad-free music streaming.">
-    <meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
+    <meta name="twitter:image" content="https://hydeos.tech/logo.png">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -41,7 +104,7 @@
       "name": "Hyde Music",
       "applicationCategory": "AudioApplication",
       "description": "Free, ad-free music streaming application for Windows, Web, and Android",
-      "url": "https://hydeos.qzz.io/music-docs.html",
+      "url": "https://hydeos.tech/music-docs.html",
       "creator": {
         "@type": "Person",
         "name": "Tirth"
@@ -53,21 +116,6 @@
         "priceCurrency": "USD"
       }
     }
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        'dark-secondary': '#111111',
-                        'hyde-red': '#ef4444',
-                    }
-                }
-            }
-        }
     </script>
 
     <script>
@@ -90,109 +138,65 @@
 
             if (userOS === 'Windows') {
                 htmlContent = `
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h3 class="text-xl font-bold text-white mb-2">You are on Windows</h3>
-                        <p class="text-gray-300">Great news! The stable Hyde Music app is available for your device.</p>
-                        <a href="downloadHydeMusicWindows.html" class="inline-block mt-3 px-6 py-2 bg-white text-black font-bold rounded hover:bg-gray-200 transition">
+                    <div class="glass rounded-2xl p-8 border-t border-green-500/30 bg-gradient-to-b from-green-500/10 to-transparent card-hover text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">You are on Windows</h3>
+                        <p class="text-gray-300 mb-6">Great news! The stable Hyde Music app is available for your device.</p>
+                        <a href="downloadHydeMusicWindows.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-black font-semibold button-hover transition-colors shadow-lg hover:bg-gray-200">
                             Download Windows App
                         </a>
                     </div>`;
             } else if (userOS === 'Android') {
                 htmlContent = `
-                    <div class="border-l-4 border-yellow-500 pl-4">
-                        <h3 class="text-xl font-bold text-white mb-2">Android App Coming Soon</h3>
-                        <p class="text-gray-300">We are putting finishing touches on the APK. For now, please use the <a href="https://music.hydeos.qzz.io" class="text-red-400 underline">Web Player</a>.</p>
+                    <div class="glass rounded-2xl p-8 border-t border-yellow-500/30 bg-gradient-to-b from-yellow-500/10 to-transparent card-hover text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-yellow-400">Android App Coming Soon</h3>
+                        <p class="text-gray-300">We are putting finishing touches on the APK. For now, please use the web version at music.hydeos.tech</p>
                     </div>`;
             } else if (userOS === 'Apple' || userOS === 'Linux') {
                 htmlContent = `
-                    <div class="border-l-4 border-red-500 pl-4">
-                        <h3 class="text-xl font-bold text-white mb-2">Native App Not Available</h3>
+                    <div class="glass rounded-2xl p-8 border-t border-red-500/30 bg-gradient-to-b from-red-500/10 to-transparent card-hover text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-red-400">Native App Not Available</h3>
                         <p class="text-gray-300">
-                            Development for <strong>${userOS}</strong> has been canceled to focus on Windows/Android. 
-                            Please use our fully optimized <a href="https://music.hydeos.qzz.io" class="text-red-400 underline font-bold">Web Player</a> instead.
+                            Development for <strong class="text-white">${userOS}</strong> has been canceled to focus on Windows/Android. 
+                            Please use the web version at music.hydeos.tech instead.
                         </p>
                     </div>`;
             } else {
-                htmlContent = `<p class="text-gray-400">Please select your platform below.</p>`;
+                htmlContent = `<p class="text-gray-400 text-center">Please select your platform below.</p>`;
             }
 
             if (osSection) osSection.innerHTML = htmlContent;
 
-            // Animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
                 });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+            }
         });
     </script>
-
-    <style>
-        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-        body { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); overflow-x: hidden; }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        /* Animations */
-        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
-        .fade-in { animation: fadeIn 0.8s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Typography */
-        h2 { font-size: 2rem; font-weight: 700; color: white; margin-bottom: 1.5rem; margin-top: 3rem; }
-        h3 { font-size: 1.25rem; font-weight: 600; color: #e5e5e5; margin-bottom: 0.75rem; }
-        p, li { color: #d4d4d4; line-height: 1.7; margin-bottom: 0.75rem; }
-        code { background: #1a1a1a; padding: 0.2rem 0.4rem; border-radius: 4px; color: #ef4444; font-family: monospace; }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Keyboard Key Style */
-        .kbd {
-            background: #333;
-            border: 1px solid #555;
-            border-radius: 4px;
-            padding: 2px 6px;
-            font-size: 0.8rem;
-            color: #fff;
-            box-shadow: 0 2px 0 #111;
-        }
-    </style>
 </head>
-<body class="text-gray-100">
-
-    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
+<body>
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
                     <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
-                        by Tirth
-                    </span>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">by Tirth</span>
                 </div>
-
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html#home" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
-                        <a href="index.html#projects" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
-                        <a href="docs.html" class="text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
+                        <a href="index.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
+                        <a href="index.html#ecosystem" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="documents.html" class="text-white bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
+                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
                     </div>
                 </div>
-
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu">
                         <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -200,252 +204,252 @@
                 </div>
             </div>
         </div>
-
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
             <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
-                <a href="index.html#home" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
-                <a href="index.html#projects" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
-                <a href="docs.html" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
+                <a href="index.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
+                <a href="index.html#ecosystem" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="documents.html" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
+                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-12 px-4">
-        <div class="max-w-4xl mx-auto text-center fade-in">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text text-red-500">
-                Hyde Music
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-8">
-                Documentation & User Guide v2.4
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://music.hydeos.qzz.io" target="_blank" class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition font-semibold">
-                    Open Web Player
-                </a>
-                <a href="#install" class="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition">
-                    Installation
-                </a>
-                <a href="#shortcuts" class="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition">
-                    Hotkeys
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 px-4">
-        <div class="max-w-4xl mx-auto">
-
-            <div id="smart-download-msg" class="glass p-6 rounded-xl mb-12 animate-on-scroll">
-                </div>
-
-            <div class="animate-on-scroll mb-16">
-                <h2 class="!mt-0">Platform Availability</h2>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse border border-white/10">
-                        <thead>
-                            <tr class="bg-white/5">
-                                <th class="p-3 border border-white/10">OS</th>
-                                <th class="p-3 border border-white/10">Status</th>
-                                <th class="p-3 border border-white/10">Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="p-3 border border-white/10"><strong>Web Browser</strong></td>
-                                <td class="p-3 border border-white/10 text-green-400">Stable</td>
-                                <td class="p-3 border border-white/10">Works on Chrome, Firefox, Safari, Edge.</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 border border-white/10"><strong>Windows 10/11</strong></td>
-                                <td class="p-3 border border-white/10 text-green-400">Live & Stable</td>
-                                <td class="p-3 border border-white/10">Zero errors. Native media keys support.</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 border border-white/10"><strong>Android</strong></td>
-                                <td class="p-3 border border-white/10 text-yellow-400">Coming Soon</td>
-                                <td class="p-3 border border-white/10">APK release planned Q1 2026.</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 border border-white/10"><strong>macOS / Linux</strong></td>
-                                <td class="p-3 border border-white/10 text-red-500">Canceled</td>
-                                <td class="p-3 border border-white/10">Project halted. Use Web Player.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <main>
+        <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter">
+                    Hyde <span class="text-red-500 text-shadow-glow">Music</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Documentation &amp; User Guide v2.4
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#install" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Installation</a>
+                    <a href="#shortcuts" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Shortcuts</a>
+                    <a href="#troubleshooting" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Troubleshooting</a>
                 </div>
             </div>
+        </section>
 
-            <div class="animate-on-scroll" id="features">
-                <h2>Core Features Explained</h2>
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto space-y-24">
                 
-                <div class="grid gap-6">
-                    <div class="glass p-6 rounded-xl">
-                        <h3>1. Audio Normalization</h3>
-                        <p>
-                            Hyde Music uses the Web Audio API to analyze the decibel level of incoming streams in real-time. It automatically gains or reduces volume to ensure a consistent listening experience, so you don't have to constantly adjust your volume knob between songs.
-                        </p>
-                    </div>
+                <div class="animate-on-scroll" id="smart-download-msg"></div>
 
-                    <div class="glass p-6 rounded-xl">
-                        <h3>2. Smart Caching (Data Saver)</h3>
-                        <p>
-                            When you listen to a song, Hyde saves it to your device's <code>IndexedDB</code>. If you play that song again, it loads instantly from your disk instead of using your internet bandwidth. This works on both the Web Player and Windows App.
-                        </p>
-                    </div>
-
-                    <div class="glass p-6 rounded-xl">
-                        <h3>3. Privacy Architecture</h3>
-                        <p>
-                            Unlike Spotify or YouTube, we do not require an account. 
-                            <br>- <strong>Playlists</strong> are stored locally in a JSON file on your device.
-                            <br>- <strong>Search queries</strong> are routed through an anonymous proxy to prevent tracking.
-                        </p>
+                <div class="animate-on-scroll" id="platforms">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Platform Availability</h2>
+                    <div class="glass rounded-3xl p-8 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-white/10">
+                                        <th class="py-4 px-6 text-gray-400 font-medium">Operating System</th>
+                                        <th class="py-4 px-6 text-gray-400 font-medium">Status</th>
+                                        <th class="py-4 px-6 text-gray-400 font-medium">Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6 text-white font-medium">Web Browser</td>
+                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">Stable</span></td>
+                                        <td class="py-4 px-6 text-gray-400">Works on Chrome, Firefox, Safari, and Edge</td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6 text-white font-medium">Windows 10/11</td>
+                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">Live & Stable</span></td>
+                                        <td class="py-4 px-6 text-gray-400">Zero errors. Native media keys support included</td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6 text-white font-medium">Android</td>
+                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">Coming Soon</span></td>
+                                        <td class="py-4 px-6 text-gray-400">APK release planned for Q1 2026</td>
+                                    </tr>
+                                    <tr class="hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6 text-white font-medium">macOS / Linux</td>
+                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30">Canceled</span></td>
+                                        <td class="py-4 px-6 text-gray-400">Project halted. Use web version instead</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
+                <div class="animate-on-scroll" id="features">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Core Features</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h3 class="text-xl font-bold text-white mb-3">Audio Normalization</h3>
+                            <p class="text-gray-400 leading-relaxed text-sm">Uses the Web Audio API to analyze decibel levels in real-time, automatically adjusting volume for a consistent experience.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h3 class="text-xl font-bold text-white mb-3">Smart Caching</h3>
+                            <p class="text-gray-400 leading-relaxed text-sm">Saves songs to IndexedDB. If you play that song again, it loads instantly from your disk instead of using bandwidth.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h3 class="text-xl font-bold text-white mb-3">Privacy First</h3>
+                            <p class="text-gray-400 leading-relaxed text-sm">No account required. Playlists are stored locally, and search queries are routed through an anonymous proxy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="install">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Installation Guide</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass rounded-2xl p-8 card-hover">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.951-1.801"/></svg>
+                                Windows Installation
+                            </h3>
+                            <ol class="space-y-4 text-gray-300 list-decimal list-inside">
+                                <li>Download <code>HydeMusic-Setup.exe</code></li>
+                                <li>Run the installer</li>
+                                <li>If SmartScreen appears, click <strong class="text-white">More Info</strong> → <strong class="text-white">Run Anyway</strong></li>
+                                <li>The app will install and launch instantly</li>
+                            </ol>
+                        </div>
+                        <div class="glass rounded-2xl p-8 card-hover">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                                Web Player (PWA)
+                            </h3>
+                            <p class="text-gray-300 mb-4">Install as an app on Chrome/Edge:</p>
+                            <ol class="space-y-4 text-gray-300 list-decimal list-inside">
+                                <li>Visit the Hyde Music web app</li>
+                                <li>Click the install icon in the address bar</li>
+                                <li>Click "Install" - it will appear in your Start Menu</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="shortcuts">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Keyboard Shortcuts</h2>
+                    <div class="glass rounded-3xl p-8 overflow-hidden max-w-2xl mx-auto">
+                        <table class="w-full text-left border-collapse">
+                            <tbody>
+                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-6 text-gray-300">Play / Pause</td>
+                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">Space</kbd></td>
+                                </tr>
+                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-6 text-gray-300">Next Track</td>
+                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">L</kbd> or <kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">Ctrl + →</kbd></td>
+                                </tr>
+                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-6 text-gray-300">Previous Track</td>
+                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">J</kbd> or <kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">Ctrl + ←</kbd></td>
+                                </tr>
+                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-6 text-gray-300">Volume Up / Down</td>
+                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">↑</kbd> / <kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">↓</kbd></td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-6 text-gray-300">Search</td>
+                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">/</kbd></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="troubleshooting">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Troubleshooting</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Music stops in background</h4>
+                            <p class="text-gray-400 text-sm">Browser battery optimization often kills background tabs on mobile. Use the "Install App" (PWA) feature.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Song fails to load</h4>
+                            <p class="text-gray-400 text-sm">Usually due to geo-blocking. Try skipping to the next song or searching for a generic version.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover md:col-span-2">
+                            <h4 class="text-lg font-bold text-white mb-2">Windows App: "Unsafe File" Warning</h4>
+                            <p class="text-gray-400 text-sm">This is expected for indie software. We don't buy corporate signing certificates from Microsoft. The app is virus-free and stable - simply click "Run Anyway".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <div class="glass rounded-3xl p-10 text-center bg-gradient-to-t from-red-500/10 to-transparent border-b border-red-500/20">
+                        <h3 class="text-2xl font-bold mb-4 text-white">Feedback & Support</h3>
+                        <p class="text-gray-400 mb-8 max-w-lg mx-auto">We listen to our community. Found a bug or want a feature? Let us know!</p>
+                        <div class="flex justify-center gap-4">
+                            <a href="Issues&FeatureRequestsforhydemusic.html" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition-colors shadow-lg shadow-red-500/20">Report Issue</a>
+                            <a href="mailto:contact@hyde.com" class="px-6 py-3 rounded-xl glass text-white font-semibold hover:bg-white/5 transition-colors">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </section>
+    </main>
 
-            <div class="animate-on-scroll" id="install">
-                <h2>Installation Guide</h2>
-                
-                <div class="mb-8">
-                    <h3>Windows Installation</h3>
-                    <ol class="list-decimal pl-5 space-y-2 text-gray-300">
-                        <li>Download the latest <code>HydeMusic-Setup.exe</code> from the download page.</li>
-                        <li>Run the installer.</li>
-                        <li>Since we are an independent developer and do not purchase expensive certificates, Windows may show a "SmartScreen" popup.</li>
-                        <li>Click <strong>"More Info"</strong> -> <strong>"Run Anyway"</strong>.</li>
-                        <li>The app will install and launch instantly.</li>
-                    </ol>
-                </div>
-
-                <div class="mb-8">
-                    <h3>Web Player (PWA)</h3>
-                    <p>You can install the website as an app on Chrome/Edge:</p>
-                    <ol class="list-decimal pl-5 space-y-2 text-gray-300">
-                        <li>Visit <code>music.hydeos.qzz.io</code>.</li>
-                        <li>Click the install icon in the address bar (Monitor with down arrow).</li>
-                        <li>Click "Install". It will now appear in your Start Menu / Desktop.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="animate-on-scroll" id="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-                <p>Master the player with these hotkeys (Desktop Only).</p>
-                
-                <div class="glass rounded-xl overflow-hidden">
-                    <table class="w-full text-left">
-                        <tr class="border-b border-white/10 bg-white/5">
-                            <th class="p-3">Action</th>
-                            <th class="p-3">Shortcut</th>
-                        </tr>
-                        <tr class="border-b border-white/10">
-                            <td class="p-3">Play / Pause</td>
-                            <td class="p-3"><span class="kbd">Space</span></td>
-                        </tr>
-                        <tr class="border-b border-white/10">
-                            <td class="p-3">Next Track</td>
-                            <td class="p-3"><span class="kbd">L</span> or <span class="kbd">Ctrl</span> + <span class="kbd">→</span></td>
-                        </tr>
-                        <tr class="border-b border-white/10">
-                            <td class="p-3">Previous Track</td>
-                            <td class="p-3"><span class="kbd">J</span> or <span class="kbd">Ctrl</span> + <span class="kbd">←</span></td>
-                        </tr>
-                        <tr class="border-b border-white/10">
-                            <td class="p-3">Volume Up</td>
-                            <td class="p-3"><span class="kbd">↑</span></td>
-                        </tr>
-                        <tr class="border-b border-white/10">
-                            <td class="p-3">Volume Down</td>
-                            <td class="p-3"><span class="kbd">↓</span></td>
-                        </tr>
-                        <tr class="border-b border-white/10">
-                            <td class="p-3">Mute</td>
-                            <td class="p-3"><span class="kbd">M</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-3">Search</td>
-                            <td class="p-3"><span class="kbd">/</span></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="animate-on-scroll" id="troubleshooting">
-                <h2>Troubleshooting</h2>
-                
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-white">Music stops playing in background (Mobile Web)</h4>
-                        <p><strong>Fix:</strong> Browser battery optimization often kills background tabs. Use the "Install App" (PWA) feature or wait for the native Android app release.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="text-white">Song fails to load</h4>
-                        <p><strong>Fix:</strong> This usually happens if the source (YouTube/SoundCloud) has geo-blocked the content. Try skipping to the next song or searching for a generic version (e.g., "Song Name Lyrics") instead of the official video.</p>
-                    </div>
-
-                    <div>
-                        <h4 class="text-white">Windows App: "Unsafe File" Warning</h4>
-                        <p><strong>Reason:</strong> This is expected for indie software. We do not buy corporate signing certificates from Microsoft. The app is virus-free and stable; simply click "Run Anyway".</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="animate-on-scroll mt-16">
-                <div class="glass rounded-xl p-8 text-center">
-                    <h2 class="!mt-0">Feedback & Support</h2>
-                    <p class="text-gray-300 mb-6">
-                        We listen to our community. If you find a bug or want a feature, report it.
-                    </p>
-                    <div class="flex justify-center gap-4">
-                        <a href="Issues&FeatureRequestsforhydemusic.html" class="px-6 py-2 bg-white text-black font-bold rounded hover:bg-gray-200 transition">
-                            Report Issue
-                        </a>
-                        <a href="mailto:contact@hyde.com" class="px-6 py-2 border border-white/20 text-white font-bold rounded hover:bg-white/10 transition">
-                            Contact Support
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="py-12 px-4 border-t border-white/10 mt-20 bg-black/20">
+    <footer class="py-12 px-4 border-t border-white/10 mt-10 bg-black/40">
         <div class="max-w-6xl mx-auto text-center">
             <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
-            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed & Developed by Tirth</p>
-            <p class="text-gray-600 text-sm">
-                &copy; 2026 Hyde Organization. All rights reserved.
-            </p>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed &amp; Developed by Tirth</p>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="documents.html" class="text-gray-400 hover:text-white transition-colors">Docs Hub</a>
+                <a href="donate.html" class="text-gray-400 hover:text-white transition-colors">Donate</a>
+            </div>
+            <p class="text-gray-600 text-xs">&copy; 2026 Hyde Organization. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-lg');
-                navbar.classList.add('bg-black/50');
+        // OS Detection
+        function getOS() {
+            const ua = window.navigator.userAgent.toLowerCase();
+            if (ua.includes('win')) return 'Windows';
+            if (ua.includes('android')) return 'Android';
+            if (ua.includes('mac') || ua.includes('iphone') || ua.includes('ipad')) return 'Apple';
+            return 'Web';
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const userOS = getOS();
+            const osSection = document.getElementById('smart-download-msg');
+            let htmlContent = '';
+            if (userOS === 'Windows') {
+                htmlContent = '<div style="background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">You are on Windows</h3><p style="color:#a1a1aa;">Download the stable Hyde Music app!</p><a href="downloadHydeMusicWindows.html" style="display:inline-flex;margin-top:1rem;padding:0.625rem 1.25rem;background:#f4f4f5;color:#0a0a0a;border-radius:8px;font-weight:500;text-decoration:none;">Download Windows App</a></div>';
+            } else if (userOS === 'Android') {
+                htmlContent = '<div style="background:rgba(245,158,11,0.1);border-left:4px solid #f59e0b;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">Android App Coming Soon</h3><p style="color:#a1a1aa;">We are putting finishing touches on the APK.</p></div>';
             } else {
-                navbar.classList.remove('shadow-lg');
-                navbar.classList.remove('bg-black/50');
+                htmlContent = '<div style="background:rgba(239,68,68,0.1);border-left:4px solid #ef4444;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">Native App Not Available</h3><p style="color:#a1a1aa;">Please use the web version.</p></div>';
             }
+            if (osSection) osSection.innerHTML = htmlContent;
         });
 
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-            } else {
-                mobileMenu.classList.add('hidden');
-            }
+        // Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('shadow-lg', 'bg-black/50'); }
+            else { navbar.classList.remove('shadow-lg', 'bg-black/50'); }
+        });
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+            observer.observe(elem);
         });
     </script>
 </body>

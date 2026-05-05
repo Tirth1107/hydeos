@@ -1,155 +1,162 @@
-// Mobile Menu Toggle with smooth animation
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+/**
+ * Hyde Ecosystem Website
+ * Main JavaScript functionality
+ */
 
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        
-        // Animate hamburger icon with smooth transition
-        const icon = menuToggle.querySelector('svg');
-        icon.style.transition = 'transform 0.3s ease';
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.style.transform = 'rotate(0deg)';
-        } else {
-            icon.style.transform = 'rotate(90deg)';
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+});
+
+function initializeApp() {
+    fetchHydeMusicLatestRelease();
+    setupSmoothScrolling();
+}
+
+/**
+ * Fetch latest Hyde Music APK release from GitHub API
+ */
+async function fetchHydeMusicLatestRelease() {
+    const downloadContainer = document.getElementById('hyde-music-download');
+    if (!downloadContainer) return;
+
+    try {
+        const response = await fetch(
+            'https://api.github.com/repos/Tirth1107/Hyde-Music-Andorid/releases/latest',
+            {
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
         }
-    });
 
-    // Close mobile menu when clicking on a link
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            const icon = menuToggle.querySelector('svg');
-            icon.style.transform = 'rotate(0deg)';
+        const releaseData = await response.json();
+        const apkAsset = releaseData.assets.find(asset => 
+            asset.name.toLowerCase().endsWith('.apk')
+        );
+
+        if (apkAsset) {
+            const version = releaseData.tag_name || releaseData.name || 'Latest';
+            downloadContainer.innerHTML = createDownloadButton(
+                apkAsset.browser_download_url,
+                version
+            );
+        } else {
+            // Fallback to release page if no APK found
+            const version = releaseData.tag_name || releaseData.name || 'Latest';
+            downloadContainer.innerHTML = createFallbackButton(
+                releaseData.html_url,
+                version
+            );
+        }
+    } catch (error) {
+        console.error('Failed to fetch Hyde Music release:', error);
+        downloadContainer.innerHTML = createErrorButton();
+    }
+}
+
+/**
+ * Create download button HTML
+ */
+function createDownloadButton(downloadUrl, version) {
+    return `
+        <a href="${escapeHtml(downloadUrl)}" class="btn btn-secondary" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download APK (${escapeHtml(version)})
+        </a>
+    `;
+}
+
+/**
+ * Create fallback button for release page
+ */
+function createFallbackButton(releaseUrl, version) {
+    return `
+        <a href="${escapeHtml(releaseUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="13 3 23 3 23 13"></polyline>
+                <line x1="23" y1="3" x2="13" y2="13"></line>
+            </svg>
+            View Release (${escapeHtml(version)})
+        </a>
+    `;
+}
+
+/**
+ * Create error fallback button
+ */
+function createErrorButton() {
+    return `
+        <a href="https://github.com/Tirth1107/Hyde-Music-Andorid/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="13 3 23 3 23 13"></polyline>
+                <line x1="23" y1="3" x2="13" y2="13"></line>
+            </svg>
+            Latest Release
+        </a>
+    `;
+}
+
+/**
+ * Enhanced smooth scrolling for internal links
+ */
+function setupSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#') return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            // Update URL without page jump
+            window.history.pushState(null, null, href);
         });
     });
 }
 
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        // Only handle same-page anchor links
-        if (href && href.startsWith('#') && href.length > 1) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                const offsetTop = target.offsetTop - 64; // Account for fixed navbar
-                window.scrollTo({
-                    top: Math.max(0, offsetTop),
-                    behavior: 'smooth'
-                });
-            }
-        }
-    });
-});
+/**
+ * Escape HTML to prevent XSS
+ */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
 
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (navbar) {
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Advanced Intersection Observer for scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-            // Remove observer after animation to improve performance
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe all elements with animate-on-scroll class
-document.querySelectorAll('.animate-on-scroll').forEach(element => {
-    observer.observe(element);
-});
-
-// Observe all sections for fade-in effect
-document.querySelectorAll('section').forEach(section => {
-    // Only animate sections that don't already have animate-on-scroll class
-    if (!section.classList.contains('animate-on-scroll')) {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-        
-        const sectionObserver = new IntersectionObserver((entries) => {
+/**
+ * Performance: Lazy load images if needed in future
+ */
+function setupLazyLoading() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    sectionObserver.unobserve(entry.target);
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
                 }
             });
-        }, observerOptions);
-        
-        sectionObserver.observe(section);
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
     }
-});
-
-// Parallax effect for landing section (only on index page)
-const landingSection = document.getElementById('home');
-if (landingSection) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll < window.innerHeight) {
-            const parallaxValue = currentScroll * 0.3;
-            landingSection.style.transform = `translateY(${parallaxValue}px)`;
-            landingSection.style.transition = 'transform 0.1s ease-out';
-        }
-    });
 }
-
-// Stagger animation for project cards
-const projectCards = document.querySelectorAll('.project-card');
-if (projectCards.length > 0) {
-    projectCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.15}s`;
-    });
-}
-
-// Add smooth hover effects to all interactive elements
-document.querySelectorAll('.card-hover, .button-hover').forEach(element => {
-    element.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-    });
-});
-
-// Page load animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease-in';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Smooth scroll polyfill for better browser support
-if (!('scrollBehavior' in document.documentElement.style)) {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js';
-    document.head.appendChild(script);
-}
-

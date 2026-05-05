@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyde Git Engine | CLI Documentation</title>
+    <meta name="description" content="Hyde Git Engine - Professional CLI tool to amplify GitHub activity, generate high-volume commits, and visualize developer presence.">
+    <meta name="keywords" content="Git CLI, GitHub Tool, Commit Generator, Developer Presence, Windows CLI, Git Automation">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#111111',
+                        'hyde-red': '#ef4444',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #050505 0%, #0f1a14 100%); /* Dark Green tint */
+            overflow-x: hidden;
+            color: #e5e5e5;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Interactive Elements */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15); /* Green glow */
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .button-hover {
+            transition: all 0.3s ease;
+        }
+        .button-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .text-shadow-glow {
+            text-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
+        }
+
+        .code-block {
+            font-family: ui-monospace, 'SFMono-Regular', monospace;
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
+                    <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">by Tirth</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
+                        <a href="index.html#ecosystem" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="documents.html" class="text-white bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
+                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
+            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
+                <a href="index.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
+                <a href="index.html#ecosystem" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="documents.html" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
+                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <a href="index.html#ecosystem" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-medium mb-8 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back to Ecosystem
+                </a>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
+                    Hyde <span class="text-green-500 text-shadow-glow">Git Engine</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
+                    Professional CLI tool to amplify GitHub activity and visualize developer presence
+                </p>
+                <div class="inline-block px-4 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-sm font-semibold mb-12">
+                    Status: Final Beta (Launching Soon)
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#install" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Installation</a>
+                    <a href="#quickstart" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Quick Start</a>
+                    <a href="#commands" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Commands</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto space-y-24">
+                
+                <div class="animate-on-scroll" id="overview">
+                    <h2 class="text-3xl font-bold mb-6 text-center text-white">Overview</h2>
+                    <div class="glass rounded-3xl p-8 text-gray-300 leading-relaxed text-lg text-center">
+                        <p class="mb-4">Hyde Git Engine is a powerful Windows CLI utility designed for developers who want to enhance their GitHub presence through strategic commit generation and activity visualization. It provides high-volume commit capabilities while maintaining code quality and repository integrity.</p>
+                        <p>Whether you're building your developer portfolio, testing automation workflows, or analyzing commit patterns, Hyde Git Engine offers the tools you need.</p>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="features">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Core Features</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">High-Volume Commits</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Generate bulk commits efficiently with customizable messages and timestamps.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Profile Highlighting</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Visualize developer activity patterns and contribution calendars.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Windows CLI</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Native command-line interface optimized for Windows environments.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Batch Operations</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Automate multiple repository operations simultaneously.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Dry Run Mode</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Preview changes before applying them to repositories.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Git Integration</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Seamless integration with existing Git workflows and repositories.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="install">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Installation</h2>
+                    <div class="glass rounded-3xl p-8">
+                        <h3 class="text-xl font-bold text-white mb-4">Requirements</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-8 ml-2">
+                            <li>Windows 10/11 or later</li>
+                            <li>Git 2.30+</li>
+                            <li>.NET Runtime 6.0+</li>
+                            <li>GitHub account with SSH/HTTPS credentials</li>
+                        </ul>
+
+                        <h3 class="text-xl font-bold text-white mb-4">Download</h3>
+                        <p class="text-gray-300 mb-8">Visit the <a href="https://github.com/Tirth1107/Hyde-Git-Engine/releases" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 transition-colors">GitHub Releases</a> page to download the latest stable version.</p>
+
+                        <h3 class="text-xl font-bold text-white mb-4">Setup</h3>
+                        <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre"># 1. Extract the downloaded archive
+tar -xzf hyde-git-engine-v1.0.0-windows.zip
+
+# 2. Add to system PATH (for command-line access)
+setx PATH "%PATH%;C:\Program Files\HydeGitEngine"
+
+# 3. Verify installation
+hyde-git --version</div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="quickstart">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Quick Start</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h3 class="text-lg font-bold text-white mb-3">Initialize a Repository</h3>
+                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto">hyde-git init --repo "path/to/repo" --author "Your Name" --email "you@example.com"</div>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h3 class="text-lg font-bold text-white mb-3">Generate Commits</h3>
+                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto">hyde-git commit --repo "path/to/repo" --count 50 --message "Automated commits" --spread</div>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover md:col-span-2">
+                            <h3 class="text-lg font-bold text-white mb-3">View Activity Summary</h3>
+                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto">hyde-git stats --repo "path/to/repo"</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" id="commands">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Command Reference</h2>
+                    <div class="glass rounded-3xl p-8 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-white/10">
+                                        <th class="py-4 px-6 text-gray-400 font-medium">Command</th>
+                                        <th class="py-4 px-6 text-gray-400 font-medium">Description</th>
+                                        <th class="py-4 px-6 text-gray-400 font-medium">Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6"><code class="text-green-400 bg-green-400/10 px-2 py-1 rounded">init</code></td>
+                                        <td class="py-4 px-6 text-gray-300">Initialize repository with Git Engine</td>
+                                        <td class="py-4 px-6 text-gray-400 text-sm"><code>hyde-git init --repo ./project</code></td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6"><code class="text-green-400 bg-green-400/10 px-2 py-1 rounded">commit</code></td>
+                                        <td class="py-4 px-6 text-gray-300">Generate commits with options</td>
+                                        <td class="py-4 px-6 text-gray-400 text-sm"><code>hyde-git commit --count 100 --spread</code></td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6"><code class="text-green-400 bg-green-400/10 px-2 py-1 rounded">stats</code></td>
+                                        <td class="py-4 px-6 text-gray-300">Display repository statistics</td>
+                                        <td class="py-4 px-6 text-gray-400 text-sm"><code>hyde-git stats --repo ./project</code></td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6"><code class="text-green-400 bg-green-400/10 px-2 py-1 rounded">config</code></td>
+                                        <td class="py-4 px-6 text-gray-300">Manage configuration settings</td>
+                                        <td class="py-4 px-6 text-gray-400 text-sm"><code>hyde-git config --set author "Name"</code></td>
+                                    </tr>
+                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6"><code class="text-green-400 bg-green-400/10 px-2 py-1 rounded">push</code></td>
+                                        <td class="py-4 px-6 text-gray-300">Push commits to remote</td>
+                                        <td class="py-4 px-6 text-gray-400 text-sm"><code>hyde-git push --remote origin</code></td>
+                                    </tr>
+                                    <tr class="hover:bg-white/5 transition-colors">
+                                        <td class="py-4 px-6"><code class="text-green-400 bg-green-400/10 px-2 py-1 rounded">dry-run</code></td>
+                                        <td class="py-4 px-6 text-gray-300">Preview without applying</td>
+                                        <td class="py-4 px-6 text-gray-400 text-sm"><code>hyde-git commit --dry-run --count 10</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="glass rounded-3xl p-8 card-hover">
+                            <h2 class="text-2xl font-bold mb-6 text-white">Configuration</h2>
+                            <p class="text-gray-300 mb-4">Create a <code class="text-green-400 bg-green-400/10 px-1 rounded">.hyde-git.config</code> file in your repository root:</p>
+                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre">{
+  "author": "Your Name",
+  "email": "you@example.com",
+  "timeZone": "UTC",
+  "commitPrefix": "[Hyde]",
+  "autoSpread": true,
+  "spreadDays": 30
+}</div>
+                        </div>
+
+                        <div class="glass rounded-3xl p-8 card-hover">
+                            <h2 class="text-2xl font-bold mb-6 text-white">Best Practices</h2>
+                            <ul class="space-y-4 text-gray-300">
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></div>
+                                    <p><strong class="text-white">Use Dry Run First</strong> - Always preview changes with <code>--dry-run</code> before applying.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></div>
+                                    <p><strong class="text-white">Backup Repository</strong> - Keep backups before bulk operations.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></div>
+                                    <p><strong class="text-white">Spread Commits</strong> - Use <code>--spread</code> flag to distribute commits over time for authenticity.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></div>
+                                    <p><strong class="text-white">Test on Clone</strong> - Test operations on a cloned repository first.</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></div>
+                                    <p><strong class="text-white">Monitor Git Limits</strong> - Be aware of GitHub API rate limits.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Troubleshooting</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Command not found</h4>
+                            <p class="text-gray-400 text-sm">Ensure the installation directory is added to your system PATH and PowerShell is restarted.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Git authentication failed</h4>
+                            <p class="text-gray-400 text-sm">Verify your Git credentials are configured: <code class="text-green-400 bg-green-400/10 px-1 rounded">git config --list</code></p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Permission denied</h4>
+                            <p class="text-gray-400 text-sm">Run PowerShell as Administrator or ensure you have write permissions to the repository.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-6 card-hover">
+                            <h4 class="text-lg font-bold text-white mb-2">Performance issues</h4>
+                            <p class="text-gray-400 text-sm">For large commit counts, use the <code class="text-green-400 bg-green-400/10 px-1 rounded">--batch-size</code> flag to process in smaller chunks.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-4 border-t border-white/10 mt-10 bg-black/40">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed &amp; Developed by Tirth</p>
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="documents.html" class="text-gray-400 hover:text-white transition-colors">Docs Hub</a>
+                <a href="donate.html" class="text-gray-400 hover:text-white transition-colors">Donate</a>
+            </div>
+            <p class="text-gray-600 text-xs">&copy; 2026 Hyde Organization. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('shadow-lg', 'bg-black/50'); }
+            else { navbar.classList.remove('shadow-lg', 'bg-black/50'); }
+        });
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+            observer.observe(elem);
+        });
+    </script>
+</body>
+</html>
