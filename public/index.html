@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hyde | Open-Source Ecosystem</title>
-    <meta name="description" content="Privacy-first tools, developer utilities, and experimental systems built for the modern web.">
+    <meta name="description"
+        content="Privacy-first tools, developer utilities, and experimental systems built for the modern web.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -25,7 +27,10 @@
     </script>
     <style>
         /* Keep existing styles.css as base, but override navbar since we use Tailwind for it */
-        body { padding-top: 80px; }
+        body {
+            padding-top: 80px;
+        }
+
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(16px);
@@ -34,30 +39,41 @@
         }
     </style>
 </head>
+
 <body>
-    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar"
+        style="border-bottom: 1px solid rgba(255,255,255,0.08);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
-                    <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
+                    <a href="index.html"
+                        class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                    <span
+                        class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
                         by Tirth
                     </span>
                 </div>
 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html#ecosystem" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
-                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
-                        <a href="documents.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Docs Hub</a>
-                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
+                        <a href="index.html#ecosystem"
+                            class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                        <a href="aboutus.html"
+                            class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
+                        <a href="documents.html"
+                            class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Docs
+                            Hub</a>
+                        <a href="donate.html"
+                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
                     </div>
                 </div>
 
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2"
+                        aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                         <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
@@ -66,10 +82,15 @@
 
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
             <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
-                <a href="index.html#ecosystem" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
-                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
-                <a href="documents.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Docs Hub</a>
-                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
+                <a href="index.html#ecosystem"
+                    class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                <a href="aboutus.html"
+                    class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
+                <a href="documents.html"
+                    class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Docs
+                    Hub</a>
+                <a href="donate.html"
+                    class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
             </div>
         </div>
     </nav>
@@ -79,13 +100,21 @@
             <div class="hero-content">
                 <h1 class="hero-title">Hyde</h1>
                 <h2 class="hero-subtitle">Open-Source Ecosystem</h2>
-                <p class="hero-description">Privacy-first tools, developer utilities, and experimental systems built for the modern web.</p>
+                <p class="hero-description">Privacy-first tools, developer utilities, and experimental systems built for
+                    the modern web.</p>
                 <div class="hero-buttons">
                     <a href="#ecosystem" class="btn btn-primary">
                         Explore Projects
                     </a>
-                    <a href="https://github.com/Tirth1107" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <a href="https://github.com/Tirth1107" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
                         GitHub
                     </a>
                 </div>
@@ -107,7 +136,8 @@
                                 <span class="badge">Open Source</span>
                             </div>
                         </div>
-                        <p class="card-description">Ad-free music experience powered by open streaming sources. Web version is discontinued.</p>
+                        <p class="card-description">Ad-free music experience powered by open streaming sources. Web
+                            version is discontinued.</p>
                         <div class="card-features">
                             <span class="feature-tag">Android App</span>
                             <span class="feature-tag">No Tracking</span>
@@ -127,13 +157,23 @@
                         <div class="card-header">
                             <h3 class="card-title">Hyde Downloader</h3>
                             <div class="card-badges">
-                                <span class="badge badge-beta">Beta</span>
+                                <span class="badge badge-beta">Final Release 1.0</span>
+                                <span class="badge border-red-500/30 text-red-400">Archived</span>
                             </div>
                         </div>
-                        <p class="card-description">Powerful Windows utility to download video and audio from multiple platforms.</p>
+                        <p class="card-description">Powerful Windows utility to download video and audio. <strong
+                                class="text-red-400">⚠️ Closed & Unmaintained.</strong> The final working version is
+                            available for download.</p>
                     </div>
-                    <div class="card-footer">
-                        <a href="downloader-docs.html" class="btn btn-outline btn-small">View Docs</a>
+                    <div class="card-footer flex flex-col gap-3 mt-4 items-start w-full">
+                        <div class="flex gap-2">
+                            <a href="downloader-docs.html" class="btn btn-outline btn-small">View Docs</a>
+                            <a href="https://github.com/Tirth1107/Hyde-Downloader" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-outline btn-small">GitHub</a>
+                        </div>
+                        <div id="hyde-downloader-download" class="w-full">
+                            <span class="status-loading text-xs text-gray-500">Fetching latest EXE...</span>
+                        </div>
                     </div>
                 </div>
 
@@ -146,7 +186,8 @@
                                 <span class="badge badge-coming">Coming Soon</span>
                             </div>
                         </div>
-                        <p class="card-description">Privacy-focused experimental browser designed to reduce tracking and fingerprinting.</p>
+                        <p class="card-description">Privacy-focused experimental browser designed to reduce tracking and
+                            fingerprinting.</p>
                     </div>
                     <div class="card-footer">
                         <a href="browser-docs.html" class="btn btn-outline btn-small">View Docs</a>
@@ -162,7 +203,8 @@
                                 <span class="badge badge-beta">Final Beta</span>
                             </div>
                         </div>
-                        <p class="card-description">CLI tool to amplify GitHub activity and visualize developer presence.</p>
+                        <p class="card-description">CLI tool to amplify GitHub activity and visualize developer
+                            presence.</p>
                         <ul class="feature-list">
                             <li>High-volume commit generation</li>
                             <li>Profile highlighting</li>
@@ -195,8 +237,10 @@
                     </div>
                     <div class="card-footer">
                         <a href="security-js-docs.html" class="btn btn-outline btn-small">View Docs</a>
-                        <a href="https://github.com/Tirth1107/hyde-security-js" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-small">GitHub</a>
-                        <a href="https://www.npmjs.com/package/@tirth1107/hyde-security-js" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-small">NPM</a>
+                        <a href="https://github.com/Tirth1107/hyde-security-js" target="_blank"
+                            rel="noopener noreferrer" class="btn btn-outline btn-small">GitHub</a>
+                        <a href="https://www.npmjs.com/package/@tirth1107/hyde-security-js" target="_blank"
+                            rel="noopener noreferrer" class="btn btn-outline btn-small">NPM</a>
                     </div>
                 </div>
             </div>
@@ -212,25 +256,28 @@
                         <div class="card-header">
                             <h3 class="card-title">Hyde Assistant</h3>
                         </div>
-                        <p class="card-description">AI-powered assistant inspired by JARVIS for automation and productivity.</p>
-                    <div class="card-footer">
-                        <a href="assistant-docs.html" class="btn btn-outline btn-small">View Docs</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h3 class="card-title">Hyde Human</h3>
+                        <p class="card-description">AI-powered assistant inspired by JARVIS for automation and
+                            productivity.</p>
+                        <div class="card-footer">
+                            <a href="assistant-docs.html" class="btn btn-outline btn-small">View Docs</a>
                         </div>
-                        <p class="card-description">AI platform where users interact with human-like personalities with emotions and mood.</p>
                     </div>
-                    <div class="card-footer">
-                        <a href="human-docs.html" class="btn btn-outline btn-small">View Docs</a
-                        <p class="card-description">AI platform where users interact with human-like personalities with emotions and mood.</p>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="card-title">Hyde Human</h3>
+                            </div>
+                            <p class="card-description">AI platform where users interact with human-like personalities
+                                with emotions and mood.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="human-docs.html" class="btn btn-outline btn-small">View Docs</a <p
+                                class="card-description">AI platform where users interact with human-like personalities
+                            with emotions and mood.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <section id="about" class="section section-about">
@@ -252,7 +299,12 @@
             </div>
             <div class="footer-right">
                 <a href="https://github.com/Tirth1107" target="_blank" rel="noopener noreferrer" class="footer-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
                     GitHub
                 </a>
             </div>
@@ -279,4 +331,5 @@
         });
     </script>
 </body>
+
 </html>

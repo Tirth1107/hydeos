@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,43 +11,52 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hyde Downloader - Free Windows Utility for Video & Audio Downloads. No ads, no spyware, completely private. Documentation by Tirth.">
-    <meta name="keywords" content="Video Downloader, Audio Downloader, Windows Utility, Free Tool, No Ads, Private, Video Download, Audio Extraction">
+    <meta name="description" content="Hyde Downloader - Powerful desktop application for downloading media from YouTube, TikTok, Instagram, Twitter/X, and more. Built with Python and PySide6, featuring a modern glassmorphic interface, zero-configuration FFmpeg, and multi-threaded downloads. Free download, source code, and developer documentation.">
+    <meta name="keywords" content="Video Downloader, Audio Downloader, Windows Downloader, PySide6, Python, yt-dlp GUI, YouTube Downloader, TikTok Downloader, Instagram Downloader, Twitter Downloader, Free Video Downloader, Open Source Downloader, Zero Config FFmpeg, QThread Downloader">
     <meta name="author" content="Tirth">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <title>Hyde Downloader - Free Video & Audio Downloader | Windows App by Tirth</title>
+    <title>Hyde Downloader - Free Desktop Video & Audio Downloader | Windows App by Tirth</title>
     <link rel="icon" href="logo.png">
     <link rel="canonical" href="https://hydeos.qzz.io/downloader-docs.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hydeos.qzz.io/downloader-docs.html">
-    <meta property="og:title" content="Hyde Downloader - Free Video & Audio Downloader">
-    <meta property="og:description" content="Powerful Windows utility to download video and audio privately. No ads, completely free. Setup guides and documentation.">
+    <meta property="og:title" content="Hyde Downloader - Free Desktop Video & Audio Downloader">
+    <meta property="og:description" content="Download videos and audio privately from YouTube, TikTok, Instagram, Twitter/X, and 1000+ other platforms. Built with Python and PySide6. Free download, zero ads.">
     <meta property="og:image" content="https://hydeos.qzz.io/logo.png">
-    <meta property="og:site_name" content="Hyde">
+    <meta property="og:site_name" content="Hyde Ecosystem">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://hydeos.qzz.io/downloader-docs.html">
-    <meta name="twitter:title" content="Hyde Downloader - Free Video & Audio Downloader">
-    <meta name="twitter:description" content="Download video and audio from the web privately with Hyde Downloader - completely free, no ads.">
+    <meta name="twitter:title" content="Hyde Downloader - Free Desktop Video & Audio Downloader">
+    <meta name="twitter:description" content="Native Windows utility for private high-quality video and audio downloads. Zero-config, ad-free, and open source.">
     <meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
     
-    <!-- JSON-LD Structured Data -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data for SoftwareApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "Hyde Downloader",
-      "applicationCategory": "Utility",
-      "description": "Free, private Windows utility for downloading video and audio from the web",
+      "applicationCategory": "MultimediaApplication",
+      "description": "Free, private desktop utility built with Python and PySide6 to download video and audio from popular media platforms.",
       "url": "https://hydeos.qzz.io/downloader-docs.html",
+      "downloadUrl": "https://github.com/Tirth1107/Hyde-Downloader/releases/download/v1.0.0-final-version/HydeDownloader.exe",
       "creator": {
         "@type": "Person",
         "name": "Tirth"
       },
-      "operatingSystem": "Windows",
+      "operatingSystem": "Windows 10 or later",
+      "softwareVersion": "1.0.0-final-version",
+      "fileSize": "84573028",
+      "releaseNotes": "https://github.com/Tirth1107/Hyde-Downloader/releases/tag/v1.0.0-final-version",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -55,6 +65,7 @@
     }
     </script>
     
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -62,270 +73,515 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: '#0a0a0a',
-                        'dark-secondary': '#111111',
+                        dark: '#050505',
+                        'dark-secondary': '#0d0d0d',
+                        'dark-tertiary': '#141414',
+                        'hyde-yellow': '#facc15',
                         'hyde-red': '#ef4444',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
                     }
                 }
             }
         }
     </script>
-
+    
     <style>
         body {
-            background: linear-gradient(135deg, #050505 0%, #121212 100%);
+            background: radial-gradient(circle at 50% 0%, #151000 0%, #050505 60%);
             overflow-x: hidden;
-            color: #e5e5e5;
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #f3f4f6;
         }
 
-        /* Glassmorphism */
+        /* Glassmorphism Classes */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(13, 13, 13, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Interactive Elements */
+        .glass-warning {
+            background: rgba(239, 68, 68, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            box-shadow: 0 4px 30px rgba(239, 68, 68, 0.05);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Interactive Elements styling */
         .card-hover {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(234, 179, 8, 0.1); /* Yellow tint for Downloader */
-            border-color: rgba(234, 179, 8, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(250, 204, 21, 0.08);
+            border-color: rgba(250, 204, 21, 0.2);
         }
 
         .button-hover {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .button-hover:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.2);
         }
 
-        /* Animations */
-        .fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+        /* Glowing text elements */
+        .gradient-text-yellow {
+            background: linear-gradient(135deg, #ffffff 0%, #facc15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .text-yellow-glow {
-            color: #facc15;
-            text-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1c1917;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #facc15;
         }
     </style>
 </head>
-<body class="text-gray-100">
+<body class="min-h-screen flex flex-col font-sans">
 
-    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
-                    <a href="index.html" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
-                        by Tirth
-                    </span>
-                </div>
+    <!-- Header Navigation -->
+    <header>
+        <nav class="fixed top-0 w-full z-50 glass transition-all duration-300 border-b border-white/5" id="navbar">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
+                        <a href="index.html" id="nav-logo" class="text-3xl font-bold text-red-500 tracking-tight hover:opacity-80 transition-opacity">Hyde</a>
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">
+                            by Tirth
+                        </span>
+                    </div>
 
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
-                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
-                        <a href="index.html#ecosystem" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
-                        <a href="documents.html" class="text-white bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
-                        <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-8">
+                            <a href="index.html" id="nav-home" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
+                            <a href="aboutus.html" id="nav-about" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
+                            <a href="index.html#ecosystem" id="nav-projects" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
+                            <a href="documents.html" id="nav-docs" class="text-white bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
+                            <a href="donate.html" id="nav-donate" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
+                        </div>
+                    </div>
+
+                    <div class="md:hidden">
+                        <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Navigation Menu">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/5 absolute w-full">
+                <div class="px-4 pt-4 pb-6 space-y-2 bg-black/95 backdrop-blur-xl">
+                    <a href="index.html" id="mob-nav-home" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
+                    <a href="aboutus.html" id="mob-nav-about" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
+                    <a href="index.html#ecosystem" id="mob-nav-projects" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
+                    <a href="documents.html" id="mob-nav-docs" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
+                    <a href="donate.html" id="mob-nav-donate" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
                 </div>
             </div>
-        </div>
+        </nav>
+    </header>
 
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
-            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
-                <a href="index.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
-                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
-                <a href="index.html#ecosystem" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
-                <a href="documents.html" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
-                <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="pt-32 pb-20 px-4">
-        <div class="max-w-4xl mx-auto text-center fade-in">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                Hyde <span class="text-yellow-glow">Downloader</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-8">
-                The ultimate media extraction tool. Fast, free, and private.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#getting-started" class="button-hover px-8 py-3 bg-white text-black rounded-lg font-bold">
-                    Read Guide
-                </a>
-                <button class="px-8 py-3 glass rounded-lg font-semibold border border-white/10 text-gray-400 cursor-not-allowed">
-                    Windows Beta (Invite Only)
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto space-y-16">
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-20 px-4">
+        <article class="max-w-5xl mx-auto">
             
-            <div id="getting-started" class="animate-on-scroll">
-                <h2 class="text-3xl font-bold mb-6 text-white">Overview</h2>
-                <div class="glass rounded-2xl p-8 space-y-4 border-l-4 border-yellow-500">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        Hyde Downloader is a native Windows application built to extract video and audio from virtually any website. It wraps the power of <code>yt-dlp</code> in a modern, easy-to-use interface.
-                    </p>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        <strong>Current Status:</strong> Active Development (Closed Beta). <br>
-                        We are currently fine-tuning the UI and performance before public release.
-                    </p>
+            <!-- Hero Header Section -->
+            <section class="text-center mb-16" id="hero-heading">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-yellow-400 animate-ping"></span>
+                    Final Working Version • Dec 15, 2025
                 </div>
-            </div>
-
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl font-bold mb-6 text-white">Key Features</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-bold text-yellow-400 mb-2">⚡ 8K Support</h3>
-                        <p class="text-gray-400">Download videos in the highest available resolution, up to 8K HDR.</p>
-                    </div>
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-bold text-yellow-400 mb-2">🎵 Auto Conversion</h3>
-                        <p class="text-gray-400">Automatically convert music videos to high-quality MP3 or WAV files.</p>
-                    </div>
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-bold text-yellow-400 mb-2">🛡️ Metadata Cleaning</h3>
-                        <p class="text-gray-400">Optional privacy mode strips tracking metadata from downloaded files.</p>
-                    </div>
-                    <div class="card-hover glass rounded-xl p-6">
-                        <h3 class="text-xl font-bold text-yellow-400 mb-2">🌍 Universal Site Support</h3>
-                        <p class="text-gray-400">Works with YouTube, Twitter, Reddit, Instagram, TikTok, and 1000+ others.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl font-bold mb-6 text-white">Platform Roadmap</h2>
-                <div class="glass rounded-2xl p-8">
-                    <table class="w-full text-left">
-                        <thead>
-                            <tr class="border-b border-white/10 text-gray-400">
-                                <th class="pb-4">OS</th>
-                                <th class="pb-4">Status</th>
-                                <th class="pb-4">ETA</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-300">
-                            <tr class="border-b border-white/5">
-                                <td class="py-4 font-bold flex items-center gap-2"><span class="text-xl">🪟</span> Windows</td>
-                                <td class="py-4 text-green-400 font-bold">In Progress</td>
-                                <td class="py-4">Q1 2026</td>
-                            </tr>
-                            <tr class="border-b border-white/5">
-                                <td class="py-4 font-bold flex items-center gap-2"><span class="text-xl">🍎</span> macOS</td>
-                                <td class="py-4 text-yellow-400">Planned</td>
-                                <td class="py-4">TBA</td>
-                            </tr>
-                            <tr class="border-b border-white/5">
-                                <td class="py-4 font-bold flex items-center gap-2"><span class="text-xl">🐧</span> Linux</td>
-                                <td class="py-4 text-yellow-400">Planned</td>
-                                <td class="py-4">TBA</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 font-bold flex items-center gap-2"><span class="text-xl">📱</span> Mobile</td>
-                                <td class="py-4 text-gray-500">Not Planned</td>
-                                <td class="py-4">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl font-bold mb-6 text-white">How It Works</h2>
-                <div class="glass rounded-2xl p-8 space-y-4">
-                    <ol class="list-decimal pl-5 space-y-3 text-gray-300">
-                        <li><strong>Copy Link:</strong> Copy the URL of the video or audio you want to save.</li>
-                        <li><strong>Paste:</strong> Open Hyde Downloader and click the "Paste Link" button.</li>
-                        <li><strong>Select Format:</strong> Choose Video (MP4/MKV) or Audio (MP3/WAV).</li>
-                        <li><strong>Download:</strong> Click Start. The file will be saved to your 'Downloads/Hyde' folder.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="animate-on-scroll">
-                <div class="glass rounded-xl p-8 text-center bg-white/5">
-                    <h3 class="text-xl font-bold mb-2">Want to help?</h3>
-                    <p class="text-gray-400 mb-6">
-                        While the core is proprietary during Beta, we are looking for testers to report bugs.
-                    </p>
-                    <a href="mailto:joshitirth1107@gmail.com" class="inline-block px-6 py-3 border border-white/20 rounded-lg hover:bg-white/10 transition">
-                        Apply for Beta Access
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                    Hyde <span class="gradient-text-yellow">Downloader</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                    A premium Windows desktop application for downloading media from YouTube, TikTok, Instagram, Twitter/X, and 1000+ sites privately, asynchronously, and with zero configuration.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <!-- Dynamic Download Button with fallback static releases tag -->
+                    <a href="https://github.com/Tirth1107/Hyde-Downloader/releases/download/v1.0.0-final-version/HydeDownloader.exe" 
+                       id="download-btn" 
+                       class="button-hover w-full sm:w-auto px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl font-bold flex items-center justify-center gap-2 cursor-wait transition-all shadow-lg shadow-yellow-400/10">
+                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Loading Download Link...
+                    </a>
+                    
+                    <a href="https://github.com/Tirth1107/Hyde-Downloader" 
+                       id="github-repo-btn"
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="button-hover w-full sm:w-auto px-8 py-4 glass hover:bg-white/5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                        GitHub Repository
                     </a>
                 </div>
-            </div>
+            </section>
 
-        </div>
-    </section>
+            <!-- IMPORTANT WARNING / DEPRECATION BOX -->
+            <section class="mb-20" id="project-notice">
+                <div class="glass-warning rounded-2xl p-8 border-l-4 border-red-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mr-6 -mt-6 w-24 h-24 bg-red-500/10 rounded-full blur-xl"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-red-500/20 text-red-500 rounded-xl mt-1">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div class="space-y-4">
+                            <h2 class="text-2xl font-bold text-red-400">Important Project Status Notice</h2>
+                            <p class="text-gray-300 leading-relaxed text-base">
+                                <strong>Warning:</strong> This repo is not being maintained by me at all. No new version will ever come in this project; this project is closed forever from my side. The download provided below is the <strong>final working version</strong>. If any developer wants to maintain this small project, I am happy to share all the resources they need from my side. I will also give them other code that I have saved for this project.
+                            </p>
+                            <p class="text-gray-300 leading-relaxed text-base">
+                                I have also made a website for this same project, but I don't want to bear the cost of AWS servers for this project, so I am not deploying it. If anyone wants to work on this project, you can change anything you want to change—feel free to contact me.
+                            </p>
+                            <div class="pt-2 flex flex-col sm:flex-row gap-4 text-sm font-semibold">
+                                <a href="mailto:joshitirth1107@gmail.com" class="flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors">
+                                    <span>📧</span> Mail: joshitirth1107@gmail.com
+                                </a>
+                                <span class="hidden sm:inline text-white/20">|</span>
+                                <a href="mailto:tirthjoshi@thenn.in" class="flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors">
+                                    <span>✉️</span> Other Mail: tirthjoshi@thenn.in
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <footer class="py-12 px-4 border-t border-white/10 mt-20 bg-black/20">
-        <div class="max-w-6xl mx-auto text-center">
+            <!-- Detailed Overview Section -->
+            <section class="mb-20" id="overview">
+                <h2 class="text-3xl font-bold mb-6 border-b border-white/5 pb-2 text-white">Overview</h2>
+                <div class="glass rounded-2xl p-8 space-y-6">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Hyde Downloader is a versatile and modern desktop application designed for downloading media from popular platforms like <strong>YouTube, TikTok, Instagram, Twitter/X, and Facebook</strong>. 
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Built from the ground up with <strong>Python 3.10+</strong> and <strong>PySide6 (Qt for Python)</strong>, it features a glassmorphism-inspired UI with smooth micro-animations. By delegating all heavy tasks to asynchronous background operations, the application remains fast and responsive on any Windows system, even under massive download queues.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                            <span class="font-bold text-yellow-400 text-sm block mb-1">Operating System</span>
+                            <span class="text-gray-300">Windows 10 / 11 (64-bit)</span>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                            <span class="font-bold text-yellow-400 text-sm block mb-1">Development Frameworks</span>
+                            <span class="text-gray-300">PySide6, yt-dlp, imageio-ffmpeg</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Features Section -->
+            <section class="mb-20" id="features">
+                <h2 class="text-3xl font-bold mb-6 border-b border-white/5 pb-2 text-white">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">🌍</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Multi-Platform Support</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Download high-quality videos and audio presets from YouTube, TikTok, Instagram, Twitter/X, Facebook, and hundreds of other websites supported by the powerful <code>yt-dlp</code> core.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">✨</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Modern UI</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Featuring a sleek dark-themed visual setup with semi-transparent elements, graphics blur effects, custom hover responses, and smooth micro-animations.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">⚡</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Asynchronous Operations</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            A dual QThread multi-threading architecture guarantees that UI operations remain fluid during heavy metadata fetching and multi-stream media downloads.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">⚙️</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Format & Quality Selection</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Choose between automated quality presets or use the advanced format selector to target precise resolutions, specific audio/video codecs, and bitrates.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">📦</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Batch Downloading</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Add multiple URLs at once by pasting a multi-line list directly into the app or loading a plain text (<code>.txt</code>) file containing video URLs.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">🖥️</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Mini-Mode</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Quickly drop URLs and track speed with a compact, minimal, floating window that stays pinned on top of other desktop windows.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">⏳</span>
+                            <h3 class="text-xl font-bold text-yellow-400">Download Queue</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Easily line up multiple downloads without interruption. The app processes downloads sequentially while you continue browsing for links.
+                        </p>
+                    </div>
+
+                    <div class="card-hover glass rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl">📜</span>
+                            <h3 class="text-xl font-bold text-yellow-400">History Tracking</h3>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Features a dedicated download history panel with searchable fields to locate, copy, or reopen previous download links and local folders.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Architecture - Under The Hood -->
+            <section class="mb-20" id="architecture">
+                <h2 class="text-3xl font-bold mb-6 border-b border-white/5 pb-2 text-white">Under The Hood & Architecture</h2>
+                <div class="glass rounded-2xl p-8 space-y-8">
+                    
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
+                            <span class="text-sm border border-yellow-400/30 px-2 py-0.5 rounded text-yellow-300 font-mono">01</span>
+                            PySide6 UI Architecture
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            The desktop client leverages PySide6 widgets utilizing semi-transparent background sheets, stylesheet gradients, custom graphics shadows, and <code>QGraphicsBlurEffect</code>. This results in a Windows native layout resembling modern acrylic/Mica themes.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
+                            <span class="text-sm border border-yellow-400/30 px-2 py-0.5 rounded text-yellow-300 font-mono">02</span>
+                            Asynchronous QThread Workers
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            To avoid freezing Qt UI loop thread during heavy network processing:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                            <li><strong><code>FetchInfoWorker</code> (QThread)</strong>: Runs non-blocking metadata requests via <code>yt-dlp</code>'s <code>extract_info</code> without initiating media download, retrieving resolutions and caching thumbnails.</li>
+                            <li><strong><code>DownloadWorker</code> (QThread)</strong>: Executes parallel or sequential file down streams, piping real-time speed, bytes downloaded, percent completion, and ETA variables back to the UI via Qt signals.</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
+                            <span class="text-sm border border-yellow-400/30 px-2 py-0.5 rounded text-yellow-300 font-mono">03</span>
+                            Zero-Configuration FFmpeg Integration
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            High-quality stream merging (e.g. 1080p+ video and high bitrate audio streams) requires the FFmpeg framework. To ensure a seamless installation, Hyde Downloader integrates <code>imageio-ffmpeg</code>, which downloads and configures a localized FFmpeg executable dynamically upon initial import.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
+                            <span class="text-sm border border-yellow-400/30 px-2 py-0.5 rounded text-yellow-300 font-mono">04</span>
+                            Dynamic Bundling Context (`sys.frozen`)
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            The application dynamically routes system path contexts by checking <code>getattr(sys, 'frozen', False)</code>. This ensures configuration databases (<code>downloads_history.json</code>, <code>hyde_settings.json</code>) compile cleanly inside the parent folder, preventing PyInstaller from extracting them to temporary directories (<code>_MEIPASS</code>) which get wiped upon exit.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Usage Instructions -->
+            <section class="mb-20" id="usage">
+                <h2 class="text-3xl font-bold mb-6 border-b border-white/5 pb-2 text-white">How To Use</h2>
+                <div class="glass rounded-2xl p-8">
+                    <ol class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold flex-shrink-0">1</span>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Paste URL</h4>
+                                <p class="text-gray-400">Launch the application and paste your media link (YouTube, TikTok, Twitter/X, etc.) directly into the Media URL input box.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold flex-shrink-0">2</span>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Fetch Metadata</h4>
+                                <p class="text-gray-400">Click <strong>Fetch Info</strong>. The app queries the servers and lists resolutions, video thumbnail, and description details.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="w-8 h-8 rounded-full bg-yellow-400/10 border border-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold flex-shrink-0">3</span>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Select Format & Download</h4>
+                                <p class="text-gray-400">Select Audio or Video type, select your target output quality format, customize the destination path, and click <strong>Download</strong> to begin.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Developer Setup (Running & Compiling from Source) -->
+            <section class="mb-20" id="developer-guide">
+                <h2 class="text-3xl font-bold mb-6 border-b border-white/5 pb-2 text-white">Developer Guide & Compilation</h2>
+                <div class="glass rounded-2xl p-8 space-y-6">
+                    <p class="text-gray-300">
+                        Since the project is now unmaintained, developers are highly encouraged to fork, modify, and manage this repository. Follow the guides below to run the project from source or compile the final binary.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-white">Running from Source</h3>
+                        <div class="relative">
+                            <pre class="bg-black/40 border border-white/5 rounded-xl p-5 font-mono text-sm overflow-x-auto text-yellow-200/90"><code><span class="text-gray-500"># 1. Clone the repository</span>
+git clone https://github.com/Tirth1107/Hyde-Downloader.git
+cd Hyde-Downloader
+
+<span class="text-gray-500"># 2. Install PySide6 and essential dependencies</span>
+pip install -r requirements.txt
+
+<span class="text-gray-500"># 3. Launch main interface</span>
+python main.py</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-white">Building the Executable Binary</h3>
+                        <p class="text-gray-400">
+                            You can compile the client code into a single, standalone Windows <code>.exe</code> file using PyInstaller:
+                        </p>
+                        <div class="relative">
+                            <pre class="bg-black/40 border border-white/5 rounded-xl p-5 font-mono text-sm overflow-x-auto text-yellow-200/90"><code>pip install pyinstaller
+pyinstaller --noconsole --windowed --onefile --name "HydeDownloader" main.py</code></pre>
+                        </div>
+                        <p class="text-sm text-gray-500 italic mt-2">
+                            Note: The built executable will be generated inside the newly created <code>/dist</code> folder.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/40 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center">
             <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
             <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed & Developed by Tirth</p>
             <p class="text-gray-600 text-sm">
-                &copy; 2026 Hyde Organization. All rights reserved.
+                &copy; 2026 Hyde Organization. MIT License.
             </p>
         </div>
     </footer>
 
+    <!-- Interactive Navigation Scripts -->
     <script>
-        // Navbar Scroll Effect
+        // Navbar scroll overlay effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
-                navbar.classList.add('shadow-lg', 'bg-black/50');
+                navbar.classList.add('shadow-lg', 'bg-black/95');
             } else {
-                navbar.classList.remove('shadow-lg', 'bg-black/50');
+                navbar.classList.remove('shadow-lg', 'bg-black/95');
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Button Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Scroll Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        // Dynamic Release Downloader script
+        const GITHUB_API_URL = 'https://api.github.com/repos/Tirth1107/Hyde-Downloader/releases/latest';
+        const DEFAULT_DOWNLOAD_URL = 'https://github.com/Tirth1107/Hyde-Downloader/releases/download/v1.0.0-final-version/HydeDownloader.exe';
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        async function initDownloadButton() {
+            const btn = document.getElementById('download-btn');
+            if (!btn) return;
+            
+            let downloadUrl = DEFAULT_DOWNLOAD_URL;
+            let versionTag = 'v1.0.0-final-version';
+            
+            try {
+                const response = await fetch(GITHUB_API_URL);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.assets && data.assets.length > 0) {
+                        // Attempt to locate Windows executable asset
+                        const exeAsset = data.assets.find(asset => asset.name.endsWith('.exe'));
+                        if (exeAsset) {
+                            downloadUrl = exeAsset.browser_download_url;
+                        } else {
+                            downloadUrl = data.assets[0].browser_download_url;
+                        }
+                        versionTag = data.tag_name;
+                    }
+                }
+            } catch (err) {
+                console.warn('Unable to query latest release from API, using default static release tag.', err);
+            }
+            
+            // Populate download link and update text
+            btn.href = downloadUrl;
+            btn.innerHTML = `
+                <svg class="w-6 h-6 inline mr-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                Download for Windows (${versionTag})
+            `;
+            // Remove loader cursor spinner state
+            btn.classList.remove('cursor-wait');
+        }
+
+        document.addEventListener('DOMContentLoaded', initDownloadButton);
     </script>
 </body>
 </html>

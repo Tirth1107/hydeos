@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeApp() {
     fetchHydeMusicLatestRelease();
+    fetchHydeDownloaderLatestRelease();
     setupSmoothScrolling();
 }
 
@@ -102,6 +103,90 @@ function createErrorButton() {
                 <line x1="23" y1="3" x2="13" y2="13"></line>
             </svg>
             Latest Release
+        </a>
+    `;
+}
+
+/**
+ * Fetch latest Hyde Downloader EXE release from GitHub API
+ */
+async function fetchHydeDownloaderLatestRelease() {
+    const downloadContainer = document.getElementById('hyde-downloader-download');
+    if (!downloadContainer) return;
+
+    try {
+        const response = await fetch(
+            'https://api.github.com/repos/Tirth1107/Hyde-Downloader/releases/latest',
+            {
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+        }
+
+        const releaseData = await response.json();
+        const exeAsset = releaseData.assets.find(asset => 
+            asset.name.toLowerCase().endsWith('.exe')
+        );
+
+        if (exeAsset) {
+            const version = releaseData.tag_name || releaseData.name || 'Latest';
+            downloadContainer.innerHTML = createExeDownloadButton(
+                exeAsset.browser_download_url,
+                version
+            );
+        } else {
+            const version = releaseData.tag_name || releaseData.name || 'Latest';
+            downloadContainer.innerHTML = createExeFallbackButton(
+                releaseData.html_url,
+                version
+            );
+        }
+    } catch (error) {
+        console.error('Failed to fetch Hyde Downloader release:', error);
+        downloadContainer.innerHTML = createExeErrorButton();
+    }
+}
+
+function createExeDownloadButton(downloadUrl, version) {
+    return `
+        <a href="${escapeHtml(downloadUrl)}" class="btn btn-secondary w-full flex justify-center items-center gap-2" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Windows App (${escapeHtml(version)})
+        </a>
+    `;
+}
+
+function createExeFallbackButton(releaseUrl, version) {
+    return `
+        <a href="${escapeHtml(releaseUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full flex justify-center items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="13 3 23 3 23 13"></polyline>
+                <line x1="23" y1="3" x2="13" y2="13"></line>
+            </svg>
+            View Release (${escapeHtml(version)})
+        </a>
+    `;
+}
+
+function createExeErrorButton() {
+    return `
+        <a href="https://github.com/Tirth1107/Hyde-Downloader/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full flex justify-center items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="13 3 23 3 23 13"></polyline>
+                <line x1="23" y1="3" x2="13" y2="13"></line>
+            </svg>
+            Latest Release (GitHub)
         </a>
     `;
 }
