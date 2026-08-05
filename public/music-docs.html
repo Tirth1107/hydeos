@@ -17,69 +17,9 @@
     <title>Hyde Music - Free Ad-Free Streaming | Setup Guide & Documentation by Tirth</title>
     <link rel="icon" href="logo.png">
     <link rel="canonical" href="https://hydeos.tech/music-docs.html">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        'dark-secondary': '#111111',
-                        'hyde-red': '#ef4444',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #050505 0%, #1a0f0f 100%); /* Dark Red tint */
-            overflow-x: hidden;
-            color: #e5e5e5;
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Interactive Elements */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15); /* Red glow */
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-
-        .button-hover {
-            transition: all 0.3s ease;
-        }
-        .button-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Animations */
-        .fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .text-shadow-glow {
-            text-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
-        }
-    </style>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -147,9 +87,12 @@
                     </div>`;
             } else if (userOS === 'Android') {
                 htmlContent = `
-                    <div class="glass rounded-2xl p-8 border-t border-yellow-500/30 bg-gradient-to-b from-yellow-500/10 to-transparent card-hover text-center">
-                        <h3 class="text-2xl font-bold mb-4 text-yellow-400">Android App Coming Soon</h3>
-                        <p class="text-gray-300">We are putting finishing touches on the APK. For now, please use the web version at music.hydeos.tech</p>
+                    <div class="glass rounded-2xl p-8 border-t border-green-500/30 bg-gradient-to-b from-green-500/10 to-transparent card-hover text-center">
+                        <h3 class="text-2xl font-bold mb-4 text-green-400">You are on Android</h3>
+                        <p class="text-gray-300 mb-6">Great news! The official Hyde Music Android app is now available.</p>
+                        <a href="downloadHydeMusicAndroid.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-black font-semibold button-hover transition-colors shadow-lg hover:bg-gray-200">
+                            Download APK
+                        </a>
                     </div>`;
             } else if (userOS === 'Apple' || userOS === 'Linux') {
                 htmlContent = `
@@ -262,8 +205,8 @@
                                     </tr>
                                     <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
                                         <td class="py-4 px-6 text-white font-medium">Android</td>
-                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">Coming Soon</span></td>
-                                        <td class="py-4 px-6 text-gray-400">APK release planned for Q1 2026</td>
+                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">Live & Stable</span></td>
+                                        <td class="py-4 px-6 text-gray-400">Official APK release is out. Download now.</td>
                                     </tr>
                                     <tr class="hover:bg-white/5 transition-colors">
                                         <td class="py-4 px-6 text-white font-medium">macOS / Linux</td>
@@ -311,14 +254,15 @@
                         </div>
                         <div class="glass rounded-2xl p-8 card-hover">
                             <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                                Web Player (PWA)
+                                <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414C17.523 15.3414 15.3468 18.0673 12 18.0673C8.65319 18.0673 6.47698 15.3414 6.47698 15.3414C6.47698 15.3414 7.2343 14.155 8.18824 13.0645C8.94557 13.9184 10.3664 15.0552 12 15.0552C13.6336 15.0552 15.0544 13.9184 15.8118 13.0645C16.7657 14.155 17.523 15.3414 17.523 15.3414ZM12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM18.2327 16.7145C18.2327 16.7145 15.8653 20.0094 12 20.0094C8.13472 20.0094 5.76726 16.7145 5.76726 16.7145C4.82029 15.1989 4.34681 12.9255 4.34681 10.4623C4.34681 6.57948 6.47698 3.54848 8.46545 3.54848C9.41242 3.54848 10.3594 4.02194 11.2111 4.77977C11.4952 5.06392 11.7792 5.34808 12 5.63223C12.2208 5.34808 12.5048 5.06392 12.7889 4.77977C13.6406 4.02194 14.5876 3.54848 15.5345 3.54848C17.523 3.54848 19.6532 6.57948 19.6532 10.4623C19.6532 12.9255 19.1797 15.1989 18.2327 16.7145Z"/></svg>
+                                Android Installation
                             </h3>
-                            <p class="text-gray-300 mb-4">Install as an app on Chrome/Edge:</p>
+                            <p class="text-gray-300 mb-4">Install the official APK for Android:</p>
                             <ol class="space-y-4 text-gray-300 list-decimal list-inside">
-                                <li>Visit the Hyde Music web app</li>
-                                <li>Click the install icon in the address bar</li>
-                                <li>Click "Install" - it will appear in your Start Menu</li>
+                                <li>Download the <code>HydeMusic.apk</code> file</li>
+                                <li>Open the file on your device</li>
+                                <li>If prompted, allow installation from unknown sources</li>
+                                <li>The app will install and is ready to stream</li>
                             </ol>
                         </div>
                     </div>
@@ -416,7 +360,7 @@
             if (userOS === 'Windows') {
                 htmlContent = '<div style="background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">You are on Windows</h3><p style="color:#a1a1aa;">Download the stable Hyde Music app!</p><a href="downloadHydeMusicWindows.html" style="display:inline-flex;margin-top:1rem;padding:0.625rem 1.25rem;background:#f4f4f5;color:#0a0a0a;border-radius:8px;font-weight:500;text-decoration:none;">Download Windows App</a></div>';
             } else if (userOS === 'Android') {
-                htmlContent = '<div style="background:rgba(245,158,11,0.1);border-left:4px solid #f59e0b;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">Android App Coming Soon</h3><p style="color:#a1a1aa;">We are putting finishing touches on the APK.</p></div>';
+                htmlContent = '<div style="background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">You are on Android</h3><p style="color:#a1a1aa;">Download the official Android app!</p><a href="downloadHydeMusicAndroid.html" style="display:inline-flex;margin-top:1rem;padding:0.625rem 1.25rem;background:#f4f4f5;color:#0a0a0a;border-radius:8px;font-weight:500;text-decoration:none;">Download APK</a></div>';
             } else {
                 htmlContent = '<div style="background:rgba(239,68,68,0.1);border-left:4px solid #ef4444;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">Native App Not Available</h3><p style="color:#a1a1aa;">Please use the web version.</p></div>';
             }

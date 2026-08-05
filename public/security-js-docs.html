@@ -8,72 +8,7 @@
     <meta name="keywords" content="Security Library, JavaScript Security, DevTools Detection, XSS Protection, Anti-Debug, Bot Detection, Web Security">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        'dark-secondary': '#111111',
-                        'hyde-red': '#ef4444',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #050505 0%, #1a1005 100%); /* Dark Orange tint */
-            overflow-x: hidden;
-            color: #e5e5e5;
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Interactive Elements */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15); /* Orange glow */
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-
-        .button-hover {
-            transition: all 0.3s ease;
-        }
-        .button-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Animations */
-        .fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-        .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .text-shadow-glow {
-            text-shadow: 0 0 25px rgba(249, 115, 22, 0.4);
-        }
-
-        .code-block {
-            font-family: ui-monospace, 'SFMono-Regular', monospace;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
@@ -115,23 +50,41 @@
     <main>
         <section class="pt-32 pb-20 px-4 relative overflow-hidden">
             <div class="max-w-5xl mx-auto text-center fade-in">
-                <a href="index.html#ecosystem" class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-medium mb-8 transition-colors">
+                <a href="index.html#ecosystem" class="inline-flex items-center gap-2 text-red-500 hover:text-red-400 font-medium mb-8 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                     Back to Ecosystem
                 </a>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
-                    Hyde <span class="text-orange-500 text-shadow-glow">Security JS</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Professional client-side security library for modern web applications
-                </p>
-                <div class="inline-block px-6 py-3 rounded-xl border border-orange-500/30 bg-black/50 text-gray-300 font-mono text-sm mb-12 shadow-lg shadow-orange-500/10">
-                    npm install @tirth1107/hyde-security-js
+                <div class="mb-4">
+                    <span class="inline-flex items-center rounded-full bg-red-500/10 px-3 py-1 text-sm font-medium text-red-500 ring-1 ring-inset ring-red-500/20">v1.1.0 Released</span>
                 </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
+                    Hyde <span class="text-red-500 text-shadow-glow">Security JS</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-6 max-w-2xl mx-auto leading-relaxed">
+                    Client-side deterrence and security helpers for modern web applications. Layered protection against XSS, DOM tampering, bots, and DevTools abuse.
+                </p>
+                <div class="flex flex-col items-center gap-2 mb-8">
+                    <div class="flex items-center gap-4 text-sm text-gray-400">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> 500+ Users Family</span>
+                        <span>•</span>
+                        <span>MIT License</span>
+                        <span>•</span>
+                        <span>npm package</span>
+                        <span>•</span>
+                        <span class="text-xs px-2 py-1 bg-white/5 rounded border border-white/10">Zero Dependencies</span>
+                    </div>
+                    <div class="text-sm font-medium text-orange-400 mt-2 p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+                        🚀 We are working on a massive <strong>v1.5</strong> which will bring incredible features! Stay tuned.
+                    </div>
+                </div>
+                
+                <div class="npm-install inline-block mx-auto mb-10 shadow-lg shadow-black">
+                    <code>npm install @tirth1107/hyde-security-js</code>
+                </div>
+                
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#quickstart" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Quick Start</a>
-                    <a href="#api" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">API Reference</a>
-                    <a href="#best-practices" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Best Practices</a>
+                    <a href="#quickstart" class="btn btn-primary shadow-lg shadow-red-500/20">Quick Start</a>
+                    <a href="#api" class="btn btn-secondary">API Reference</a>
                 </div>
             </div>
         </section>
@@ -146,131 +99,189 @@
                 </div>
 
                 <div class="animate-on-scroll" id="overview">
-                    <h2 class="text-3xl font-bold mb-6 text-center text-white">Overview</h2>
-                    <div class="glass rounded-3xl p-8 text-gray-300 leading-relaxed text-lg text-center">
-                        <p class="mb-4">Hyde Security JS is a comprehensive client-side security library designed to protect web applications from common threats including XSS attacks, malicious debugging, bot activity, and DOM tampering. It's built for developers who demand production-grade security in their frontend applications.</p>
-                        <p>The library provides easy-to-use APIs with minimal configuration and zero dependencies.</p>
-                    </div>
-                </div>
-
-                <div class="animate-on-scroll" id="features">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Core Features</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">DevTools Detection</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Detect when browser developer tools are open and respond accordingly.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">XSS Protection</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Sanitize and validate user inputs to prevent cross-site scripting attacks.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">Anti-Debug</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Prevent code execution in debug mode and freeze debuggers.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">Session Protection</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Secure session management with token validation and expiration.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">Bot Detection</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Identify and block automated bot traffic patterns.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">DOM Protection</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">Prevent unauthorized DOM manipulation and tampering attempts.</p>
-                        </div>
+                    <h2 class="text-3xl font-bold mb-6 text-white">Why HydeSecurityJS?</h2>
+                    <div class="glass rounded-xl p-8 text-gray-300 leading-relaxed">
+                        <p class="mb-4">Modern web apps face real threats. HydeSecurityJS gives you ready-to-use defenses for all of these in a single, lightweight package:</p>
+                        <ul class="feature-list">
+                            <li><strong>Content theft:</strong> copy, screenshot, print</li>
+                            <li><strong>Debug/inspect abuse:</strong> tampering, devtools</li>
+                            <li><strong>Injection attacks:</strong> XSS, SQLi via user input</li>
+                            <li><strong>Session stealing:</strong> token exposure, replay attacks</li>
+                            <li><strong>Automated abuse:</strong> bots, fast-clicking, CSRF</li>
+                            <li><strong>Framing attacks:</strong> clickjacking, invisible iframes</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="animate-on-scroll" id="quickstart">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Quick Start</h2>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div class="glass rounded-3xl p-8 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">Basic Setup</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre">import HydeSecurity from '@tirth1107/hyde-security-js';
+                    <h2 class="text-3xl font-bold mb-8 text-white">Installation & Setup</h2>
+                    <div class="space-y-6">
+                        
+                        <!-- React -->
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-[#61DAFB]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22.75C6.072 22.75 1.25 17.928 1.25 12S6.072 1.25 12 1.25 22.75 6.072 22.75 12 17.928 22.75 12 22.75zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25 21.25 17.1 21.25 12 17.1 2.75 12 2.75z"/><path d="M12 17.25c-2.9 0-5.25-2.35-5.25-5.25S9.1 6.75 12 6.75 17.25 9.1 17.25 12 14.9 17.25 12 17.25zm0-9c-2.07 0-3.75 1.68-3.75 3.75S9.93 15.75 12 15.75s3.75-1.68 3.75-3.75S14.07 8.25 12 8.25z"/></svg>
+                                React
+                            </h3>
+                            <p class="text-gray-400 mb-4 text-sm">Wrap your app or specific routes with HydeSecurityProvider:</p>
+                            <div class="npm-install overflow-x-auto whitespace-pre">import React from 'react'
+import { HydeSecurityProvider, useHydeSecurity } from '@tirth1107/hyde-security-js/react'
 
-// Initialize with default configuration
-const security = new HydeSecurity();
-
-// Enable all protections
-security.enableAll();</div>
+export default function App() {
+  return (
+    &lt;HydeSecurityProvider
+      config={{
+        appName: 'My Secure App',
+        mode: 'strict', // 'dev' | 'balanced' | 'strict'
+        enableWatermark: true,
+        onThreatDetected: (event) =&gt; console.warn('Threat detected:', event)
+      }}
+    &gt;
+      &lt;YourApp /&gt;
+    &lt;/HydeSecurityProvider&gt;
+  )
+}</div>
                         </div>
 
-                        <div class="glass rounded-3xl p-8 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">Advanced Setup</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre">import HydeSecurity from '@tirth1107/hyde-security-js';
+                        <!-- Next.js -->
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">Next.js</h3>
+                            <p class="text-gray-400 mb-4 text-sm">Use it in your root layout:</p>
+                            <div class="npm-install overflow-x-auto whitespace-pre">// app/layout.tsx
+'use client'
+import { HydeSecurityProvider } from '@tirth1107/hyde-security-js/react'
 
-const security = new HydeSecurity({
-  devToolsDetection: true,
-  xssProtection: true,
-  antiDebug: true,
-  sessionProtection: true,
-  botDetection: true,
-  domProtection: true,
-  redirectOnDevTools: true,
-  redirectUrl: 'https://example.com/error'
-});
+export default function RootLayout({ children }) {
+  return (
+    &lt;html&gt;
+      &lt;body&gt;
+        &lt;HydeSecurityProvider config={{ appName: 'My SaaS', mode: 'balanced' }}&gt;
+          {children}
+        &lt;/HydeSecurityProvider&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}</div>
+                        </div>
 
-security.initialize();</div>
+                        <!-- Vanilla/Vite -->
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-[#F7DF1E]" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2L2 22h20L12 2zm0 3.82l7.1 14.18H4.9L12 5.82zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                                Vanilla HTML/JS or Vite (SPA)
+                            </h3>
+                            <div class="npm-install overflow-x-auto whitespace-pre">import { HydeSecurity } from '@tirth1107/hyde-security-js'
+
+HydeSecurity.init({
+  appName: 'My Vanilla App',
+  mode: 'strict',
+  enableWatermark: true,
+  onThreatDetected: (event) =&gt; {
+    // Send to your backend logging service
+    fetch('/api/security-logs', { method: 'POST', body: JSON.stringify(event) })
+  }
+})
+
+// Use specific modules
+const secureKey = HydeSecurity.encryptText('secret-data', 'my-key')</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="animate-on-scroll" id="api">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">API Reference</h2>
+                    <h2 class="text-3xl font-bold mb-8 text-white">🛡️ Core Features (v1.1.0)</h2>
                     <div class="space-y-6">
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">DevTools Detection</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre mb-4">security.detectDevTools();
-security.onDevToolsOpen(() => {
-  console.warn('DevTools detected!');
-  // Handle response
-});</div>
-                            <p class="text-gray-400">Detects when browser developer tools are opened. Triggers callbacks when detected.</p>
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">1. Anti-DevTools & Anti-Debug</h3>
+                            <ul class="feature-list">
+                                <li>Detects when users open DevTools and optional UI locking.</li>
+                                <li>Detects size traps, debugger timing, console latency, and Firebug.</li>
+                                <li>Blocks F12, Ctrl+Shift+I/J/C, and Ctrl+U.</li>
+                            </ul>
                         </div>
 
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">XSS Protection</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre mb-4">const safeText = security.sanitizeInput(userInput);
-const validated = security.validateHTML(htmlString);</div>
-                            <p class="text-gray-400">Sanitizes user inputs and validates HTML to prevent XSS attacks.</p>
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">2. Content Protection</h3>
+                            <ul class="feature-list">
+                                <li><strong>Anti-Copy:</strong> Blocks copy, cut, drag, and selection.</li>
+                                <li><strong>Anti-Print:</strong> Blocks Ctrl+P and visually blurs the document if print dialog opens.</li>
+                                <li><strong>Anti-Screen Capture:</strong> Deters screenshots using DRM APIs and Canvas overlays.</li>
+                                <li><strong>Watermarking:</strong> Tiled, tamper-resistant canvas watermark over the entire screen.</li>
+                            </ul>
                         </div>
 
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">Anti-Debug</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre mb-4">security.enableAntiDebug();
-security.freezeDebugger();</div>
-                            <p class="text-gray-400">Prevents code execution in debug mode and freezes debugger instances.</p>
-                        </div>
-
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">Session Protection</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre mb-4">security.setSessionToken(token, expirationTime);
-security.validateSession();
-security.clearSession();</div>
-                            <p class="text-gray-400">Manages secure session tokens with automatic expiration and validation.</p>
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">3. Session Management & Storage</h3>
+                            <ul class="feature-list">
+                                <li><strong>Session Timeout:</strong> Auto-logout after inactivity, synchronized across tabs.</li>
+                                <li><strong>Secure Storage:</strong> <code>storage.set(key, val, { encrypt: true, ttl: 3600 })</code> — encrypts data and adds auto-expiring TTLs.</li>
+                                <li><strong>Secure Cookies:</strong> <code>cookie.setSecure(key, val)</code> defaults to Secure and SameSite=Strict.</li>
+                            </ul>
                         </div>
                         
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">Bot Detection</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre mb-4">security.isBotActivity();
-security.getBotScore();
-security.onBotDetected(() => {
-  console.warn('Bot activity detected');
-});</div>
-                            <p class="text-gray-400">Identifies suspicious bot patterns and automated traffic.</p>
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">4. Injection & XSS Prevention</h3>
+                            <ul class="feature-list">
+                                <li><strong>HTML Sanitization:</strong> <code>sanitize.html(input)</code> powered by DOMPurify.</li>
+                                <li><strong>URL & Text:</strong> <code>sanitize.url(url)</code> ensures safe protocols.</li>
+                                <li><strong>CSP Helper:</strong> <code>contentSecurityPolicy.build()</code> for easy CSP management.</li>
+                                <li><strong>Input Validation:</strong> Detect SQLi, XSS, and validate emails/URLs.</li>
+                            </ul>
                         </div>
 
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-4">DOM Protection</h3>
-                            <div class="code-block bg-black/50 p-4 rounded-xl border border-white/10 text-gray-300 text-sm overflow-x-auto whitespace-pre mb-4">security.protectDOM();
-security.watchElement(targetElement);
-security.onDOMTamper(() => {
-  console.error('DOM tamper detected!');
-});</div>
-                            <p class="text-gray-400">Monitors and prevents unauthorized DOM modifications.</p>
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">5. Bot & Abuse Deterrence</h3>
+                            <ul class="feature-list">
+                                <li><strong>Honeypots:</strong> <code>forms.addHoneypot(form)</code> adds invisible fields.</li>
+                                <li><strong>Fast Typing:</strong> Detects superhuman typing speeds and headless browsers.</li>
+                                <li><strong>CSRF Protection:</strong> <code>csrfProtection.attachToAxios(client)</code> auto-injects CSRF tokens.</li>
+                            </ul>
                         </div>
+
+                        <div class="glass rounded-xl p-8">
+                            <h3 class="text-xl font-bold text-white mb-4">6. Network & Integrity</h3>
+                            <ul class="feature-list">
+                                <li><strong>Request Signing:</strong> <code>network.createClient({ sign: true })</code> signs requests using HMAC-SHA256.</li>
+                                <li><strong>Auto-Retry:</strong> Network client automatically retries 5xx errors with exponential backoff.</li>
+                                <li><strong>Script Integrity:</strong> <code>integrity.checkScriptIntegrity(src, hash)</code> verifies external scripts via SHA-256.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold mb-8 text-white">Advanced Usage</h2>
+                    <div class="glass rounded-xl p-8">
+                        <div class="npm-install overflow-x-auto whitespace-pre">import { HydeSecurity } from '@tirth1107/hyde-security-js'
+
+// 1. Manually protect a specific element from DOM tampering
+HydeSecurity.protectElement('#sensitive-data')
+
+// 2. Encrypt/Decrypt
+const encrypted = HydeSecurity.encryptText('Hello', 'passphrase')
+const decrypted = HydeSecurity.decryptText(encrypted, 'passphrase')
+
+// 3. Password Strength (zxcvbn)
+const strength = HydeSecurity.checkPassword('P@ssw0rd123!')
+console.log(strength.feedback)
+
+// 4. Access individual modules
+const { inputValidation, csrfProtection } = HydeSecurity.modules
+
+if (inputValidation.isSQLInjection("SELECT * FROM users")) {
+  HydeSecurity.lockScreen("Malicious input detected")
+}</div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold mb-6 text-white">Migration Guide: v1.0.0 to v1.1.0</h2>
+                    <div class="glass rounded-xl p-8">
+                        <ul class="feature-list">
+                            <li><strong>Scoped Package:</strong> We have moved to the scoped package <code>@tirth1107/hyde-security-js</code>. Please update your package.json.</li>
+                            <li><strong>Module Improvements:</strong> Many sub-modules were fixed for memory leaks, SSR compatibility, and proper security defaults (e.g., cookie.set() defaults to Secure).</li>
+                            <li><strong>New Modules:</strong> Explore csrfProtection, contentSecurityPolicy, and inputValidation in HydeSecurity.modules.</li>
+                        </ul>
                     </div>
                 </div>
 
