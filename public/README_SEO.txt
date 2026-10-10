@@ -55,13 +55,13 @@ Start here with these guides in order:
 
 ### **Configuration Files Updated**
 ```
-✅ sitemap.xml - Updated to hydeos.qzz.io (from hydebytirth.web.app)
+✅ sitemap.xml - Updated to www.hydeos.tech (from hydebytirth.web.app)
 ✅ robots.txt - Enhanced crawl guidelines
 ```
 
 ### **Optimizations Applied to Each Page**
 ✅ Meta tag optimization (title, description, keywords, author, robots)  
-✅ Canonical URLs (hydeos.qzz.io)  
+✅ Canonical URLs (www.hydeos.tech)  
 ✅ Open Graph tags (Facebook sharing)  
 ✅ Twitter Cards (Twitter sharing)  
 ✅ JSON-LD structured data (rich snippets)  
@@ -92,7 +92,7 @@ Start here with these guides in order:
 ### Required (Do These First)
 1. [ ] Submit sitemap to Google Search Console
    - Go to https://search.google.com/search-console
-   - Add property: hydeos.qzz.io
+   - Add property: www.hydeos.tech
    - Submit sitemap.xml
 
 2. [ ] Submit to Bing Webmaster Tools

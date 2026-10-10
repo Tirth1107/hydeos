@@ -4,70 +4,70 @@
     
     <!-- Homepage - Highest Priority -->
     <url>
-        <loc>https://hydeos.qzz.io/</loc>
-        <lastmod>2026-01-22</lastmod>
+        <loc>https://www.hydeos.tech/</loc>
+        <lastmod>2026-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/index.html</loc>
-        <lastmod>2026-01-22</lastmod>
+        <loc>https://www.hydeos.tech/index.html</loc>
+        <lastmod>2026-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/aboutus.html</loc>
+        <loc>https://www.hydeos.tech/aboutus.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/donate.html</loc>
+        <loc>https://www.hydeos.tech/donate.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/documents.html</loc>
+        <loc>https://www.hydeos.tech/documents.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/music-docs.html</loc>
-        <lastmod>2026-01-22</lastmod>
+        <loc>https://www.hydeos.tech/music-docs.html</loc>
+        <lastmod>2026-10-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/browser-docs.html</loc>
+        <loc>https://www.hydeos.tech/browser-docs.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/downloader-docs.html</loc>
+        <loc>https://www.hydeos.tech/downloader-docs.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/downloadHydeMusicWindows.html</loc>
+        <loc>https://www.hydeos.tech/downloadHydeMusicWindows.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://hydeos.qzz.io/Issues&amp;FeatureRequestsforhydemusic.html</loc>
+        <loc>https://www.hydeos.tech/Issues&amp;FeatureRequestsforhydemusic.html</loc>
         <lastmod>2026-01-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

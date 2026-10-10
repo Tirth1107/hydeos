@@ -22,7 +22,7 @@ async function fetchHydeMusicLatestRelease() {
 
     try {
         const response = await fetch(
-            'https://api.github.com/repos/Tirth1107/Hyde-Music-Andorid/releases/latest',
+            'https://api.github.com/repos/Hyde-OpenSource/Hyde-Music-Andorid/releases/latest',
             {
                 headers: {
                     'Accept': 'application/vnd.github.v3+json'
@@ -35,9 +35,11 @@ async function fetchHydeMusicLatestRelease() {
         }
 
         const releaseData = await response.json();
-        const apkAsset = releaseData.assets.find(asset => 
-            asset.name.toLowerCase().endsWith('.apk')
-        );
+        // arm64 fits almost every phone and is half the size; then universal; then any APK.
+        const apks = releaseData.assets.filter(asset => asset.name.toLowerCase().endsWith('.apk'));
+        const apkAsset = apks.find(a => a.name.toLowerCase().includes('arm64'))
+            || apks.find(a => a.name.toLowerCase().includes('universal'))
+            || apks[0];
 
         if (apkAsset) {
             const version = releaseData.tag_name || releaseData.name || 'Latest';
@@ -96,7 +98,7 @@ function createFallbackButton(releaseUrl, version) {
  */
 function createErrorButton() {
     return `
-        <a href="https://github.com/Tirth1107/Hyde-Music-Andorid/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        <a href="https://github.com/Hyde-OpenSource/Hyde-Music-Andorid/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="13 3 23 3 23 13"></polyline>

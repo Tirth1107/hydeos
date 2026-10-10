@@ -51,7 +51,7 @@ Your Hyde website has been **comprehensively optimized for enterprise-grade sear
 
 ### ✅ 5. SITEMAP.XML UPDATE
 **Changes:**
-- Updated domain: hydebytirth.web.app → hydeos.qzz.io
+- Updated domain: hydebytirth.web.app → www.hydeos.tech
 - Added all 9 website pages
 - Priority levels (1.0 homepage, 0.8-0.9 main pages)
 - Change frequency defined
@@ -321,7 +321,7 @@ Your Hyde website has been **comprehensively optimized for enterprise-grade sear
 **Hyde Developer:** Tirth  
 **Email:** joshitirth1107@gmail.com  
 **GitHub:** https://github.com/Tirth1107/  
-**Website:** https://hydeos.qzz.io/  
+**Website:** https://www.hydeos.tech/  
 
 ---
 

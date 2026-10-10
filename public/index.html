@@ -7,6 +7,8 @@
     <title>Hyde | Open-Source Ecosystem</title>
     <meta name="description"
         content="Privacy-first tools, developer utilities, and experimental systems built for the modern web.">
+    <link rel="icon" href="logo.png">
+    <link rel="canonical" href="https://www.hydeos.tech/">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -129,22 +131,31 @@
                 <!-- Hyde Music -->
                 <div class="card">
                     <div class="card-content">
+                        <a href="music-docs.html" class="block mb-5 rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-red-900/40 to-black">
+                            <div class="flex justify-center gap-3 pt-5 px-4 h-44 overflow-hidden">
+                                <img src="assets/music/now-playing.webp" alt="Hyde Music Now Playing screen" width="540" height="1171" loading="lazy" class="w-[30%] rounded-xl shadow-2xl translate-y-2">
+                                <img src="assets/music/lyrics.webp" alt="Hyde Music word-by-word lyrics" width="540" height="1171" loading="lazy" class="w-[30%] rounded-xl shadow-2xl">
+                                <img src="assets/music/library.webp" alt="Hyde Music library" width="540" height="1171" loading="lazy" class="w-[30%] rounded-xl shadow-2xl translate-y-2">
+                            </div>
+                        </a>
                         <div class="card-header">
                             <h3 class="card-title">Hyde Music</h3>
                             <div class="card-badges">
-                                <span class="badge badge-accent">No Ads</span>
-                                <span class="badge">Open Source</span>
+                                <span class="badge badge-accent">v6.0 New</span>
+                                <span class="badge">No Ads</span>
                             </div>
                         </div>
-                        <p class="card-description">Ad-free music experience powered by open streaming sources. Web
-                            version is discontinued.</p>
+                        <p class="card-description">Free, ad-free music for Android with a Liquid Glass design. New in 6.0:
+                            AI Shuffle, Suggested Songs, Reload Home, and it runs much cooler.</p>
                         <div class="card-features">
-                            <span class="feature-tag">Android App</span>
+                            <span class="feature-tag">Android 8.0+</span>
+                            <span class="feature-tag">AI Shuffle</span>
+                            <span class="feature-tag">Synced Lyrics</span>
                             <span class="feature-tag">No Tracking</span>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="music-docs.html" class="btn btn-outline btn-small">View Docs</a>
+                        <a href="music-docs.html" class="btn btn-outline btn-small">What's New &amp; Guide</a>
                         <div id="hyde-music-download" class="music-download">
                             <span class="status-loading">Fetching latest APK...</span>
                         </div>
@@ -297,7 +308,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
-                <p class="footer-text">&copy; Hyde Ecosystem. MIT License. <span class="ml-2 font-mono text-gray-500">v10.4.4</span></p>
+                <p class="footer-text">&copy; Hyde Ecosystem. MIT License. <span class="ml-2 font-mono text-gray-500">v10.5</span></p>
             </div>
             <div class="footer-right">
                 <a href="https://github.com/Tirth1107" target="_blank" rel="noopener noreferrer" class="footer-link">

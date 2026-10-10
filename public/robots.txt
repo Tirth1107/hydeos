@@ -19,7 +19,7 @@ User-agent: DuckDuckBot
 Allow: /
 
 # Sitemap location for search engines
-Sitemap: https://hydeos.qzz.io/sitemap.xml
+Sitemap: https://www.hydeos.tech/sitemap.xml
 
 # Crawl delay (optional, for better server performance)
 Crawl-delay: 1

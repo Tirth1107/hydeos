@@ -37,7 +37,7 @@ Your Hyde website has been **comprehensively optimized for maximum search engine
 - ✅ Proper heading hierarchy maintained
 
 ### 5. **Sitemap.xml**
-- ✅ Updated domain to hydeos.qzz.io
+- ✅ Updated domain to www.hydeos.tech
 - ✅ All 9 pages included
 - ✅ Priority levels:
   - Homepage: 1.0 (highest)
@@ -108,8 +108,8 @@ Your Hyde website has been **comprehensively optimized for maximum search engine
 
 1. **Submit to Google Search Console:**
    - Go to https://search.google.com/search-console
-   - Add property: https://hydeos.qzz.io/
-   - Upload sitemap: https://hydeos.qzz.io/sitemap.xml
+   - Add property: https://www.hydeos.tech/
+   - Upload sitemap: https://www.hydeos.tech/sitemap.xml
    - Check for crawl errors
 
 2. **Submit to Bing Webmaster:**
@@ -166,9 +166,9 @@ Use these FREE tools to validate your SEO:
 
 ## 📱 QUICK URL REFERENCE
 
-- **Domain:** https://hydeos.qzz.io/
-- **Sitemap:** https://hydeos.qzz.io/sitemap.xml
-- **Robots.txt:** https://hydeos.qzz.io/robots.txt
+- **Domain:** https://www.hydeos.tech/
+- **Sitemap:** https://www.hydeos.tech/sitemap.xml
+- **Robots.txt:** https://www.hydeos.tech/robots.txt
 - **GitHub:** https://github.com/Tirth1107/
 - **Email:** joshitirth1107@gmail.com
 

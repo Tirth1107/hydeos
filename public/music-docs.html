@@ -3,126 +3,88 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8J1H1QXC6"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-C8J1H1QXC6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C8J1H1QXC6');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hyde Music - Free, Ad-Free Music Streaming for Windows, Web & Android. Documentation, setup guides, and support by Tirth.">
-    <meta name="keywords" content="Free Music Streaming, Ad-Free, Hyde Music, Windows App, Android App, Web Player, No Ads, Privacy Music">
+    <title>Hyde Music 6.0 - Free, Ad-Free Music for Android | AI Shuffle, Lyrics, Liquid Glass</title>
+    <meta name="description" content="Hyde Music 6.0 for Android: free and ad-free music streaming with a Liquid Glass design, AI Shuffle, word-by-word lyrics, offline downloads and in-app updates. Download the APK.">
+    <meta name="keywords" content="Hyde Music, Hyde Music 6.0, free music app, ad-free music, Android music player, AI shuffle, synced lyrics, YouTube Music client, APK download">
     <meta name="author" content="Tirth">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <title>Hyde Music - Free Ad-Free Streaming | Setup Guide & Documentation by Tirth</title>
+    <meta name="theme-color" content="#0a0a0a">
     <link rel="icon" href="logo.png">
-    <link rel="canonical" href="https://hydeos.tech/music-docs.html">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Open Graph / Facebook -->
+    <link rel="canonical" href="https://www.hydeos.tech/music-docs.html">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hydeos.tech/music-docs.html">
-    <meta property="og:title" content="Hyde Music - Free, Ad-Free Music Streaming">
-    <meta property="og:description" content="Stream music ad-free on Windows, Web, and Android. Complete setup guide and documentation.">
-    <meta property="og:image" content="https://hydeos.tech/logo.png">
+    <meta property="og:url" content="https://www.hydeos.tech/music-docs.html">
+    <meta property="og:title" content="Hyde Music 6.0 - Free, Ad-Free Music for Android">
+    <meta property="og:description" content="Liquid Glass design, AI Shuffle, word-by-word lyrics and offline downloads. No ads, no tracking.">
+    <meta property="og:image" content="https://www.hydeos.tech/assets/music/now-playing.jpg">
     <meta property="og:site_name" content="Hyde">
-    
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://hydeos.tech/music-docs.html">
-    <meta name="twitter:title" content="Hyde Music - Free Ad-Free Streaming">
-    <meta name="twitter:description" content="Documentation and setup guides for Hyde Music - completely free, ad-free music streaming.">
-    <meta name="twitter:image" content="https://hydeos.tech/logo.png">
-    
-    <!-- JSON-LD Structured Data -->
+    <meta name="twitter:title" content="Hyde Music 6.0 - Free, Ad-Free Music for Android">
+    <meta name="twitter:description" content="Liquid Glass design, AI Shuffle, word-by-word lyrics and offline downloads.">
+    <meta name="twitter:image" content="https://www.hydeos.tech/assets/music/now-playing.jpg">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "MobileApplication",
       "name": "Hyde Music",
-      "applicationCategory": "AudioApplication",
-      "description": "Free, ad-free music streaming application for Windows, Web, and Android",
-      "url": "https://hydeos.tech/music-docs.html",
-      "creator": {
-        "@type": "Person",
-        "name": "Tirth"
-      },
-      "operatingSystem": ["Windows", "Web", "Android"],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "softwareVersion": "6.0",
+      "operatingSystem": "Android 8.0+",
+      "applicationCategory": "MusicApplication",
+      "description": "Free, ad-free music streaming for Android with a Liquid Glass design, AI Shuffle and word-by-word lyrics.",
+      "url": "https://www.hydeos.tech/music-docs.html",
+      "downloadUrl": "https://github.com/Hyde-OpenSource/Hyde-Music-Andorid/releases/latest",
+      "screenshot": [
+        "https://www.hydeos.tech/assets/music/now-playing.jpg",
+        "https://www.hydeos.tech/assets/music/lyrics.jpg",
+        "https://www.hydeos.tech/assets/music/library.jpg"
+      ],
+      "creator": { "@type": "Person", "name": "Tirth" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
 
-    <script>
-        // === SMART OS DETECTION & CONTENT INJECTION ===
-        function getOS() {
-            const userAgent = window.navigator.userAgent.toLowerCase();
-            if (userAgent.includes('win')) return 'Windows';
-            if (userAgent.includes('android')) return 'Android';
-            if (userAgent.includes('mac') || userAgent.includes('iphone') || userAgent.includes('ipad')) return 'Apple';
-            if (userAgent.includes('linux')) return 'Linux';
-            return 'Web';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const userOS = getOS();
-            const osSection = document.getElementById('smart-download-msg');
-            
-            // Define messages based on platform status
-            let htmlContent = '';
-
-            if (userOS === 'Windows') {
-                htmlContent = `
-                    <div class="glass rounded-2xl p-8 border-t border-green-500/30 bg-gradient-to-b from-green-500/10 to-transparent card-hover text-center">
-                        <h3 class="text-2xl font-bold mb-4 text-green-400">You are on Windows</h3>
-                        <p class="text-gray-300 mb-6">Great news! The stable Hyde Music app is available for your device.</p>
-                        <a href="downloadHydeMusicWindows.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-black font-semibold button-hover transition-colors shadow-lg hover:bg-gray-200">
-                            Download Windows App
-                        </a>
-                    </div>`;
-            } else if (userOS === 'Android') {
-                htmlContent = `
-                    <div class="glass rounded-2xl p-8 border-t border-green-500/30 bg-gradient-to-b from-green-500/10 to-transparent card-hover text-center">
-                        <h3 class="text-2xl font-bold mb-4 text-green-400">You are on Android</h3>
-                        <p class="text-gray-300 mb-6">Great news! The official Hyde Music Android app is now available.</p>
-                        <a href="downloadHydeMusicAndroid.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-black font-semibold button-hover transition-colors shadow-lg hover:bg-gray-200">
-                            Download APK
-                        </a>
-                    </div>`;
-            } else if (userOS === 'Apple' || userOS === 'Linux') {
-                htmlContent = `
-                    <div class="glass rounded-2xl p-8 border-t border-red-500/30 bg-gradient-to-b from-red-500/10 to-transparent card-hover text-center">
-                        <h3 class="text-2xl font-bold mb-4 text-red-400">Native App Not Available</h3>
-                        <p class="text-gray-300">
-                            Development for <strong class="text-white">${userOS}</strong> has been canceled to focus on Windows/Android. 
-                            Please use the web version at music.hydeos.tech instead.
-                        </p>
-                    </div>`;
-            } else {
-                htmlContent = `<p class="text-gray-400 text-center">Please select your platform below.</p>`;
-            }
-
-            if (osSection) osSection.innerHTML = htmlContent;
-
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (menuToggle) {
-                menuToggle.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('active');
-                });
-            }
-        });
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+        body { background: #0a0a0a; color: #f4f4f5; font-family: 'Inter', system-ui, sans-serif; }
+        .glass { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
+        .glow { position: absolute; border-radius: 9999px; filter: blur(110px); pointer-events: none; }
+        .phone { display: block; border-radius: 2.2rem; padding: 7px; background: linear-gradient(160deg, #3f3f46, #18181b 45%, #27272a); box-shadow: 0 30px 80px -20px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06) inset; }
+        .phone img { border-radius: 1.75rem; display: block; width: 100%; height: auto; }
+        button.phone { cursor: zoom-in; transition: transform .25s ease; }
+        button.phone:hover { transform: translateY(-6px); }
+        .gallery { scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #3f3f46 transparent; }
+        .gallery > figure { scroll-snap-align: center; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+        .md h3 { color: #fff; font-weight: 700; margin: 1.1rem 0 .4rem; font-size: 1rem; }
+        .md p { margin: .5rem 0; color: #a1a1aa; }
+        .md ul { list-style: disc; padding-left: 1.25rem; margin: .4rem 0; color: #a1a1aa; }
+        .md li { margin: .25rem 0; }
+        .md strong { color: #e4e4e7; }
+        .md code { background: rgba(255,255,255,.08); padding: .1rem .35rem; border-radius: .3rem; font-size: .85em; color: #fca5a5; word-break: break-all; }
+        .md pre { background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.08); padding: .75rem; border-radius: .6rem; overflow-x: auto; font-size: .72rem; color: #a1a1aa; }
+        .md pre code { background: none; padding: 0; color: inherit; word-break: normal; }
+        .md a { color: #f87171; text-decoration: underline; }
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chev { transform: rotate(180deg); }
+        #lightbox { display: none; }
+        #lightbox.open { display: flex; }
+    </style>
 </head>
-<body>
-    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+<body class="antialiased overflow-x-hidden">
+    <nav class="fixed top-0 w-full z-50 glass transition-colors duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-end gap-2 group cursor-default">
@@ -130,203 +92,237 @@
                     <span class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 group-hover:text-red-400 transition-colors">by Tirth</span>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Home</a>
-                        <a href="aboutus.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">About</a>
-                        <a href="index.html#ecosystem" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Projects</a>
-                        <a href="documents.html" class="text-white bg-white/5 px-3 py-2 rounded-md transition-all font-medium">Docs Hub</a>
+                    <div class="ml-10 flex items-baseline space-x-4 lg:space-x-6">
+                        <a href="#new" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">What's New</a>
+                        <a href="#screens" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Screenshots</a>
+                        <a href="#install" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Install</a>
+                        <a href="#releases" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Releases</a>
+                        <a href="index.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-all">Hyde Home</a>
                         <a href="donate.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-medium shadow-lg shadow-red-900/20">Donate</a>
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                     </button>
                 </div>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full">
-            <div class="px-4 pt-4 pb-6 space-y-2 bg-black/90 backdrop-blur-xl">
-                <a href="index.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Home</a>
-                <a href="aboutus.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">About</a>
-                <a href="index.html#ecosystem" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Projects</a>
-                <a href="documents.html" class="block px-3 py-3 text-lg text-white font-medium hover:bg-white/10 rounded-lg">Docs Hub</a>
+            <div class="px-4 pt-4 pb-6 space-y-1 bg-black/90 backdrop-blur-xl">
+                <a href="#new" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">What's New</a>
+                <a href="#screens" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Screenshots</a>
+                <a href="#install" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Install</a>
+                <a href="#releases" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Releases</a>
+                <a href="index.html" class="block px-3 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-lg">Hyde Home</a>
                 <a href="donate.html" class="block px-3 py-3 text-lg text-red-400 font-bold hover:bg-white/10 rounded-lg">Donate</a>
             </div>
         </div>
     </nav>
 
     <main>
-        <section class="pt-32 pb-20 px-4 relative overflow-hidden">
-            <div class="max-w-5xl mx-auto text-center fade-in">
-                <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter">
-                    Hyde <span class="text-red-500 text-shadow-glow">Music</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-                    Documentation &amp; User Guide v2.4
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#install" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Installation</a>
-                    <a href="#shortcuts" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Shortcuts</a>
-                    <a href="#troubleshooting" class="px-8 py-4 rounded-xl glass text-white font-semibold button-hover hover:bg-white/5 border border-white/10 transition-colors">Troubleshooting</a>
+        <!-- Hero -->
+        <section class="relative pt-32 md:pt-40 pb-16 px-4 overflow-hidden">
+            <div class="glow w-[520px] h-[520px] bg-red-600/25 -top-40 -left-40"></div>
+            <div class="glow w-[480px] h-[480px] bg-orange-500/10 top-40 -right-40"></div>
+            <div class="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+                <div class="text-center lg:text-left">
+                    <a href="#new" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-sm text-gray-300 hover:text-white mb-8">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <span><span id="hero-version">Version 6.0</span> is out</span>
+                    </a>
+                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-6">
+                        Hyde <span class="text-red-500">Music</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Every song you love, free and ad-free. A Liquid Glass design, word-by-word lyrics and a shuffle that actually flows.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                        <a id="dl-primary" href="https://github.com/Hyde-OpenSource/Hyde-Music-Andorid/releases/latest" class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-red-600 hover:bg-red-700 text-white font-semibold shadow-xl shadow-red-900/30 transition-colors">
+                            <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22a11.5 11.5 0 0 0-9.84 0L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+                            <span class="text-left leading-tight"><span class="block text-xs font-medium text-red-100/80">Download for Android</span><span id="dl-primary-label" class="block">Hyde Music APK</span></span>
+                        </a>
+                        <a id="dl-secondary" href="https://github.com/Hyde-OpenSource/Hyde-Music-Andorid/releases/latest" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl glass hover:bg-white/10 text-white font-semibold transition-colors">
+                            <span id="dl-secondary-label">All downloads</span>
+                        </a>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500" id="dl-meta">Free · Android 8.0+ · No account needed</p>
+                    <p class="mt-2 text-sm text-gray-500 hidden max-w-xl mx-auto lg:mx-0" id="desktop-hint">On a computer? Open this page on your Android phone to install, or download here and copy the APK to your phone.</p>
+                </div>
+                <div class="relative h-[460px] sm:h-[560px] md:h-[600px] flex items-center justify-center" aria-hidden="true">
+                    <div class="phone absolute w-[170px] sm:w-[210px] md:w-[240px] -rotate-[8deg] -translate-x-[90px] sm:-translate-x-[130px] md:-translate-x-[150px] translate-y-6 opacity-80">
+                        <img src="assets/music/library.webp" alt="" width="540" height="1171">
+                    </div>
+                    <div class="phone absolute w-[170px] sm:w-[210px] md:w-[240px] rotate-[8deg] translate-x-[90px] sm:translate-x-[130px] md:translate-x-[150px] translate-y-6 opacity-80">
+                        <img src="assets/music/lyrics.webp" alt="" width="540" height="1171">
+                    </div>
+                    <div class="phone relative w-[200px] sm:w-[240px] md:w-[270px] z-10">
+                        <img src="assets/music/now-playing.webp" alt="" width="540" height="1171" fetchpriority="high">
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- What's new -->
+        <section id="new" class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">What's new in 6.0</p>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Smarter, and much cooler.</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <article class="glass rounded-3xl p-8 reveal">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center text-2xl mb-5" aria-hidden="true">✨</div>
+                        <h3 class="text-2xl font-bold mb-3">AI Shuffle</h3>
+                        <p class="text-gray-400 leading-relaxed">Each song is chosen to follow the last one: same artist, same album, similar length. It never plays more than two in a row by one artist, and it's never the same order twice. Find it in the player, the queue, next to Play on every playlist and album, and in the long-press menu.</p>
+                    </article>
+                    <article class="glass rounded-3xl p-8 reveal">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center text-2xl mb-5" aria-hidden="true">➕</div>
+                        <h3 class="text-2xl font-bold mb-3">Suggested Songs</h3>
+                        <p class="text-gray-400 leading-relaxed">Fresh picks at the bottom of your playlists, based on what's already in them, without repeats. Tap <strong class="text-white">+</strong> to add one, refresh for new ideas, or AI-shuffle the whole list.</p>
+                    </article>
+                    <article class="glass rounded-3xl p-8 reveal">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center text-2xl mb-5" aria-hidden="true">🔄</div>
+                        <h3 class="text-2xl font-bold mb-3">Reload Home</h3>
+                        <p class="text-gray-400 leading-relaxed">Tap the reload button or pull down for a fresh Home feed: new quick picks, mixes and recommendations.</p>
+                    </article>
+                    <article class="glass rounded-3xl p-8 reveal">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center text-2xl mb-5" aria-hidden="true">🌡️</div>
+                        <h3 class="text-2xl font-bold mb-3">Runs cool</h3>
+                        <p class="text-gray-400 leading-relaxed">60 Hz by default, far fewer screen redraws, artwork loaded at the size it's shown, and nothing animating while the app is in the background. Want 90/120 Hz back? <em>Settings › Appearance › High refresh rate</em>.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots -->
+        <section id="screens" class="py-20">
+            <div class="max-w-6xl mx-auto px-4 text-center mb-12 reveal">
+                <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">Screenshots</p>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Designed like glass.</h2>
+                <p class="text-gray-400 mt-4">Swipe through, and tap one to enlarge it.</p>
+            </div>
+            <div class="gallery flex gap-6 overflow-x-auto px-6 md:px-[max(1.5rem,calc((100vw-72rem)/2))] pb-8">
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/lyrics.jpg" aria-label="Enlarge: lyrics"><img src="assets/music/lyrics.webp" alt="Word-by-word synced lyrics over the artwork colours" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Lyrics</strong>Word by word, with translation</figcaption></figure>
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/now-playing.jpg" aria-label="Enlarge: Now Playing"><img src="assets/music/now-playing.webp" alt="Now Playing screen with artwork, seek bar and audio format" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Now Playing</strong>Colours from the artwork</figcaption></figure>
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/player-menu.jpg" aria-label="Enlarge: player menu"><img src="assets/music/player-menu.webp" alt="Glass context menu in the player" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Glass menus</strong>Favourite, share, sleep timer</figcaption></figure>
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/library.jpg" aria-label="Enlarge: Library"><img src="assets/music/library.webp" alt="Library with playlists, artists, albums and recently added" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Library</strong>Everything you saved</figcaption></figure>
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/playlists.jpg" aria-label="Enlarge: playlists"><img src="assets/music/playlists.webp" alt="Playlists grid with covers" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Playlists</strong>Create, import, reorder</figcaption></figure>
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/search.jpg" aria-label="Enlarge: Search"><img src="assets/music/search.webp" alt="Search with recent searches" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Search</strong>Songs, albums, artists, videos</figcaption></figure>
+                <figure class="shrink-0 w-[220px] md:w-[250px]"><button class="phone w-full" data-full="assets/music/settings.jpg" aria-label="Enlarge: Settings"><img src="assets/music/settings.webp" alt="Grouped settings screen" width="540" height="1171" loading="lazy"></button><figcaption class="mt-4 text-sm text-gray-400"><strong class="text-white block">Settings</strong>Tune every detail</figcaption></figure>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">Features</p>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Everything a music app should be.</h2>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">No ads, ever</h3><p class="text-gray-400 text-sm leading-relaxed">No ads, no tracking, no account needed. Sign in only if you want your YouTube Music library.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Liquid Glass</h3><p class="text-gray-400 text-sm leading-relaxed">Real refracting glass, or a light <em>Performance</em> blur that keeps older phones smooth.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Synced lyrics</h3><p class="text-gray-400 text-sm leading-relaxed">Word-by-word lyrics from several providers, with translation, romanisation and share cards.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Offline downloads</h3><p class="text-gray-400 text-sm leading-relaxed">Save songs, albums and playlists and listen without a connection.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">High-quality audio</h3><p class="text-gray-400 text-sm leading-relaxed">The best available stream, with its format shown in the player, plus normalisation, equaliser, speed and pitch.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Cast &amp; Listen Together</h3><p class="text-gray-400 text-sm leading-relaxed">Play on Cast and DLNA speakers, or listen in sync with friends.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Your library</h3><p class="text-gray-400 text-sm leading-relaxed">Playlists, albums, artists, history and stats, with import and backup &amp; restore.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">In-app updates</h3><p class="text-gray-400 text-sm leading-relaxed">New versions download, verify their checksum and install from inside the app.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Install -->
+        <section id="install" class="py-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">Install</p>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Ready in a minute.</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-5 mb-10">
+                    <div class="glass rounded-2xl p-6 reveal"><div class="text-red-400 font-bold text-sm mb-2">STEP 1</div><h3 class="font-bold text-lg mb-2">Download the APK</h3><p class="text-gray-400 text-sm leading-relaxed">Use the button at the top of this page on your phone. Not sure which file? Pick <strong class="text-white">arm64</strong>: it fits almost every phone made since 2017.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><div class="text-red-400 font-bold text-sm mb-2">STEP 2</div><h3 class="font-bold text-lg mb-2">Allow the install</h3><p class="text-gray-400 text-sm leading-relaxed">Open the downloaded file. If Android asks, allow <em>Install unknown apps</em> for your browser or Files app, then go back.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><div class="text-red-400 font-bold text-sm mb-2">STEP 3</div><h3 class="font-bold text-lg mb-2">Open and listen</h3><p class="text-gray-400 text-sm leading-relaxed">Choose Liquid Glass or Performance in the short welcome tour, and you're done. Sign-in is optional.</p></div>
+                </div>
+                <div class="glass rounded-3xl overflow-hidden reveal">
+                    <table class="w-full text-left text-sm">
+                        <thead><tr class="border-b border-white/10 text-gray-400"><th class="py-4 px-4 sm:px-6 font-medium">File</th><th class="py-4 px-4 sm:px-6 font-medium">For</th><th class="py-4 px-6 font-medium hidden sm:table-cell">Size</th></tr></thead>
+                        <tbody>
+                            <tr class="border-b border-white/5"><td class="py-4 px-4 sm:px-6 font-mono text-white break-all" data-name="arm64">HydeMusic-6.0-arm64-release.apk</td><td class="py-4 px-4 sm:px-6 text-gray-300">Almost every phone (64-bit ARM). <span class="text-green-400">Recommended</span></td><td class="py-4 px-6 text-gray-400 hidden sm:table-cell" data-size="arm64">≈ 79 MB</td></tr>
+                            <tr><td class="py-4 px-4 sm:px-6 font-mono text-white break-all" data-name="universal">HydeMusic-6.0-universal-release.apk</td><td class="py-4 px-4 sm:px-6 text-gray-300">Older 32-bit phones, tablets, emulators: works everywhere</td><td class="py-4 px-6 text-gray-400 hidden sm:table-cell" data-size="universal">≈ 164 MB</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grid md:grid-cols-2 gap-5 mt-5">
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Updating from 5.x</h3><p class="text-gray-400 text-sm leading-relaxed">Install 6.0 over your current version. Your library, playlists, downloads and settings stay. Or let the app do it: <em>Settings › App › Software Update</em>.</p></div>
+                    <div class="glass rounded-2xl p-6 reveal"><h3 class="font-bold text-lg mb-2">Verify your download</h3><p class="text-gray-400 text-sm leading-relaxed">Every release lists SHA-256 checksums. Compare them with <code class="text-red-300">sha256sum file.apk</code>. Releases are signed with the Hyde Open Source key.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platforms -->
+        <section id="platforms" class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">Platforms</p>
+                    <h2 class="text-4xl font-bold tracking-tight">Where you can use it</h2>
+                </div>
+                <div class="glass rounded-3xl overflow-hidden reveal">
+                    <table class="w-full text-left text-sm">
+                        <tbody>
+                            <tr class="border-b border-white/5"><td class="py-4 px-4 sm:px-6 text-white font-medium">Android 8.0+</td><td class="py-4 px-4 sm:px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/15 text-green-400 border border-green-500/30 whitespace-nowrap">6.0 · Stable</span></td><td class="py-4 px-4 sm:px-6 text-gray-400">The full app described on this page.</td></tr>
+                            <tr class="border-b border-white/5"><td class="py-4 px-4 sm:px-6 text-white font-medium">Windows 10/11</td><td class="py-4 px-4 sm:px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/15 text-yellow-300 border border-yellow-500/30">Legacy</span></td><td class="py-4 px-4 sm:px-6 text-gray-400">The older desktop player is still available (<a class="text-red-400 underline" href="downloadHydeMusicWindows.html">download</a>). It doesn't have the 6.0 features.</td></tr>
+                            <tr class="border-b border-white/5"><td class="py-4 px-4 sm:px-6 text-white font-medium">Linux</td><td class="py-4 px-4 sm:px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 border border-white/15 whitespace-nowrap">Not yet</span></td><td class="py-4 px-4 sm:px-6 text-gray-400">A desktop version of the new app is being looked at.</td></tr>
+                            <tr><td class="py-4 px-4 sm:px-6 text-white font-medium">iPhone / macOS</td><td class="py-4 px-4 sm:px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-gray-300 border border-white/15 whitespace-nowrap">Not planned</span></td><td class="py-4 px-4 sm:px-6 text-gray-400">Apple doesn't allow installing apps from outside the App Store.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Release history (live from GitHub) -->
+        <section id="releases" class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">Release history</p>
+                    <h2 class="text-4xl font-bold tracking-tight">Every version, every change</h2>
+                    <p class="text-gray-400 mt-4">Loaded live from <a class="text-red-400 underline" href="https://github.com/Hyde-OpenSource/Hyde-Music-Andorid/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>, so it's always current.</p>
+                </div>
+                <div id="release-list" class="space-y-4">
+                    <div class="glass rounded-2xl p-6 text-gray-500 text-sm">Loading releases…</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <p class="text-red-400 font-semibold tracking-widest uppercase text-xs mb-3">Help</p>
+                    <h2 class="text-4xl font-bold tracking-tight">Questions &amp; fixes</h2>
+                </div>
+                <div class="space-y-3">
+                    <details class="glass rounded-2xl p-5 reveal"><summary class="flex justify-between items-center gap-4 font-semibold">"App not installed" error <span class="chev transition-transform text-gray-500" aria-hidden="true">⌄</span></summary><p class="text-gray-400 text-sm mt-3 leading-relaxed">Usually the arm64 APK on a 32-bit device. Try the universal APK. If you have a build from somewhere else installed, uninstall it first. Apps signed with different keys can't update each other.</p></details>
+                    <details class="glass rounded-2xl p-5 reveal"><summary class="flex justify-between items-center gap-4 font-semibold">Play Protect warns me <span class="chev transition-transform text-gray-500" aria-hidden="true">⌄</span></summary><p class="text-gray-400 text-sm mt-3 leading-relaxed">Play Protect flags apps that aren't from the Play Store. Hyde Music is open source and signed with the Hyde key. Tap <em>More details › Install anyway</em>.</p></details>
+                    <details class="glass rounded-2xl p-5 reveal"><summary class="flex justify-between items-center gap-4 font-semibold">Music stops when the screen is off <span class="chev transition-transform text-gray-500" aria-hidden="true">⌄</span></summary><p class="text-gray-400 text-sm mt-3 leading-relaxed">Some phones (Samsung, Xiaomi, OnePlus) close background apps aggressively. Set Hyde Music's battery usage to <em>Unrestricted</em> in Android Settings › Apps › Hyde Music › Battery.</p></details>
+                    <details class="glass rounded-2xl p-5 reveal"><summary class="flex justify-between items-center gap-4 font-semibold">The phone feels warm <span class="chev transition-transform text-gray-500" aria-hidden="true">⌄</span></summary><p class="text-gray-400 text-sm mt-3 leading-relaxed">Update to 6.0, which is built to run cool. For the lightest setup, set <em>Settings › Appearance › Glass</em> to Performance, keep High refresh rate off, and choose the Gradient player background.</p></details>
+                    <details class="glass rounded-2xl p-5 reveal"><summary class="flex justify-between items-center gap-4 font-semibold">A song won't play <span class="chev transition-transform text-gray-500" aria-hidden="true">⌄</span></summary><p class="text-gray-400 text-sm mt-3 leading-relaxed">Some tracks are blocked in certain regions. Skip to the next song, or search for another version. If it keeps happening, report it below with the song name.</p></details>
+                    <details class="glass rounded-2xl p-5 reveal"><summary class="flex justify-between items-center gap-4 font-semibold">How is AI Shuffle different from Shuffle? <span class="chev transition-transform text-gray-500" aria-hidden="true">⌄</span></summary><p class="text-gray-400 text-sm mt-3 leading-relaxed">Shuffle is a random order. AI Shuffle picks each next song to fit the one before (artist, album, length) but limits runs to two songs per artist, so a playlist flows without one artist taking over.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support -->
         <section class="py-20 px-4">
-            <div class="max-w-4xl mx-auto space-y-24">
-                
-                <div class="animate-on-scroll" id="smart-download-msg"></div>
-
-                <div class="animate-on-scroll" id="platforms">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Platform Availability</h2>
-                    <div class="glass rounded-3xl p-8 overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="border-b border-white/10">
-                                        <th class="py-4 px-6 text-gray-400 font-medium">Operating System</th>
-                                        <th class="py-4 px-6 text-gray-400 font-medium">Status</th>
-                                        <th class="py-4 px-6 text-gray-400 font-medium">Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td class="py-4 px-6 text-white font-medium">Web Browser</td>
-                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">Stable</span></td>
-                                        <td class="py-4 px-6 text-gray-400">Works on Chrome, Firefox, Safari, and Edge</td>
-                                    </tr>
-                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td class="py-4 px-6 text-white font-medium">Windows 10/11</td>
-                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">Live & Stable</span></td>
-                                        <td class="py-4 px-6 text-gray-400">Zero errors. Native media keys support included</td>
-                                    </tr>
-                                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td class="py-4 px-6 text-white font-medium">Android</td>
-                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">Live & Stable</span></td>
-                                        <td class="py-4 px-6 text-gray-400">Official APK release is out. Download now.</td>
-                                    </tr>
-                                    <tr class="hover:bg-white/5 transition-colors">
-                                        <td class="py-4 px-6 text-white font-medium">macOS / Linux</td>
-                                        <td class="py-4 px-6"><span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30">Canceled</span></td>
-                                        <td class="py-4 px-6 text-gray-400">Project halted. Use web version instead</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            <div class="max-w-4xl mx-auto glass rounded-3xl p-8 md:p-14 text-center bg-gradient-to-t from-red-500/10 to-transparent reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Made by one developer, free for everyone.</h2>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto">Found a bug or want a feature? Tell us. If Hyde Music makes your day better, a star or a small donation keeps it going.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-3">
+                    <a href="Issues&amp;FeatureRequestsforhydemusic.html" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition-colors">Report an issue</a>
+                    <a href="https://github.com/Hyde-OpenSource/Hyde-Music-Andorid" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl glass hover:bg-white/10 text-white font-semibold transition-colors">Star on GitHub</a>
+                    <a href="donate.html" class="px-6 py-3 rounded-xl glass hover:bg-white/10 text-white font-semibold transition-colors">Donate</a>
                 </div>
-
-                <div class="animate-on-scroll" id="features">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Core Features</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-3">Audio Normalization</h3>
-                            <p class="text-gray-400 leading-relaxed text-sm">Uses the Web Audio API to analyze decibel levels in real-time, automatically adjusting volume for a consistent experience.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-3">Smart Caching</h3>
-                            <p class="text-gray-400 leading-relaxed text-sm">Saves songs to IndexedDB. If you play that song again, it loads instantly from your disk instead of using bandwidth.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-3">Privacy First</h3>
-                            <p class="text-gray-400 leading-relaxed text-sm">No account required. Playlists are stored locally, and search queries are routed through an anonymous proxy.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="animate-on-scroll" id="install">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Installation Guide</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="glass rounded-2xl p-8 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.951-1.801"/></svg>
-                                Windows Installation
-                            </h3>
-                            <ol class="space-y-4 text-gray-300 list-decimal list-inside">
-                                <li>Download <code>HydeMusic-Setup.exe</code></li>
-                                <li>Run the installer</li>
-                                <li>If SmartScreen appears, click <strong class="text-white">More Info</strong> → <strong class="text-white">Run Anyway</strong></li>
-                                <li>The app will install and launch instantly</li>
-                            </ol>
-                        </div>
-                        <div class="glass rounded-2xl p-8 card-hover">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414C17.523 15.3414 15.3468 18.0673 12 18.0673C8.65319 18.0673 6.47698 15.3414 6.47698 15.3414C6.47698 15.3414 7.2343 14.155 8.18824 13.0645C8.94557 13.9184 10.3664 15.0552 12 15.0552C13.6336 15.0552 15.0544 13.9184 15.8118 13.0645C16.7657 14.155 17.523 15.3414 17.523 15.3414ZM12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM18.2327 16.7145C18.2327 16.7145 15.8653 20.0094 12 20.0094C8.13472 20.0094 5.76726 16.7145 5.76726 16.7145C4.82029 15.1989 4.34681 12.9255 4.34681 10.4623C4.34681 6.57948 6.47698 3.54848 8.46545 3.54848C9.41242 3.54848 10.3594 4.02194 11.2111 4.77977C11.4952 5.06392 11.7792 5.34808 12 5.63223C12.2208 5.34808 12.5048 5.06392 12.7889 4.77977C13.6406 4.02194 14.5876 3.54848 15.5345 3.54848C17.523 3.54848 19.6532 6.57948 19.6532 10.4623C19.6532 12.9255 19.1797 15.1989 18.2327 16.7145Z"/></svg>
-                                Android Installation
-                            </h3>
-                            <p class="text-gray-300 mb-4">Install the official APK for Android:</p>
-                            <ol class="space-y-4 text-gray-300 list-decimal list-inside">
-                                <li>Download the <code>HydeMusic.apk</code> file</li>
-                                <li>Open the file on your device</li>
-                                <li>If prompted, allow installation from unknown sources</li>
-                                <li>The app will install and is ready to stream</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="animate-on-scroll" id="shortcuts">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Keyboard Shortcuts</h2>
-                    <div class="glass rounded-3xl p-8 overflow-hidden max-w-2xl mx-auto">
-                        <table class="w-full text-left border-collapse">
-                            <tbody>
-                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                    <td class="py-4 px-6 text-gray-300">Play / Pause</td>
-                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">Space</kbd></td>
-                                </tr>
-                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                    <td class="py-4 px-6 text-gray-300">Next Track</td>
-                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">L</kbd> or <kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">Ctrl + →</kbd></td>
-                                </tr>
-                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                    <td class="py-4 px-6 text-gray-300">Previous Track</td>
-                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">J</kbd> or <kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">Ctrl + ←</kbd></td>
-                                </tr>
-                                <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
-                                    <td class="py-4 px-6 text-gray-300">Volume Up / Down</td>
-                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">↑</kbd> / <kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">↓</kbd></td>
-                                </tr>
-                                <tr class="hover:bg-white/5 transition-colors">
-                                    <td class="py-4 px-6 text-gray-300">Search</td>
-                                    <td class="py-4 px-6"><kbd class="px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white">/</kbd></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="animate-on-scroll" id="troubleshooting">
-                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Troubleshooting</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">Music stops in background</h4>
-                            <p class="text-gray-400 text-sm">Browser battery optimization often kills background tabs on mobile. Use the "Install App" (PWA) feature.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover">
-                            <h4 class="text-lg font-bold text-white mb-2">Song fails to load</h4>
-                            <p class="text-gray-400 text-sm">Usually due to geo-blocking. Try skipping to the next song or searching for a generic version.</p>
-                        </div>
-                        <div class="glass rounded-2xl p-6 card-hover md:col-span-2">
-                            <h4 class="text-lg font-bold text-white mb-2">Windows App: "Unsafe File" Warning</h4>
-                            <p class="text-gray-400 text-sm">This is expected for indie software. We don't buy corporate signing certificates from Microsoft. The app is virus-free and stable - simply click "Run Anyway".</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="animate-on-scroll">
-                    <div class="glass rounded-3xl p-10 text-center bg-gradient-to-t from-red-500/10 to-transparent border-b border-red-500/20">
-                        <h3 class="text-2xl font-bold mb-4 text-white">Feedback & Support</h3>
-                        <p class="text-gray-400 mb-8 max-w-lg mx-auto">We listen to our community. Found a bug or want a feature? Let us know!</p>
-                        <div class="flex justify-center gap-4">
-                            <a href="Issues&FeatureRequestsforhydemusic.html" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition-colors shadow-lg shadow-red-500/20">Report Issue</a>
-                            <a href="mailto:contact@hyde.com" class="px-6 py-3 rounded-xl glass text-white font-semibold hover:bg-white/5 transition-colors">Contact Support</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
     </main>
@@ -334,67 +330,149 @@
     <footer class="py-12 px-4 border-t border-white/10 mt-10 bg-black/40">
         <div class="max-w-6xl mx-auto text-center">
             <h3 class="text-2xl font-bold text-red-500 mb-2">Hyde</h3>
-            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed &amp; Developed by Tirth</p>
-            <div class="flex justify-center gap-8 mb-8">
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Designed &amp; Developed by Tirth · Hyde OpenSource</p>
+            <div class="flex flex-wrap justify-center gap-6 mb-8 text-sm">
                 <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
                 <a href="documents.html" class="text-gray-400 hover:text-white transition-colors">Docs Hub</a>
+                <a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors">About</a>
                 <a href="donate.html" class="text-gray-400 hover:text-white transition-colors">Donate</a>
             </div>
-            <p class="text-gray-600 text-xs">&copy; 2026 Hyde Organization. All rights reserved.</p>
+            <p class="text-gray-600 text-xs max-w-2xl mx-auto">Hyde Music is for personal and educational use. Music is streamed from publicly available sources; Hyde is not affiliated with YouTube or Google.</p>
+            <p class="text-gray-600 text-xs mt-2">&copy; 2026 Hyde Organization.</p>
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-md items-center justify-center p-6" role="dialog" aria-modal="true" aria-label="Screenshot">
+        <button id="lightbox-close" class="absolute top-5 right-5 text-white text-4xl leading-none p-2" aria-label="Close">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-h-[90vh] max-w-full rounded-3xl shadow-2xl">
+    </div>
+
     <script>
-        // OS Detection
-        function getOS() {
-            const ua = window.navigator.userAgent.toLowerCase();
-            if (ua.includes('win')) return 'Windows';
-            if (ua.includes('android')) return 'Android';
-            if (ua.includes('mac') || ua.includes('iphone') || ua.includes('ipad')) return 'Apple';
-            return 'Web';
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            const userOS = getOS();
-            const osSection = document.getElementById('smart-download-msg');
-            let htmlContent = '';
-            if (userOS === 'Windows') {
-                htmlContent = '<div style="background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">You are on Windows</h3><p style="color:#a1a1aa;">Download the stable Hyde Music app!</p><a href="downloadHydeMusicWindows.html" style="display:inline-flex;margin-top:1rem;padding:0.625rem 1.25rem;background:#f4f4f5;color:#0a0a0a;border-radius:8px;font-weight:500;text-decoration:none;">Download Windows App</a></div>';
-            } else if (userOS === 'Android') {
-                htmlContent = '<div style="background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">You are on Android</h3><p style="color:#a1a1aa;">Download the official Android app!</p><a href="downloadHydeMusicAndroid.html" style="display:inline-flex;margin-top:1rem;padding:0.625rem 1.25rem;background:#f4f4f5;color:#0a0a0a;border-radius:8px;font-weight:500;text-decoration:none;">Download APK</a></div>';
-            } else {
-                htmlContent = '<div style="background:rgba(239,68,68,0.1);border-left:4px solid #ef4444;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><h3 style="margin-top:0;color:#f4f4f5;">Native App Not Available</h3><p style="color:#a1a1aa;">Please use the web version.</p></div>';
-            }
-            if (osSection) osSection.innerHTML = htmlContent;
-        });
+    (() => {
+        const REPO = 'Hyde-OpenSource/Hyde-Music-Andorid';
+        const ua = navigator.userAgent;
+        const isAndroid = /android/i.test(ua);
+        if (!/android|iphone|ipad|mobile/i.test(ua)) document.getElementById('desktop-hint').classList.remove('hidden');
 
-        // Navbar
+        // Navbar + mobile menu
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) { navbar.classList.add('shadow-lg', 'bg-black/50'); }
-            else { navbar.classList.remove('shadow-lg', 'bg-black/50'); }
+        addEventListener('scroll', () => navbar.classList.toggle('bg-black/60', scrollY > 20), { passive: true });
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        toggle.addEventListener('click', () => {
+            const open = !menu.classList.toggle('hidden');
+            toggle.setAttribute('aria-expanded', String(open));
         });
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
+        // Reveal on scroll
+        const io = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        }), { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const close = () => { lb.classList.remove('open'); lbImg.removeAttribute('src'); };
+        document.querySelectorAll('[data-full]').forEach(b => b.addEventListener('click', () => {
+            lbImg.src = b.dataset.full;
+            lbImg.alt = b.querySelector('img').alt;
+            lb.classList.add('open');
+            document.getElementById('lightbox-close').focus();
+        }));
+        lb.addEventListener('click', e => { if (e.target !== lbImg) close(); });
+        addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+        // Tiny, safe Markdown -> HTML for release notes (escapes everything first).
+        const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const inline = s => esc(s)
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/(^|[\s(>])_([^_]+)_(?=[\s.,)!?:<]|$)/g, '$1<em>$2</em>')
+            .replace(/(^|[\s(>])\*([^*\s][^*]*)\*(?=[\s.,)!?:<]|$)/g, '$1<em>$2</em>')
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        function md(src) {
+            const out = []; let list = false, code = null;
+            const endList = () => { if (list) { out.push('</ul>'); list = false; } };
+            for (const raw of String(src || '').replace(/\r/g, '').split('\n')) {
+                if (raw.trim().startsWith('```')) {
+                    if (code === null) { endList(); code = []; } else { out.push('<pre><code>' + esc(code.join('\n')) + '</code></pre>'); code = null; }
+                    continue;
                 }
-            });
-        }, observerOptions);
+                if (code !== null) { code.push(raw); continue; }
+                const line = raw.trim();
+                let m;
+                if (!line || /^-{3,}$/.test(line)) { endList(); }
+                else if ((m = line.match(/^#{1,6}\s+(.*)$/))) { endList(); out.push('<h3>' + inline(m[1]) + '</h3>'); }
+                else if ((m = line.match(/^[-*]\s+(.*)$/))) { if (!list) { out.push('<ul>'); list = true; } out.push('<li>' + inline(m[1]) + '</li>'); }
+                else { endList(); out.push('<p>' + inline(line) + '</p>'); }
+            }
+            endList();
+            if (code !== null) out.push('<pre><code>' + esc(code.join('\n')) + '</code></pre>');
+            return out.join('');
+        }
+        const mb = n => Math.round(n / 1048576) + ' MB';
+        const apk = (assets, word) => assets.find(a => /\.apk$/i.test(a.name) && a.name.toLowerCase().includes(word));
+        const date = (iso, opts) => new Date(iso).toLocaleDateString(undefined, opts);
 
-        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
-            observer.observe(elem);
-        });
+        fetch(`https://api.github.com/repos/${REPO}/releases?per_page=12`, { headers: { Accept: 'application/vnd.github+json' } })
+            .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+            .then(all => {
+                const releases = all.filter(r => !r.draft);
+                const latest = releases.find(r => !r.prerelease) || releases[0];
+                if (latest) {
+                    const apks = latest.assets.filter(a => /\.apk$/i.test(a.name));
+                    const arm = apk(apks, 'arm64');
+                    const uni = apk(apks, 'universal');
+                    const primary = arm || uni || apks[0];
+                    const v = String(latest.tag_name || '').replace(/^v/i, '');
+                    document.getElementById('hero-version').textContent = 'Version ' + v;
+                    if (primary) {
+                        document.getElementById('dl-primary').href = primary.browser_download_url;
+                        document.getElementById('dl-primary-label').textContent = `Hyde Music ${v}${arm ? ' · arm64' : ''} · ${mb(primary.size)}`;
+                    }
+                    const sec = document.getElementById('dl-secondary');
+                    if (arm && uni) {
+                        sec.href = uni.browser_download_url;
+                        document.getElementById('dl-secondary-label').textContent = `Universal APK · ${mb(uni.size)}`;
+                    } else {
+                        sec.href = latest.html_url;
+                    }
+                    document.getElementById('dl-meta').textContent =
+                        `Free · Android 8.0+ · Released ${date(latest.published_at, { day: 'numeric', month: 'long', year: 'numeric' })}` +
+                        (isAndroid ? ' · arm64 fits most phones' : '');
+                    // The table follows the latest release's real files (names and sizes).
+                    for (const [key, a] of [['arm64', arm], ['universal', uni]]) {
+                        if (!a) continue;
+                        document.querySelector(`[data-name="${key}"]`).textContent = a.name;
+                        document.querySelector(`[data-size="${key}"]`).textContent = mb(a.size);
+                    }
+                }
+                const list = document.getElementById('release-list');
+                list.innerHTML = '';
+                releases.forEach((r, i) => {
+                    const d = document.createElement('details');
+                    d.className = 'glass rounded-2xl p-6';
+                    d.open = i === 0;
+                    d.innerHTML =
+                        `<summary class="flex flex-wrap items-center gap-3"><span class="text-lg font-bold text-white">${esc(r.name || r.tag_name)}</span>` +
+                        `<span class="text-xs px-2 py-0.5 rounded-full bg-white/10 text-gray-300">${esc(r.tag_name)}</span>` +
+                        (r === latest ? '<span class="text-xs px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 border border-green-500/30">Latest</span>' : '') +
+                        (r.prerelease ? '<span class="text-xs px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-300">Beta</span>' : '') +
+                        `<span class="ml-auto text-sm text-gray-500">${esc(date(r.published_at, { day: 'numeric', month: 'short', year: 'numeric' }))}</span></summary>` +
+                        `<div class="md mt-4 text-sm leading-relaxed">${md(r.body)}</div>` +
+                        `<a class="inline-block mt-4 text-sm text-red-400 underline" href="${esc(r.html_url)}" target="_blank" rel="noopener noreferrer">Downloads for ${esc(r.tag_name)} →</a>`;
+                    list.appendChild(d);
+                });
+                if (!releases.length) throw new Error('empty');
+            })
+            .catch(() => {
+                document.getElementById('release-list').innerHTML =
+                    '<div class="glass rounded-2xl p-6 text-gray-400 text-sm">Couldn\'t reach GitHub right now. <a class="text-red-400 underline" href="https://github.com/Hyde-OpenSource/Hyde-Music-Andorid/releases" target="_blank" rel="noopener noreferrer">See all releases on GitHub →</a></div>';
+            });
+    })();
     </script>
 </body>
 </html>

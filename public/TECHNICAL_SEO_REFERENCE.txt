@@ -9,7 +9,7 @@
 <meta name="keywords" content="Privacy, Free Tools, Ad-Free Software, Windows App, Privacy-First, Open Source, Anonymous, No Tracking">
 <meta name="author" content="Tirth">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<link rel="canonical" href="https://hydeos.qzz.io/">
+<link rel="canonical" href="https://www.hydeos.tech/">
 ```
 
 ### aboutus.html
@@ -17,7 +17,7 @@
 <title>About Hyde - Our Mission for Privacy & Freedom | Built by Tirth</title>
 <meta name="description" content="About Hyde - Privacy is a Right. Meet Tirth, founder of the free, ad-free privacy-first software ecosystem.">
 <meta name="keywords" content="Privacy, Open Source, Free Software, Tirth, Hyde, No Ads, Data Minimization, Community">
-<link rel="canonical" href="https://hydeos.qzz.io/aboutus.html">
+<link rel="canonical" href="https://www.hydeos.tech/aboutus.html">
 ```
 
 ### music-docs.html
@@ -25,7 +25,7 @@
 <title>Hyde Music - Free Ad-Free Streaming | Setup Guide & Documentation by Tirth</title>
 <meta name="description" content="Hyde Music - Free, Ad-Free Music Streaming for Windows, Web & Android. Documentation, setup guides, and support by Tirth.">
 <meta name="keywords" content="Free Music Streaming, Ad-Free, Hyde Music, Windows App, Android App, Web Player, No Ads, Privacy Music">
-<link rel="canonical" href="https://hydeos.qzz.io/music-docs.html">
+<link rel="canonical" href="https://www.hydeos.tech/music-docs.html">
 ```
 
 ### browser-docs.html
@@ -33,7 +33,7 @@
 <title>Hyde Browser - Hardened Privacy Browser | Anonymous & Fast by Tirth</title>
 <meta name="description" content="Hyde Browser - Hardened, Privacy-Focused Browser by Tirth. Anti-fingerprinting, zero telemetry, complete anonymity. Coming 2026.">
 <meta name="keywords" content="Privacy Browser, Anti-Fingerprinting, Anonymous Browser, No Tracking, Hardened Browser, Windows Browser, Privacy-First">
-<link rel="canonical" href="https://hydeos.qzz.io/browser-docs.html">
+<link rel="canonical" href="https://www.hydeos.tech/browser-docs.html">
 ```
 
 ### downloader-docs.html
@@ -41,7 +41,7 @@
 <title>Hyde Downloader - Free Video & Audio Downloader | Windows App by Tirth</title>
 <meta name="description" content="Hyde Downloader - Free Windows Utility for Video & Audio Downloads. No ads, no spyware, completely private. Documentation by Tirth.">
 <meta name="keywords" content="Video Downloader, Audio Downloader, Windows Utility, Free Tool, No Ads, Private, Video Download, Audio Extraction">
-<link rel="canonical" href="https://hydeos.qzz.io/downloader-docs.html">
+<link rel="canonical" href="https://www.hydeos.tech/downloader-docs.html">
 ```
 
 ### documents.html
@@ -49,7 +49,7 @@
 <title>Hyde Central Documentation - Complete Guides & Legal Info by Tirth</title>
 <meta name="description" content="Hyde Central Documentation - Technical manuals for Hyde Music, Chat, Browser, Downloader. Complete guides, legal documents, and support.">
 <meta name="keywords" content="Hyde Music, Hyde Chat, Hyde Browser, Downloader, Privacy, Windows App, Android, Documentation, Legal, Terms, TOS, Privacy Policy">
-<link rel="canonical" href="https://hydeos.qzz.io/documents.html">
+<link rel="canonical" href="https://www.hydeos.tech/documents.html">
 ```
 
 ### donate.html
@@ -57,7 +57,7 @@
 <title>Donate to Hyde - Support Free Privacy Tools | Help Tirth Continue Innovation</title>
 <meta name="description" content="Support Hyde Development - Help Tirth build free, privacy-focused software. Fuel the privacy revolution, keep tools independent.">
 <meta name="keywords" content="Donate, Support, Privacy, Free Software, Funding, Independent, Privacy First, Ad-Free">
-<link rel="canonical" href="https://hydeos.qzz.io/donate.html">
+<link rel="canonical" href="https://www.hydeos.tech/donate.html">
 ```
 
 ---
@@ -68,20 +68,20 @@
 ```html
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://hydeos.qzz.io/[page-url]">
+<meta property="og:url" content="https://www.hydeos.tech/[page-url]">
 <meta property="og:title" content="[Page Title]">
 <meta property="og:description" content="[Meta Description]">
-<meta property="og:image" content="https://hydeos.qzz.io/logo.png">
+<meta property="og:image" content="https://www.hydeos.tech/logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Hyde">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://hydeos.qzz.io/[page-url]">
+<meta name="twitter:url" content="https://www.hydeos.tech/[page-url]">
 <meta name="twitter:title" content="[Page Title]">
 <meta name="twitter:description" content="[Meta Description]">
-<meta name="twitter:image" content="https://hydeos.qzz.io/logo.png">
+<meta name="twitter:image" content="https://www.hydeos.tech/logo.png">
 ```
 
 ---
@@ -94,8 +94,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Hyde",
-  "url": "https://hydeos.qzz.io",
-  "logo": "https://hydeos.qzz.io/logo.png",
+  "url": "https://www.hydeos.tech",
+  "logo": "https://www.hydeos.tech/logo.png",
   "description": "Free, privacy-first software ecosystem. Ad-free tools built by Tirth.",
   "founder": {
     "@type": "Person",
@@ -118,7 +118,7 @@
   "name": "Hyde [Product Name]",
   "applicationCategory": "[AudioApplication|WebBrowser|Utility]",
   "description": "[Product Description]",
-  "url": "https://hydeos.qzz.io/[page]",
+  "url": "https://www.hydeos.tech/[page]",
   "creator": {
     "@type": "Person",
     "name": "Tirth"
@@ -138,7 +138,7 @@
   "@context": "https://schema.org",
   "@type": "AboutPage",
   "name": "About Hyde",
-  "url": "https://hydeos.qzz.io/aboutus.html",
+  "url": "https://www.hydeos.tech/aboutus.html",
   "mainEntity": {
     "@type": "Organization",
     "name": "Hyde",
@@ -291,7 +291,7 @@
 - "Hyde Music"
 - "Hyde Browser"
 - "Tirth"
-- "hydeos.qzz.io"
+- "www.hydeos.tech"
 
 ---
 

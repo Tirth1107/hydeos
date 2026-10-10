@@ -141,13 +141,13 @@
 
 ✅ **Added to ALL pages:**
 - Canonical links pointing to official URLs
-  - https://hydeos.qzz.io/
-  - https://hydeos.qzz.io/aboutus.html
-  - https://hydeos.qzz.io/music-docs.html
-  - https://hydeos.qzz.io/browser-docs.html
-  - https://hydeos.qzz.io/downloader-docs.html
-  - https://hydeos.qzz.io/documents.html
-  - https://hydeos.qzz.io/donate.html
+  - https://www.hydeos.tech/
+  - https://www.hydeos.tech/aboutus.html
+  - https://www.hydeos.tech/music-docs.html
+  - https://www.hydeos.tech/browser-docs.html
+  - https://www.hydeos.tech/downloader-docs.html
+  - https://www.hydeos.tech/documents.html
+  - https://www.hydeos.tech/donate.html
 
 - robots meta tag: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
 
@@ -162,7 +162,7 @@
 ### 6. SITEMAP.XML - SEARCH ENGINE DISCOVERY
 
 ✅ **Updated sitemap.xml:**
-- Updated domain from hydebytirth.web.app to hydeos.qzz.io
+- Updated domain from hydebytirth.web.app to www.hydeos.tech
 - Added all pages with proper priority levels
 - Set lastmod dates to 2026-01-22
 - Defined changefreq for each page:
@@ -197,7 +197,7 @@ Slurp: Allow /
 DuckDuckBot: Allow /
 
 # Sitemap location
-Sitemap: https://hydeos.qzz.io/sitemap.xml
+Sitemap: https://www.hydeos.tech/sitemap.xml
 
 # Crawl delay for performance
 Crawl-delay: 1
@@ -308,7 +308,7 @@ Crawl-delay: 1
 **Creator/Developer:** Tirth  
 **Contact Email:** joshitirth1107@gmail.com  
 **GitHub:** https://github.com/Tirth1107/  
-**Domain:** https://hydeos.qzz.io/
+**Domain:** https://www.hydeos.tech/
 
 ---
 
