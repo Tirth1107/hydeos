@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyde Music — Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/logo.png">
+<style>
+  :root{
+    --bg:#0a0a0a; --raised:#111; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --text:#e7e7e7; --muted:#9a9a9a; --faint:#6b6b6b; --accent:#ef4444; --green:#4ade80;
+    --amber:#fbbf24; --red:#f87171; --radius:12px;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:#fca5a5}
+  button{font:inherit;cursor:pointer}
+  .hidden{display:none !important}
+
+  /* Login */
+  .login{min-height:100vh;display:grid;place-items:center;padding:24px}
+  .login-card{width:100%;max-width:360px;background:var(--raised);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .login-card h1{margin:0 0 4px;font-size:22px}
+  .login-card p{margin:0 0 20px;color:var(--muted);font-size:14px}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
+  input[type=email],input[type=password],input[type=text],textarea,select{
+    width:100%;padding:10px 12px;background:#0d0d0d;border:1px solid var(--line2);border-radius:9px;color:var(--text);font:inherit}
+  input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:9px;
+    border:1px solid var(--line2);background:#1a1a1a;color:var(--text);font-weight:600}
+  .btn:hover{border-color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;width:100%}
+  .btn.primary:hover{background:#dc2626}
+  .btn.sm{padding:5px 11px;font-size:13px;font-weight:500}
+  .btn.danger{color:var(--red);border-color:rgba(248,113,113,.4)}
+  .btn.danger:hover{background:rgba(248,113,113,.12)}
+  .err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
+
+  /* Shell */
+  header.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;
+    height:58px;padding:0 20px;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header .brand{font-weight:700;color:var(--accent);font-size:18px}
+  header .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line2);border-radius:999px;padding:2px 8px}
+  header .who{margin-left:auto;color:var(--muted);font-size:13px}
+  nav.tabs{display:flex;gap:4px;padding:12px 20px 0;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+  nav.tabs button{background:none;border:none;color:var(--muted);padding:8px 14px;border-radius:8px 8px 0 0;font-weight:600;border-bottom:2px solid transparent}
+  nav.tabs button[aria-selected=true]{color:var(--text);border-bottom-color:var(--accent)}
+  main{max-width:1200px;margin:0 auto;padding:20px}
+
+  /* Cards + stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px}
+  .stat{background:var(--raised);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .stat .n{font-size:28px;font-weight:700;letter-spacing:-.02em}
+  .stat .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+  .stat.warn .n{color:var(--amber)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .panel{background:var(--raised);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .panel h2{margin:0 0 12px;font-size:15px}
+  .bars .row{display:grid;grid-template-columns:120px 1fr 48px;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+  .bars .track{height:8px;background:#000;border-radius:999px;overflow:hidden}
+  .bars .fill{height:100%;background:var(--accent);border-radius:999px}
+  .bars .val{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+
+  /* Tables */
+  .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+  .toolbar input{max-width:280px}
+  .toolbar .spacer{flex:1}
+  .count{color:var(--muted);font-size:13px}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+  th{background:rgba(255,255,255,.03);color:var(--muted);font-size:12px;font-weight:600;position:sticky;top:0}
+  tr:last-child td{border-bottom:0}
+  td.mono{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid currentColor}
+  .pill.ok{color:var(--green)} .pill.blk{color:var(--red)}
+  .muted{color:var(--faint)}
+
+  /* Kill switches */
+  .flags{display:grid;gap:10px}
+  .flag{display:grid;grid-template-columns:200px 1fr auto;gap:14px;align-items:center;
+    background:var(--raised);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+  @media(max-width:760px){.flag{grid-template-columns:1fr;gap:8px}}
+  .flag .k{font-weight:600}
+  .flag .k small{display:block;color:var(--faint);font-weight:400;font-size:12px}
+  .flag.master{border-color:rgba(239,68,68,.4)}
+  .switch{position:relative;width:46px;height:26px;flex-shrink:0}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#333;border-radius:999px;transition:.2s}
+  .slider:before{content:"";position:absolute;height:20px;width:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+  .switch input:checked+.slider{background:var(--green)}
+  .switch input:checked+.slider:before{transform:translateX(20px)}
+  .switch.off input:checked+.slider{background:var(--green)}
+  .flag input[type=text]{font-size:13px}
+  .saved{color:var(--green);font-size:12px;opacity:0;transition:opacity .2s}
+  .saved.show{opacity:1}
+  .note{color:var(--muted);font-size:13px;margin:0 0 16px;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;background:rgba(251,191,36,.05)}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div id="login" class="login">
+  <form class="login-card" id="loginForm">
+    <h1>Hyde Music Admin</h1>
+    <p>Sign in with your admin account.</p>
+    <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" required></div>
+    <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div>
+    <button class="btn primary" type="submit" id="loginBtn">Sign in</button>
+    <div class="err" id="loginErr"></div>
+  </form>
+</div>
+
+<!-- App -->
+<div id="app" class="hidden">
+  <header class="top">
+    <span class="brand">Hyde</span><span class="tag">Admin</span>
+    <span class="who" id="who"></span>
+    <button class="btn sm" id="logout" style="margin-left:12px">Sign out</button>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="overview">Overview</button>
+    <button role="tab" aria-selected="false" data-tab="installs">Installs</button>
+    <button role="tab" aria-selected="false" data-tab="switches">Kill switches</button>
+  </nav>
+  <main>
+    <!-- Overview -->
+    <section id="tab-overview">
+      <div class="stats" id="stats"></div>
+      <div class="grid2">
+        <div class="panel"><h2>By app version</h2><div class="bars" id="byVersion"></div></div>
+        <div class="panel"><h2>By Android version</h2><div class="bars" id="byAndroid"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h2>By region</h2><div class="bars" id="byCountry"></div></div>
+        <div class="panel"><h2>Feature usage</h2><div class="bars" id="byFeature"></div></div>
+      </div>
+    </section>
+
+    <!-- Installs -->
+    <section id="tab-installs" class="hidden">
+      <div class="toolbar">
+        <input id="search" type="text" placeholder="Filter by model, make, name, version…">
+        <label style="font-size:13px;color:var(--muted)"><input type="checkbox" id="blockedOnly" style="width:auto;margin-right:6px">Blocked only</label>
+        <span class="spacer"></span>
+        <span class="count" id="installCount"></span>
+        <button class="btn sm" id="refreshInstalls">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Device</th><th>Make</th><th>Android</th><th>App</th><th>Region</th>
+            <th>Name</th><th>First seen</th><th>Last seen</th><th>Status</th><th></th>
+          </tr></thead>
+          <tbody id="installRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Kill switches -->
+    <section id="tab-switches" class="hidden">
+      <p class="note">Turning a switch <strong>off</strong> disables that capability in every app on the next check. The <strong>App</strong> switch is the master: off puts the whole app into maintenance. The message is shown to users on the blocked screen.</p>
+      <div class="flags" id="flags"></div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://yblgvozpaxuruqxrpylc.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_lx2oJJgkSv1W8rFJoQ_lRw_xMZl4TaN";
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true }
+});
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtDate = (s) => s ? new Date(s).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}) : "—";
+
+// Friendly labels for the kill switches.
+const FLAG_LABELS = {
+  app:{t:"App (master / maintenance)",d:"Off = whole app shows maintenance"},
+  playback:{t:"Playback",d:"Playing any song"},
+  downloads:{t:"Downloads",d:"Saving songs offline"},
+  search:{t:"Search",d:"Search tab and results"},
+  lyrics:{t:"Lyrics",d:"Fetching and showing lyrics"},
+  listen_together:{t:"Listen Together",d:"Rooms and sync"},
+  casting:{t:"Casting",d:"Cast / DLNA output"},
+  recognition:{t:"Recognise (Find)",d:"Song recognition"},
+  account_sync:{t:"Account & Sync",d:"Sign-in and library sync"},
+  updates:{t:"In-app updates",d:"Update checks"},
+};
+
+// ── Auth ──────────────────────────────────────────────────────────────────
+async function ensureAdminOrOut() {
+  const { data, error } = await db.rpc("is_admin");
+  if (error || data !== true) {
+    await db.auth.signOut();
+    return false;
+  }
+  return true;
+}
+
+$("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("loginErr").textContent = "";
+  $("loginBtn").disabled = true;
+  try {
+    const { error } = await db.auth.signInWithPassword({ email: $("email").value.trim(), password: $("password").value });
+    if (error) { $("loginErr").textContent = error.message; return; }
+    if (!(await ensureAdminOrOut())) { $("loginErr").textContent = "This account is not an admin."; return; }
+    await enterApp();
+  } finally { $("loginBtn").disabled = false; }
+});
+
+$("logout").addEventListener("click", async () => { await db.auth.signOut(); location.reload(); });
+
+async function enterApp() {
+  const { data:{ user } } = await db.auth.getUser();
+  $("who").textContent = user?.email || "";
+  $("login").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  await Promise.all([loadOverview(), loadInstalls(), loadFlags()]);
+}
+
+// ── Tabs ────────────────────────────────────────────────────────────────
+document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+  for (const t of ["overview","installs","switches"]) $("tab-"+t).classList.toggle("hidden", t !== b.dataset.tab);
+}));
+
+// ── Overview ──────────────────────────────────────────────────────────────
+async function loadOverview() {
+  const { data, error } = await db.rpc("admin_overview");
+  if (error) { console.error(error); return; }
+  const s = data;
+  $("stats").innerHTML = [
+    ["Total installs", s.total_installs],
+    ["Active 24h", s.active_1d],
+    ["Active 7d", s.active_7d],
+    ["Active 30d", s.active_30d],
+    ["New (7d)", s.new_7d],
+    ["Named", s.named],
+    ["Blocked", s.blocked, s.blocked>0?"warn":""],
+  ].map(([l,n,c]) => `<div class="stat ${c||''}"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join("");
+  bars("byVersion", s.by_version, "v");
+  bars("byAndroid", s.by_android, "v");
+  bars("byCountry", s.by_country, "v");
+  barsFeatures("byFeature", s.features);
+}
+function bars(id, rows, key) {
+  rows = (rows||[]).slice(0,8);
+  const max = Math.max(1, ...rows.map(r => r.c));
+  $(id).innerHTML = rows.length ? rows.map(r =>
+    `<div class="row"><span>${esc(r[key] ?? "—")}</span><span class="track"><span class="fill" style="width:${(r.c/max*100).toFixed(0)}%"></span></span><span class="val">${esc(r.c)}</span></div>`
+  ).join("") : '<span class="muted">No data yet.</span>';
+}
+function barsFeatures(id, rows) {
+  rows = (rows||[]).slice(0,10);
+  const max = Math.max(1, ...rows.map(r => Number(r.total)));
+  $(id).innerHTML = rows.length ? rows.map(r =>
+    `<div class="row"><span>${esc(r.feature)}</span><span class="track"><span class="fill" style="width:${(Number(r.total)/max*100).toFixed(0)}%"></span></span><span class="val">${esc(r.total)}</span></div>`
+  ).join("") : '<span class="muted">No feature usage yet.</span>';
+}
+
+// ── Installs ──────────────────────────────────────────────────────────────
+let installs = [];
+async function loadInstalls() {
+  const { data, error } = await db.from("app_installs")
+    .select("install_id,device_model,device_manufacturer,device_brand,os_version,sdk_int,app_version,app_version_code,country,locale,name,is_blocked,blocked_reason,first_seen_at,last_seen_at")
+    .order("last_seen_at", { ascending:false })
+    .limit(1000);
+  if (error) { console.error(error); return; }
+  installs = data || [];
+  renderInstalls();
+}
+function renderInstalls() {
+  const q = $("search").value.trim().toLowerCase();
+  const blockedOnly = $("blockedOnly").checked;
+  const rows = installs.filter(r => {
+    if (blockedOnly && !r.is_blocked) return false;
+    if (!q) return true;
+    return [r.device_model,r.device_manufacturer,r.name,r.app_version,r.os_version,r.country]
+      .some(v => (v||"").toLowerCase().includes(q));
+  });
+  $("installCount").textContent = `${rows.length} of ${installs.length}`;
+  $("installRows").innerHTML = rows.map(r => `
+    <tr>
+      <td>${esc(r.device_model || "—")}</td>
+      <td>${esc(r.device_manufacturer || r.device_brand || "—")}</td>
+      <td>${esc(r.os_version || "—")}${r.sdk_int?` <span class="muted">(${esc(r.sdk_int)})</span>`:""}</td>
+      <td>${esc(r.app_version || "—")}</td>
+      <td>${esc(r.country || "—")}</td>
+      <td>${r.name ? esc(r.name) : '<span class="muted">—</span>'}</td>
+      <td class="mono">${esc(fmtDate(r.first_seen_at))}</td>
+      <td class="mono">${esc(fmtDate(r.last_seen_at))}</td>
+      <td>${r.is_blocked ? `<span class="pill blk">Blocked</span>` : `<span class="pill ok">Active</span>`}</td>
+      <td>${r.is_blocked
+        ? `<button class="btn sm" data-unblock="${esc(r.install_id)}">Unblock</button>`
+        : `<button class="btn sm danger" data-block="${esc(r.install_id)}">Block</button>`}</td>
+    </tr>`).join("") || `<tr><td colspan="10" class="muted" style="padding:24px;text-align:center">No installs match.</td></tr>`;
+}
+$("search").addEventListener("input", renderInstalls);
+$("blockedOnly").addEventListener("change", renderInstalls);
+$("refreshInstalls").addEventListener("click", loadInstalls);
+
+$("installRows").addEventListener("click", async (e) => {
+  const block = e.target.closest("[data-block]");
+  const unblock = e.target.closest("[data-unblock]");
+  if (block) {
+    const reason = prompt("Reason for blocking this install? (optional, shown to the user)") ?? null;
+    if (reason === null && !confirm("Block this install without a reason?")) return;
+    await setBlocked(block.dataset.block, true, reason);
+  } else if (unblock) {
+    await setBlocked(unblock.dataset.unblock, false, null);
+  }
+});
+async function setBlocked(id, blocked, reason) {
+  const { error } = await db.rpc("admin_set_blocked", { p_install_id:id, p_blocked:blocked, p_reason:reason });
+  if (error) { alert("Failed: " + error.message); return; }
+  const row = installs.find(r => r.install_id === id);
+  if (row) { row.is_blocked = blocked; row.blocked_reason = blocked?reason:null; }
+  renderInstalls();
+  loadOverview();
+}
+
+// ── Kill switches ─────────────────────────────────────────────────────────
+async function loadFlags() {
+  const { data, error } = await db.from("feature_flags").select("*").order("key");
+  if (error) { console.error(error); return; }
+  const order = Object.keys(FLAG_LABELS);
+  const flags = (data||[]).sort((a,b) => order.indexOf(a.key) - order.indexOf(b.key));
+  $("flags").innerHTML = flags.map(f => {
+    const meta = FLAG_LABELS[f.key] || { t:f.key, d:"" };
+    return `<div class="flag ${f.key==='app'?'master':''}">
+      <div class="k">${esc(meta.t)}<small>${esc(meta.d)}</small></div>
+      <input type="text" data-msg="${esc(f.key)}" placeholder="Message shown when off (optional)" value="${esc(f.message||'')}">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="saved" data-saved="${esc(f.key)}">Saved</span>
+        <label class="switch"><input type="checkbox" data-flag="${esc(f.key)}" ${f.enabled?'checked':''}><span class="slider"></span></label>
+      </div>
+    </div>`;
+  }).join("");
+}
+$("flags").addEventListener("change", async (e) => {
+  const cb = e.target.closest("[data-flag]");
+  if (!cb) return;
+  const key = cb.dataset.flag;
+  if (!cb.checked && !confirm(`Turn OFF "${FLAG_LABELS[key]?.t||key}" for all users?`)) { cb.checked = true; return; }
+  await saveFlag(key);
+});
+$("flags").addEventListener("blur", async (e) => {
+  const msg = e.target.closest("[data-msg]");
+  if (msg) await saveFlag(msg.dataset.msg);
+}, true);
+async function saveFlag(key) {
+  const enabled = document.querySelector(`[data-flag="${key}"]`).checked;
+  const message = document.querySelector(`[data-msg="${key}"]`).value;
+  const { error } = await db.rpc("admin_set_flag", { p_key:key, p_enabled:enabled, p_message:message });
+  if (error) { alert("Failed: " + error.message); return; }
+  const s = document.querySelector(`[data-saved="${key}"]`);
+  s.classList.add("show"); setTimeout(() => s.classList.remove("show"), 1200);
+}
+
+// ── Boot: resume an existing admin session ─────────────────────────────────
+(async () => {
+  const { data:{ session } } = await db.auth.getSession();
+  if (session && await ensureAdminOrOut()) await enterApp();
+})();
+</script>
+</body>
+</html>

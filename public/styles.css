@@ -208,6 +208,7 @@ main {
 
 /* Premium Buttons */
 .btn {
+    max-width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -222,6 +223,13 @@ main {
     white-space: nowrap;
     position: relative;
     overflow: hidden;
+}
+
+/* A long label shortens with an ellipsis instead of spilling past the card. */
+.btn .btn-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn:active {

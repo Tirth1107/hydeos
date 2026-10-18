@@ -72,7 +72,7 @@ function createDownloadButton(downloadUrl, version) {
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Download APK (${escapeHtml(version)})
+            <span class="btn-label">Download APK (${escapeHtml(shortVersion(version))})</span>
         </a>
     `;
 }
@@ -88,7 +88,7 @@ function createFallbackButton(releaseUrl, version) {
                 <polyline points="13 3 23 3 23 13"></polyline>
                 <line x1="23" y1="3" x2="13" y2="13"></line>
             </svg>
-            View Release (${escapeHtml(version)})
+            <span class="btn-label">View Release (${escapeHtml(shortVersion(version))})</span>
         </a>
     `;
 }
@@ -162,7 +162,7 @@ function createExeDownloadButton(downloadUrl, version) {
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Download Windows App (${escapeHtml(version)})
+            <span class="btn-label">Download for Windows (${escapeHtml(shortVersion(version))})</span>
         </a>
     `;
 }
@@ -175,7 +175,7 @@ function createExeFallbackButton(releaseUrl, version) {
                 <polyline points="13 3 23 3 23 13"></polyline>
                 <line x1="23" y1="3" x2="13" y2="13"></line>
             </svg>
-            View Release (${escapeHtml(version)})
+            <span class="btn-label">View Release (${escapeHtml(shortVersion(version))})</span>
         </a>
     `;
 }
@@ -215,6 +215,16 @@ function setupSmoothScrolling() {
             window.history.pushState(null, null, href);
         });
     });
+}
+
+/**
+ * Release tags read badly in a button ("v1.0.0-final-version"): keep the
+ * leading version number only, dropping a trailing ".0" ("v1.0").
+ */
+function shortVersion(tag) {
+    const m = String(tag).match(/\d+(?:\.\d+)*/);
+    if (!m) return String(tag);
+    return 'v' + m[0].replace(/^(\d+\.\d+)\.0$/, '$1');
 }
 
 /**
