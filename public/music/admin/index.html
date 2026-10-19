@@ -100,6 +100,42 @@
   .flag input[type=text]{font-size:13px}
   .saved{color:var(--green);font-size:12px;opacity:0;transition:opacity .2s}
   .saved.show{opacity:1}
+  /* Messages */
+  .compose{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:16px;margin-bottom:24px}
+  @media(max-width:900px){.compose{grid-template-columns:1fr}}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+  .form-grid .full{grid-column:1/-1}
+  @media(max-width:560px){.form-grid{grid-template-columns:1fr}}
+  .form-grid label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+  textarea{min-height:84px;resize:vertical}
+  input[type=number],input[type=datetime-local]{width:100%;padding:10px 12px;background:#0d0d0d;border:1px solid var(--line2);border-radius:9px;color:var(--text);font:inherit;color-scheme:dark}
+  .check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
+  .check input{width:auto}
+  .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .actions .btn.primary{width:auto}
+  .hint{font-size:12px;color:var(--faint);margin-top:4px}
+  .preview-wrap{display:grid;place-items:center;min-height:320px;border-radius:var(--radius);
+    background:radial-gradient(circle at 30% 20%,#3b0d14,#0b0b0b 70%);padding:24px}
+  .pv-popup{width:100%;max-width:320px;background:rgba(40,40,44,.72);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.12);
+    border-radius:28px;padding:22px 20px 12px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .pv-popup .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;font-size:26px}
+  .pv-popup img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:18px;margin-bottom:12px}
+  .pv-popup h3{margin:0 0 6px;font-size:20px}
+  .pv-popup p{margin:0 0 16px;color:#b5b5b8;font-size:14px;white-space:pre-wrap}
+  .pv-btn{display:block;padding:13px;border-radius:15px;color:#fff;font-weight:600}
+  .pv-later{display:block;padding:10px;color:#9a9a9a}
+  .pv-banner{width:100%;max-width:360px;display:flex;gap:12px;align-items:flex-start;background:rgba(40,40,44,.72);
+    border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:12px 14px}
+  .pv-banner .ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+  .pv-banner b{display:block}
+  .pv-banner span{font-size:13px;color:#b5b5b8;white-space:pre-wrap}
+  .pv-notif{width:100%;max-width:360px;background:rgba(240,240,245,.92);color:#111;border-radius:18px;padding:12px 14px}
+  .pv-notif small{color:#666;font-size:11px}
+  .pv-notif b{display:block;margin-top:2px}
+  .pv-menu{width:100%;max-width:360px;background:#1c1c1e;border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center}
+  .pv-menu .ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:#fff}
+  .kind-pill{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  td.wrap{white-space:normal;min-width:220px}
   .note{color:var(--muted);font-size:13px;margin:0 0 16px;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;background:rgba(251,191,36,.05)}
 </style>
 </head>
@@ -128,6 +164,8 @@
     <button role="tab" aria-selected="true" data-tab="overview">Overview</button>
     <button role="tab" aria-selected="false" data-tab="installs">Installs</button>
     <button role="tab" aria-selected="false" data-tab="switches">Kill switches</button>
+    <button role="tab" aria-selected="false" data-tab="messages">Messages</button>
+    <button role="tab" aria-selected="false" data-tab="updates">Updates</button>
   </nav>
   <main>
     <!-- Overview -->
@@ -167,6 +205,78 @@
     <section id="tab-switches" class="hidden">
       <p class="note">Turning a switch <strong>off</strong> disables that capability in every app on the next check. The <strong>App</strong> switch is the master: off puts the whole app into maintenance. The message is shown to users on the blocked screen.</p>
       <div class="flags" id="flags"></div>
+    </section>
+
+    <!-- Messages -->
+    <section id="tab-messages" class="hidden">
+      <p class="note">Publish to the app with no new APK. <strong>Popup</strong> = big card when the app opens ·
+        <strong>Banner</strong> = card at the top of Home · <strong>Notification</strong> = system notification (arrives within about an hour, sooner if the app is open) ·
+        <strong>Menu</strong> = item in a “From Hyde” group at the top of Settings. Links can be web pages or
+        <code>hyde://update</code>, <code>hyde://updates</code>, <code>hyde://settings</code>.</p>
+      <div class="compose">
+        <form class="panel" id="msgForm">
+          <h2 id="msgFormTitle">New message</h2>
+          <input type="hidden" id="m_id">
+          <div class="form-grid">
+            <div><label for="m_kind">Type</label>
+              <select id="m_kind"><option value="popup">Popup</option><option value="banner">Home banner</option><option value="notification">Notification</option><option value="menu">Settings menu item</option></select></div>
+            <div><label for="m_style">Look</label>
+              <select id="m_style"><option value="info">Info (red)</option><option value="success">Good news (green)</option><option value="warning">Warning (amber)</option><option value="promo">Promo (purple)</option></select></div>
+            <div class="full"><label for="m_title">Title</label><input id="m_title" type="text" maxlength="80" required placeholder="e.g. New: Liquid Glass lyrics"></div>
+            <div class="full"><label for="m_body">Message</label><textarea id="m_body" maxlength="600" placeholder="What you want to tell people"></textarea></div>
+            <div><label for="m_cta_label">Button text</label><input id="m_cta_label" type="text" maxlength="30" placeholder="Open"></div>
+            <div><label for="m_cta_url">Button link</label><input id="m_cta_url" type="text" placeholder="https://… or hyde://update"></div>
+            <div><label for="m_icon">Icon</label>
+              <select id="m_icon"><option value="">Automatic</option><option>bell</option><option>gift</option><option>star</option><option>sparkles</option><option>wrench</option><option>music</option><option>heart</option><option>info</option></select></div>
+            <div><label for="m_image">Image URL (popup)</label><input id="m_image" type="text" placeholder="https://…/banner.jpg"></div>
+            <div><label for="m_freq">Show</label>
+              <select id="m_freq"><option value="once">Once per device</option><option value="daily">Once a day</option><option value="every_launch">Every time the app opens</option></select></div>
+            <div><label for="m_priority">Priority</label><input id="m_priority" type="number" value="0" step="1"><div class="hint">Higher shows first</div></div>
+            <div><label for="m_start">Start (optional)</label><input id="m_start" type="datetime-local"></div>
+            <div><label for="m_end">End (optional)</label><input id="m_end" type="datetime-local"></div>
+            <div><label for="m_minv">From app version</label><input id="m_minv" type="text" placeholder="e.g. 6.1.0"></div>
+            <div><label for="m_maxv">Up to app version</label><input id="m_maxv" type="text" placeholder="e.g. 6.1.9"></div>
+            <div class="full"><label for="m_targets">Only these installs (optional)</label>
+              <input id="m_targets" type="text" placeholder="Install IDs, comma-separated — use “Message” on the Installs tab">
+              <div class="hint">Leave empty to send to everyone.</div></div>
+            <label class="check"><input type="checkbox" id="m_dismissible" checked>People can close it</label>
+            <label class="check"><input type="checkbox" id="m_active" checked>Live</label>
+          </div>
+          <div class="actions">
+            <button class="btn primary" type="submit" id="msgSave">Publish</button>
+            <button class="btn" type="button" id="msgReset">Clear</button>
+            <span class="saved" id="msgSaved">Saved</span>
+          </div>
+          <div class="err" id="msgErr"></div>
+        </form>
+        <div class="panel"><h2>Preview</h2><div class="preview-wrap" id="msgPreview"></div></div>
+      </div>
+      <div class="toolbar"><strong>Published</strong><span class="spacer"></span><button class="btn sm" id="refreshMsgs">Refresh</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Title</th><th>Show</th><th>Window</th><th>Views</th><th>Clicks</th><th>Closed</th><th>Live</th><th></th></tr></thead>
+          <tbody id="msgRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Updates -->
+    <section id="tab-updates" class="hidden">
+      <p class="note">Every time someone opens the app while an update is waiting, a big update popup appears on Home.
+        Set a <strong>minimum version</strong> to make updating required: anyone below it gets the popup with no “Later”.
+        Releases themselves still come from GitHub.</p>
+      <form class="panel" id="updForm" style="max-width:640px">
+        <div class="form-grid">
+          <div class="full"><label for="u_force">Require at least version</label><input id="u_force" type="text" placeholder="e.g. 6.2.0 — leave empty for optional updates"></div>
+          <div class="full"><label for="u_msg">Extra line on the update popup (optional)</label><textarea id="u_msg" maxlength="300" placeholder="e.g. This update fixes playback for everyone — please update."></textarea></div>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="submit">Save</button>
+          <button class="btn" type="button" id="updRemind">Also post an “Update now” banner</button>
+          <span class="saved" id="updSaved">Saved</span>
+        </div>
+        <div class="err" id="updErr"></div>
+      </form>
     </section>
   </main>
 </div>
@@ -226,13 +336,14 @@ async function enterApp() {
   $("who").textContent = user?.email || "";
   $("login").classList.add("hidden");
   $("app").classList.remove("hidden");
-  await Promise.all([loadOverview(), loadInstalls(), loadFlags()]);
+  await Promise.all([loadOverview(), loadInstalls(), loadFlags(), loadMessages(), loadUpdateConfig()]);
+  renderPreview();
 }
 
 // ── Tabs ────────────────────────────────────────────────────────────────
 document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => {
   document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
-  for (const t of ["overview","installs","switches"]) $("tab-"+t).classList.toggle("hidden", t !== b.dataset.tab);
+  for (const t of ["overview","installs","switches","messages","updates"]) $("tab-"+t).classList.toggle("hidden", t !== b.dataset.tab);
 }));
 
 // ── Overview ──────────────────────────────────────────────────────────────
@@ -301,7 +412,7 @@ function renderInstalls() {
       <td class="mono">${esc(fmtDate(r.first_seen_at))}</td>
       <td class="mono">${esc(fmtDate(r.last_seen_at))}</td>
       <td>${r.is_blocked ? `<span class="pill blk">Blocked</span>` : `<span class="pill ok">Active</span>`}</td>
-      <td>${r.is_blocked
+      <td><button class="btn sm" data-msgto="${esc(r.install_id)}">Message</button> ${r.is_blocked
         ? `<button class="btn sm" data-unblock="${esc(r.install_id)}">Unblock</button>`
         : `<button class="btn sm danger" data-block="${esc(r.install_id)}">Block</button>`}</td>
     </tr>`).join("") || `<tr><td colspan="10" class="muted" style="padding:24px;text-align:center">No installs match.</td></tr>`;
@@ -313,6 +424,15 @@ $("refreshInstalls").addEventListener("click", loadInstalls);
 $("installRows").addEventListener("click", async (e) => {
   const block = e.target.closest("[data-block]");
   const unblock = e.target.closest("[data-unblock]");
+  const msgTo = e.target.closest("[data-msgto]");
+  if (msgTo) {
+    const cur = $("m_targets").value.split(",").map(x => x.trim()).filter(Boolean);
+    if (!cur.includes(msgTo.dataset.msgto)) cur.push(msgTo.dataset.msgto);
+    $("m_targets").value = cur.join(", ");
+    document.querySelector('nav.tabs button[data-tab="messages"]').click();
+    $("m_title").focus();
+    return;
+  }
   if (block) {
     const reason = prompt("Reason for blocking this install? (optional, shown to the user)") ?? null;
     if (reason === null && !confirm("Block this install without a reason?")) return;
@@ -367,6 +487,180 @@ async function saveFlag(key) {
   const s = document.querySelector(`[data-saved="${key}"]`);
   s.classList.add("show"); setTimeout(() => s.classList.remove("show"), 1200);
 }
+
+// ── Messages ──────────────────────────────────────────────────────────────
+const STYLE_COLORS = { info:"#fa2d48", success:"#7acb6e", warning:"#f5b342", promo:"#bf5af2" };
+const ICONS = { bell:"🔔", gift:"🎁", star:"⭐", sparkles:"✨", wrench:"🔧", music:"🎵", heart:"❤️", info:"ℹ️" };
+const AUTO_ICON = { info:"bell", success:"star", warning:"wrench", promo:"sparkles" };
+const KIND_LABEL = { popup:"Popup", banner:"Banner", notification:"Notification", menu:"Menu" };
+const FREQ_LABEL = { once:"Once", daily:"Daily", every_launch:"Every open" };
+let messages = [];
+
+const toLocalInput = (iso) => { if (!iso) return ""; const d = new Date(iso); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,16); };
+const fromLocalInput = (v) => v ? new Date(v).toISOString() : null;
+const orNull = (v) => { v = (v ?? "").trim(); return v === "" ? null : v; };
+const versionOk = (v) => v === null || /^\d+(\.\d+){0,3}$/.test(v);
+
+function formValue() {
+  const targets = $("m_targets").value.split(",").map(x => x.trim()).filter(Boolean);
+  return {
+    kind: $("m_kind").value, style: $("m_style").value,
+    title: $("m_title").value.trim(), body: orNull($("m_body").value),
+    cta_label: orNull($("m_cta_label").value), cta_url: orNull($("m_cta_url").value),
+    icon: orNull($("m_icon").value), image_url: orNull($("m_image").value),
+    frequency: $("m_freq").value, priority: parseInt($("m_priority").value || "0", 10) || 0,
+    starts_at: fromLocalInput($("m_start").value), ends_at: fromLocalInput($("m_end").value),
+    min_app_version: orNull($("m_minv").value), max_app_version: orNull($("m_maxv").value),
+    target_install_ids: targets.length ? targets : null,
+    dismissible: $("m_dismissible").checked, active: $("m_active").checked,
+  };
+}
+
+function renderPreview() {
+  const m = formValue();
+  const color = STYLE_COLORS[m.style] || STYLE_COLORS.info;
+  const icon = ICONS[m.icon || AUTO_ICON[m.style]] || "🔔";
+  const title = esc(m.title || "Your title");
+  const body = esc(m.body || "");
+  const btn = esc(m.cta_label || (m.cta_url ? "Open" : "OK"));
+  let html;
+  if (m.kind === "popup") {
+    html = `<div class="pv-popup">
+      ${m.image_url ? `<img src="${esc(m.image_url)}" alt="">` : `<div class="ic" style="background:${color}29;color:${color}">${icon}</div>`}
+      <h3>${title}</h3>${body ? `<p>${body}</p>` : ""}
+      <span class="pv-btn" style="background:${color}">${btn}</span>
+      ${m.dismissible && m.cta_url ? `<span class="pv-later">Not now</span>` : ""}</div>`;
+  } else if (m.kind === "banner") {
+    html = `<div class="pv-banner"><div class="ic" style="background:${color}2e">${icon}</div>
+      <div><b>${title}</b>${body ? `<span>${body}</span>` : ""}${m.cta_url ? `<div style="color:${color};font-size:13px;font-weight:600;margin-top:4px">${btn}</div>` : ""}</div>
+      ${m.dismissible ? `<span style="margin-left:auto;color:#888">✕</span>` : ""}</div>`;
+  } else if (m.kind === "notification") {
+    html = `<div class="pv-notif"><small>Hyde Music · now</small><b>${title}</b><div style="font-size:13px;white-space:pre-wrap">${body}</div></div>`;
+  } else {
+    html = `<div style="width:100%;max-width:360px"><div style="font-size:12px;color:#888;margin:0 0 6px 14px;text-transform:uppercase">From Hyde</div>
+      <div class="pv-menu"><div class="ic" style="background:${color}">${icon}</div><div><b>${title}</b>${body ? `<div style="font-size:13px;color:#999">${body}</div>` : ""}</div>
+      <span style="margin-left:auto;color:#666">›</span></div></div>`;
+  }
+  $("msgPreview").innerHTML = html;
+}
+$("msgForm").addEventListener("input", renderPreview);
+$("msgForm").addEventListener("change", renderPreview);
+
+function resetForm() {
+  $("msgForm").reset();
+  $("m_id").value = "";
+  $("msgFormTitle").textContent = "New message";
+  $("msgSave").textContent = "Publish";
+  $("msgErr").textContent = "";
+  renderPreview();
+}
+$("msgReset").addEventListener("click", resetForm);
+
+$("msgForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("msgErr").textContent = "";
+  const row = formValue();
+  if (!row.title) { $("msgErr").textContent = "Add a title."; return; }
+  if (!versionOk(row.min_app_version) || !versionOk(row.max_app_version)) { $("msgErr").textContent = "Versions look like 6.1.0."; return; }
+  if (row.cta_url && !/^(https?:\/\/|hyde:\/\/|mailto:)/.test(row.cta_url)) { $("msgErr").textContent = "Links start with https://, hyde:// or mailto:."; return; }
+  if (row.kind === "notification" && !confirm("Send this notification to every matching device? Each device gets it once.")) return;
+  row.updated_at = new Date().toISOString();
+  const id = $("m_id").value;
+  const q = id ? db.from("app_messages").update(row).eq("id", id) : db.from("app_messages").insert(row);
+  const { error } = await q;
+  if (error) { $("msgErr").textContent = error.message; return; }
+  const s = $("msgSaved"); s.classList.add("show"); setTimeout(() => s.classList.remove("show"), 1400);
+  resetForm();
+  loadMessages();
+});
+
+async function loadMessages() {
+  const { data, error } = await db.from("app_messages").select("*").order("created_at", { ascending:false }).limit(200);
+  if (error) {
+    $("msgRows").innerHTML = `<tr><td colspan="9" class="muted" style="padding:20px">Couldn’t load messages (${esc(error.message)}). Run supabase/messages_schema.sql first.</td></tr>`;
+    return;
+  }
+  messages = data || [];
+  const win = (m) => {
+    if (!m.starts_at && !m.ends_at) return '<span class="muted">Always</span>';
+    return `${m.starts_at ? esc(fmtDate(m.starts_at)) : "now"} → ${m.ends_at ? esc(fmtDate(m.ends_at)) : "no end"}`;
+  };
+  $("msgRows").innerHTML = messages.map(m => `<tr>
+      <td><span class="kind-pill" style="color:${STYLE_COLORS[m.style]||'#fa2d48'}">${esc(KIND_LABEL[m.kind]||m.kind)}</span>${m.target_install_ids?.length ? ` <span class="muted">· ${m.target_install_ids.length} device${m.target_install_ids.length>1?'s':''}</span>` : ""}</td>
+      <td class="wrap"><b>${esc(m.title)}</b>${m.body ? `<div class="muted" style="font-size:12px">${esc(m.body.slice(0,90))}${m.body.length>90?'…':''}</div>` : ""}</td>
+      <td>${esc(FREQ_LABEL[m.frequency]||m.frequency)}</td>
+      <td class="mono">${win(m)}</td>
+      <td>${esc(m.views)}</td><td>${esc(m.clicks)}</td><td>${esc(m.dismissals)}</td>
+      <td><label class="switch"><input type="checkbox" data-live="${esc(m.id)}" ${m.active?'checked':''}><span class="slider"></span></label></td>
+      <td><button class="btn sm" data-edit="${esc(m.id)}">Edit</button> <button class="btn sm" data-dup="${esc(m.id)}">Copy</button> <button class="btn sm danger" data-del="${esc(m.id)}">Delete</button></td>
+    </tr>`).join("") || `<tr><td colspan="9" class="muted" style="padding:24px;text-align:center">Nothing published yet.</td></tr>`;
+}
+$("refreshMsgs").addEventListener("click", loadMessages);
+
+function fillForm(m, asCopy) {
+  $("m_id").value = asCopy ? "" : m.id;
+  $("m_kind").value = m.kind; $("m_style").value = m.style || "info";
+  $("m_title").value = m.title || ""; $("m_body").value = m.body || "";
+  $("m_cta_label").value = m.cta_label || ""; $("m_cta_url").value = m.cta_url || "";
+  $("m_icon").value = m.icon || ""; $("m_image").value = m.image_url || "";
+  $("m_freq").value = m.frequency || "once"; $("m_priority").value = m.priority ?? 0;
+  $("m_start").value = toLocalInput(m.starts_at); $("m_end").value = toLocalInput(m.ends_at);
+  $("m_minv").value = m.min_app_version || ""; $("m_maxv").value = m.max_app_version || "";
+  $("m_targets").value = (m.target_install_ids || []).join(", ");
+  $("m_dismissible").checked = m.dismissible !== false; $("m_active").checked = asCopy ? true : m.active !== false;
+  $("msgFormTitle").textContent = asCopy ? "New message (copy)" : "Edit message";
+  $("msgSave").textContent = asCopy ? "Publish" : "Save changes";
+  renderPreview();
+  $("msgForm").scrollIntoView({ behavior:"smooth" });
+}
+
+$("msgRows").addEventListener("click", async (e) => {
+  const edit = e.target.closest("[data-edit]"), dup = e.target.closest("[data-dup]"), del = e.target.closest("[data-del]");
+  if (edit) fillForm(messages.find(m => m.id === edit.dataset.edit), false);
+  if (dup) fillForm(messages.find(m => m.id === dup.dataset.dup), true);
+  if (del) {
+    if (!confirm("Delete this message for everyone?")) return;
+    const { error } = await db.from("app_messages").delete().eq("id", del.dataset.del);
+    if (error) { alert("Failed: " + error.message); return; }
+    loadMessages();
+  }
+});
+$("msgRows").addEventListener("change", async (e) => {
+  const live = e.target.closest("[data-live]");
+  if (!live) return;
+  const { error } = await db.from("app_messages").update({ active: live.checked, updated_at: new Date().toISOString() }).eq("id", live.dataset.live);
+  if (error) { alert("Failed: " + error.message); live.checked = !live.checked; }
+});
+
+// ── Update rules ──────────────────────────────────────────────────────────
+async function loadUpdateConfig() {
+  const { data, error } = await db.from("app_config").select("value").eq("key", "update").maybeSingle();
+  if (error) { $("updErr").textContent = `Couldn’t load (${error.message}). Run supabase/messages_schema.sql first.`; return; }
+  $("u_force").value = data?.value?.force_below || "";
+  $("u_msg").value = data?.value?.message || "";
+}
+$("updForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("updErr").textContent = "";
+  const force = orNull($("u_force").value);
+  if (!versionOk(force)) { $("updErr").textContent = "Versions look like 6.2.0."; return; }
+  if (force && !confirm(`Everyone below ${force} will have to update before closing the popup. Continue?`)) return;
+  const { error } = await db.from("app_config").upsert({ key:"update", value:{ force_below: force, message: orNull($("u_msg").value) }, updated_at: new Date().toISOString() });
+  if (error) { $("updErr").textContent = error.message; return; }
+  const s = $("updSaved"); s.classList.add("show"); setTimeout(() => s.classList.remove("show"), 1400);
+});
+$("updRemind").addEventListener("click", async () => {
+  const { error } = await db.from("app_messages").insert({
+    kind:"banner", style:"info", icon:"sparkles", title:"A new Hyde is ready",
+    body:"Update for the latest fixes and features — it takes a few seconds.",
+    cta_label:"Update now", cta_url:"hyde://update", frequency:"daily", dismissible:true, priority:5,
+    active:true,
+  });
+  if (error) { $("updErr").textContent = error.message; return; }
+  $("updErr").textContent = "";
+  alert("Banner posted. The app only shows it while an update is waiting, so people already up to date never see it.");
+  loadMessages();
+});
 
 // ── Boot: resume an existing admin session ─────────────────────────────────
 (async () => {
